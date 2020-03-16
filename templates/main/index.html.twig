@@ -11,10 +11,10 @@
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming fromdd:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/nicolasr/Documents/Etudes/LP_Prog_avancée/Cours/Web/Projet/src/Controller/MainController.php'|file_link(0) }}">src/Controller/MainController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/nicolasr/Documents/Etudes/LP_Prog_avancée/Cours/Web/Projet/templates/main/index.html.twig'|file_link(0) }}">templates/main/index.html.twig</a></code></li>
-    </ul>
+    <a href="{{ path('avis_index') }}" class="waves-effect waves-light btn">Avis</a>
+    <a href="{{ path('matiere_index') }}" class="waves-effect waves-light btn">Matière</a>
+    <a href="{{ path('cours_index') }}" class="waves-effect waves-light btn">Cours</a>
+    <a href="{{ path('professeur_index') }}" class="waves-effect waves-light btn">Professeurs</a>
+    <a href="{{ path('main') }}" class="waves-effect waves-light btn disabled">Salle</a>
 </div>
 {% endblock %}
