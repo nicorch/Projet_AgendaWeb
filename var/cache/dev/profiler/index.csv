@@ -20,3 +20,6 @@ a11c42,::1,GET,http://localhost:8001/Avis/,1584437985,,404
 ae5054,::1,GET,http://localhost:8001/avis/new,1584437993,,200
 01dad2,::1,POST,http://localhost:8001/avis/new,1584438007,,302
 d39db5,::1,GET,http://localhost:8001/avis/,1584438008,,200
+537183,::1,GET,http://localhost:8001/admin,1584438366,,301
+930e31,::1,GET,http://localhost:8001/admin/,1584438367,4bb771,500
+4bb771,::1,GET,http://localhost:8001/admin/,1584438367,,500
