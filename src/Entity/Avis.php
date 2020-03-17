@@ -26,6 +26,7 @@ class Avis
     /**
      * @ORM\Column(type="integer")
      * @Assert\Range(min=0, max=5, notInRangeMessage="La note doit être comprise entre {{ min }} et {{ max }}.")
+     * @Assert\NotNull()
      */
     private $note;
 
@@ -38,12 +39,14 @@ class Avis
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\Email()
+     * @Assert\NotNull()
      */
     private $emailEtudiant;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Professeur", inversedBy="avis")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotNull()
      */
     private $professeur;
 

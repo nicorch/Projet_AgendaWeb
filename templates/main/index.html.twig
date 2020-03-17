@@ -12,5 +12,35 @@
     <a href="{{ path('cours_index') }}" class="waves-effect waves-light btn">Cours</a>
     <a href="{{ path('professeur_index') }}" class="waves-effect waves-light btn">Professeurs</a>
     <a href="{{ path('main') }}" class="waves-effect waves-light btn disabled">Salle</a>
+
 </div>
+<br>
+    <table class="table" width=100%>
+        <thead>
+            <tr>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set heure = 00 %}
+            {% set minutes = 00 %}
+            {% set trueMin = true %}
+        {% for i in 1..68 %}
+            <tr>
+                <td width=5% style="border-right: 1px solid black">{{ heure }}:{{ minutes }}</td>
+                <td></td>
+                {% set heure = 1 + heure %}
+                {% if trueMin %}
+                    {% set minutes = 30 %}
+                        {% set trueMin = false %}
+                    {% else %}
+                        {% set minutes = 00 %}
+                        {% set trueMin = true %}
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 {% endblock %}

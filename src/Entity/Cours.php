@@ -21,14 +21,14 @@ class Cours
     /**
      * @ORM\Column(type="datetime")
      * @Assert\GreaterThan("now")
-     * @Assert\NotNull
+     * @Assert\NotNull()
      */
     private $dateHeureDebut;
     
     /**
      * @ORM\Column(type="datetime")
      * @Assert\GreaterThan(propertyPath="dateHeureDebut")
-     * @Assert\NotNull
+     * @Assert\NotNull()
      */
     private $dateHeureFin;
 
@@ -36,28 +36,28 @@ class Cours
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Professeur", inversedBy="cours")
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\NotNull
+     * @Assert\NotNull()
      */
     private $professeur;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Salle", inversedBy="cours")
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\NotNull
+     * @Assert\NotNull()
      */
     private $salle;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Matiere", inversedBy="cours")
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\NotNull
+     * @Assert\NotNull()
      */
     private $matiere;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\TypeCours", inversedBy="cours")
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\NotNull
+     * @Assert\NotNull()
      */
     private $type;
 
