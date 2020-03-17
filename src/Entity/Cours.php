@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CoursRepository")
@@ -18,18 +20,16 @@ class Cours
 
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\GreaterThan("now")
      */
     private $dateHeureDebut;
-
+    
     /**
      * @ORM\Column(type="datetime")
+     * @Assert\GreaterThan(propertyPath="dateHeureDebut")
      */
     private $dateHeureFin;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $type;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Professeur", inversedBy="cours")
@@ -48,6 +48,19 @@ class Cours
      * @ORM\JoinColumn(nullable=false)
      */
     private $matiere;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\TypeCours", inversedBy="cours")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $type;
+
+    public function __construct() {
+        $this->dateHeureDebut = new \DateTime('now');
+        $date = new \DateTime('now');
+        $date->modify('+2 hours');
+        $this->dateHeureFin = $date;
+    }
 
     public function toArray()
     {
@@ -97,18 +110,6 @@ class Cours
         return $this;
     }
 
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
-
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
-
     public function getProfesseur(): ?Professeur
     {
         return $this->professeur;
@@ -141,6 +142,18 @@ class Cours
     public function setMatiere(?Matiere $matiere): self
     {
         $this->matiere = $matiere;
+
+        return $this;
+    }
+
+    public function getType(): ?TypeCours
+    {
+        return $this->type;
+    }
+
+    public function setType(?TypeCours $type): self
+    {
+        $this->type = $type;
 
         return $this;
     }

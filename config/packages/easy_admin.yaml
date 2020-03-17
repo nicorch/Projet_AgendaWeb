@@ -13,6 +13,8 @@ easy_admin:
             class: App\Entity\Avis
         Salle:
             class: App\Entity\Salle
+        TypeCours:
+            class: App\Entity\TypeCours
         Cours:
             class: App\Entity\Cours
             list:

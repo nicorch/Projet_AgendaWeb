@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Cours;
-use App\Form\CoursType;
+use App\Form\TypeCours;
 use App\Repository\CoursRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -31,7 +31,7 @@ class CoursController extends AbstractController
     public function new(Request $request): Response
     {
         $cour = new Cours();
-        $form = $this->createForm(CoursType::class, $cour);
+        $form = $this->createForm(TypeCours::class, $cour);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -63,7 +63,7 @@ class CoursController extends AbstractController
      */
     public function edit(Request $request, Cours $cour): Response
     {
-        $form = $this->createForm(CoursType::class, $cour);
+        $form = $this->createForm(TypeCours::class, $cour);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
