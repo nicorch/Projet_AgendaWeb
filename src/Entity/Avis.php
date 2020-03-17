@@ -31,6 +31,7 @@ class Avis
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
      */
     private $emailEtudiant;
 
@@ -44,7 +45,7 @@ class Avis
     {
         return sprintf('%s (%s/5)', $this->emailEtudiant, $this->note);
     }
-    
+
     public function toArray()
     {
         return [
