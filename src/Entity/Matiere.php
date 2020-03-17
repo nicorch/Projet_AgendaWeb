@@ -38,10 +38,23 @@ class Matiere
      */
     private $cours;
 
+    public function __toString()
+    {
+        return $this->titre . ' ' .$this->reference;
+    }
+
     public function __construct()
     {
         $this->professeurs = new ArrayCollection();
         $this->cours = new ArrayCollection();
+    }
+
+    public function toArray(){
+        return [
+            'id'  => $this->getId(),
+            'titre'  => $this->getTitre(),
+            'reference'  => $this->getReference()
+        ];
     }
 
     public function getId(): ?int

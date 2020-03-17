@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -18,16 +19,19 @@ class Avis
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Range(min=0, max=5)
      */
     private $note;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotNull()
      */
     private $commentaire;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email()
      */
     private $emailEtudiant;
 
@@ -36,6 +40,21 @@ class Avis
      * @ORM\JoinColumn(nullable=false)
      */
     private $professeur;
+
+    public function __toString()
+    {
+        return sprintf('%s (%s/5)', $this->emailEtudiant, $this->note);
+    }
+
+    public function toArray()
+    {
+        return [
+            'id' => $this->getId(),
+            'note' => $this->getNote(),
+            'commentaire' => $this->getCommentaire(),
+            'emailEtudiant' => $this->getEmailEtudiant(),
+        ];
+    }
 
     public function getId(): ?int
     {

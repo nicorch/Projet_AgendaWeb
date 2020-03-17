@@ -29,7 +29,7 @@ class Professeur
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, unique=true)
      */
     private $email;
 
@@ -53,6 +53,24 @@ class Professeur
         $this->avis = new ArrayCollection();
         $this->matiere = new ArrayCollection();
         $this->cours = new ArrayCollection();
+    }
+
+    public function __toString()
+    {
+        return $this->prenom . ' ' .$this->nom;
+    }
+
+    public function toArray()
+    {
+        return[
+            'id' => $this->getId(),
+            'nom' => $this->getNom(),
+            'prenom' => $this->getPrenom(),
+            'email' => $this->getEmail(),
+            'matieres' => array_map(function ($matiere){
+                return $matiere->toArray();
+            }, $this->getMatieres()->toArray()),
+        ];
     }
 
     public function getId(): ?int
