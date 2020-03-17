@@ -223,6 +223,12 @@
     <parameter key="security.access.always_authenticate_before_granting">false</parameter>
     <parameter key="security.authentication.hide_user_not_found">true</parameter>
     <parameter key="easyadmin.config" type="collection">
+      <parameter key="formats" type="collection">
+        <parameter key="date">d/m/Y</parameter>
+        <parameter key="time">H:i</parameter>
+        <parameter key="datetime">d/m/Y H:i</parameter>
+        <parameter key="dateinterval">%y Year(s) %m Month(s) %d Day(s)</parameter>
+      </parameter>
       <parameter key="entities" type="collection">
         <parameter key="Professeur" type="collection">
           <parameter key="class">App\Entity\Professeur</parameter>
@@ -266,17 +272,14 @@
                 </parameter>
               </parameter>
             </parameter>
+            <parameter>professeur</parameter>
+            <parameter>matiere</parameter>
+            <parameter>salle</parameter>
           </parameter>
           <parameter key="name">Cours</parameter>
         </parameter>
       </parameter>
       <parameter key="site_name">EasyAdmin</parameter>
-      <parameter key="formats" type="collection">
-        <parameter key="date">Y-m-d</parameter>
-        <parameter key="time">H:i:s</parameter>
-        <parameter key="datetime">F j, Y H:i</parameter>
-        <parameter key="dateinterval">%y Year(s) %m Month(s) %d Day(s)</parameter>
-      </parameter>
       <parameter key="disabled_actions" type="collection"/>
       <parameter key="translation_domain">messages</parameter>
       <parameter key="user" type="collection">

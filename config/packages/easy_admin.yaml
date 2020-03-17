@@ -1,4 +1,8 @@
 easy_admin:
+    formats:
+        date: "d/m/Y"
+        time: "H:i"
+        datetime: "d/m/Y H:i"
     entities:
         # List the entity class name you want to manage
         Professeur:
@@ -27,3 +31,6 @@ easy_admin:
                         'TD': 'TD'
                         'TP': 'TP'
                         'Cours': 'Cours'
+                - professeur 
+                - matiere 
+                - salle

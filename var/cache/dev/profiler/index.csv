@@ -37,3 +37,8 @@ d97840,::1,GET,http://localhost:8001/admin/?action=new&entity=Cours&menuIndex=3&
 4ab267,::1,GET,http://localhost:8001/favicon.ico,1584440706,,404
 031ec8,::1,GET,http://localhost:8001/admin/?action=new&entity=Cours&menuIndex=3&page=1&referer=%252Fadmin%252F%253Fentity%253DCours%2526action%253Dlist%2526menuIndex%253D3%2526submenuIndex%253D-1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&sortDirection=DESC&sortField=id&submenuIndex=-1,1584440710,f172ef,500
 f172ef,::1,GET,http://localhost:8001/admin/?action=new&entity=Cours&menuIndex=3&page=1&referer=%252Fadmin%252F%253Fentity%253DCours%2526action%253Dlist%2526menuIndex%253D3%2526submenuIndex%253D-1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&sortDirection=DESC&sortField=id&submenuIndex=-1,1584440710,,500
+38c903,::1,GET,http://localhost:8001/admin/?action=list&entity=Cours&menuIndex=3&submenuIndex=-1,1584443133,,200
+6bec77,::1,GET,http://localhost:8001/favicon.ico,1584443135,53f4f7,404
+53f4f7,::1,GET,http://localhost:8001/favicon.ico,1584443135,,404
+004381,::1,GET,http://localhost:8001/admin/?action=new&entity=Cours&menuIndex=3&page=1&referer=%252Fadmin%252F%253Fentity%253DCours%2526action%253Dlist%2526menuIndex%253D3%2526submenuIndex%253D-1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&sortDirection=DESC&sortField=id&submenuIndex=-1,1584443138,01f784,500
+01f784,::1,GET,http://localhost:8001/admin/?action=new&entity=Cours&menuIndex=3&page=1&referer=%252Fadmin%252F%253Fentity%253DCours%2526action%253Dlist%2526menuIndex%253D3%2526submenuIndex%253D-1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&sortDirection=DESC&sortField=id&submenuIndex=-1,1584443138,,500

@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerOF6uuPy;
+namespace Container6Npxaz0;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -6534,13 +6534,63 @@ class App_KernelDevDebugContainer extends Container
             'security.access.always_authenticate_before_granting' => false,
             'security.authentication.hide_user_not_found' => true,
             'easyadmin.config' => [
-                'site_name' => 'EasyAdmin',
                 'formats' => [
-                    'date' => 'Y-m-d',
-                    'time' => 'H:i:s',
-                    'datetime' => 'F j, Y H:i',
+                    'date' => 'd/m/Y',
+                    'time' => 'H:i',
+                    'datetime' => 'd/m/Y H:i',
                     'dateinterval' => '%y Year(s) %m Month(s) %d Day(s)',
                 ],
+                'entities' => [
+                    'Professeur' => [
+                        'class' => 'App\\Entity\\Professeur',
+                        'name' => 'Professeur',
+                    ],
+                    'Matiere' => [
+                        'class' => 'App\\Entity\\Matiere',
+                        'name' => 'Matiere',
+                    ],
+                    'Avis' => [
+                        'class' => 'App\\Entity\\Avis',
+                        'name' => 'Avis',
+                    ],
+                    'Salle' => [
+                        'class' => 'App\\Entity\\Salle',
+                        'name' => 'Salle',
+                    ],
+                    'Cours' => [
+                        'class' => 'App\\Entity\\Cours',
+                        'list' => [
+                            0 => 'id',
+                            1 => [
+                                'property' => 'dateHeureDebut',
+                                'label' => 'Date heure debut',
+                                'type' => 'datetime',
+                            ],
+                            2 => [
+                                'property' => 'dateHeureFin',
+                                'label' => 'Date heure fin',
+                                'type' => 'datetime',
+                            ],
+                            3 => [
+                                'property' => 'type',
+                                'label' => 'Type',
+                                'type' => 'choice',
+                                'type_options' => [
+                                    'choices' => [
+                                        'TD' => 'TD',
+                                        'TP' => 'TP',
+                                        'Cours' => 'Cours',
+                                    ],
+                                ],
+                            ],
+                            4 => 'professeur',
+                            5 => 'matiere',
+                            6 => 'salle',
+                        ],
+                        'name' => 'Cours',
+                    ],
+                ],
+                'site_name' => 'EasyAdmin',
                 'disabled_actions' => [
 
                 ],
@@ -6604,9 +6654,6 @@ class App_KernelDevDebugContainer extends Container
                     ],
                     'max_results' => 10,
                     'item_permission' => NULL,
-                ],
-                'entities' => [
-
                 ],
             ],
             'data_collector.templates' => [
