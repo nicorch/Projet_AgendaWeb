@@ -223,6 +223,28 @@
     <parameter key="security.access.always_authenticate_before_granting">false</parameter>
     <parameter key="security.authentication.hide_user_not_found">true</parameter>
     <parameter key="easyadmin.config" type="collection">
+      <parameter key="entities" type="collection">
+        <parameter key="Professeur" type="collection">
+          <parameter key="class">App\Entity\Professeur</parameter>
+          <parameter key="name">Professeur</parameter>
+        </parameter>
+        <parameter key="Matiere" type="collection">
+          <parameter key="class">App\Entity\Matiere</parameter>
+          <parameter key="name">Matiere</parameter>
+        </parameter>
+        <parameter key="Avis" type="collection">
+          <parameter key="class">App\Entity\Avis</parameter>
+          <parameter key="name">Avis</parameter>
+        </parameter>
+        <parameter key="Cours" type="collection">
+          <parameter key="class">App\Entity\Cours</parameter>
+          <parameter key="name">Cours</parameter>
+        </parameter>
+        <parameter key="Salle" type="collection">
+          <parameter key="class">App\Entity\Salle</parameter>
+          <parameter key="name">Salle</parameter>
+        </parameter>
+      </parameter>
       <parameter key="site_name">EasyAdmin</parameter>
       <parameter key="formats" type="collection">
         <parameter key="date">Y-m-d</parameter>
@@ -274,7 +296,6 @@
         <parameter key="max_results">10</parameter>
         <parameter key="item_permission">null</parameter>
       </parameter>
-      <parameter key="entities" type="collection"/>
     </parameter>
     <parameter key="data_collector.templates" type="collection">
       <parameter key="data_collector.request" type="collection">

@@ -1,6 +1,6 @@
 <?php
 
-namespace ContainerOhmI2hB;
+namespace ContainerZJKCbCM;
 
 use Symfony\Component\DependencyInjection\Argument\RewindableGenerator;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -43,6 +43,7 @@ class App_KernelDevDebugContainer extends Container
             'App\\Controller\\MainController' => 'getMainControllerService',
             'App\\Controller\\MatiereController' => 'getMatiereControllerService',
             'App\\Controller\\ProfesseurController' => 'getProfesseurControllerService',
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Controller\\EasyAdminController' => 'getEasyAdminControllerService',
             'Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController' => 'getRedirectControllerService',
             'Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController' => 'getTemplateControllerService',
             'cache.app' => 'getCache_AppService',
@@ -61,6 +62,18 @@ class App_KernelDevDebugContainer extends Container
             'doctrine' => 'getDoctrineService',
             'doctrine.dbal.default_connection' => 'getDoctrine_Dbal_DefaultConnectionService',
             'doctrine.orm.default_entity_manager' => 'getDoctrine_Orm_DefaultEntityManagerService',
+            'easyadmin.autocomplete' => 'getEasyadmin_AutocompleteService',
+            'easyadmin.command.make_admin_migration' => 'getEasyadmin_Command_MakeAdminMigrationService',
+            'easyadmin.config.manager' => 'getEasyadmin_Config_ManagerService',
+            'easyadmin.filter.registry' => 'getEasyadmin_Filter_RegistryService',
+            'easyadmin.form.guesser.missing_doctrine_orm_type_guesser' => 'getEasyadmin_Form_Guesser_MissingDoctrineOrmTypeGuesserService',
+            'easyadmin.listener.controller' => 'getEasyadmin_Listener_ControllerService',
+            'easyadmin.listener.request_post_initialize' => 'getEasyadmin_Listener_RequestPostInitializeService',
+            'easyadmin.paginator' => 'getEasyadmin_PaginatorService',
+            'easyadmin.property_accessor' => 'getEasyadmin_PropertyAccessorService',
+            'easyadmin.query_builder' => 'getEasyadmin_QueryBuilderService',
+            'easyadmin.router' => 'getEasyadmin_RouterService',
+            'easyadmin.security.authorization_checker' => 'getEasyadmin_Security_AuthorizationCheckerService',
             'error_controller' => 'getErrorControllerService',
             'event_dispatcher' => 'getEventDispatcherService',
             'filesystem' => 'getFilesystemService',
@@ -88,6 +101,7 @@ class App_KernelDevDebugContainer extends Container
             'web_profiler.controller.router' => 'getWebProfiler_Controller_RouterService',
         ];
         $this->aliases = [
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Filter\\FilterRegistry' => 'easyadmin.filter.registry',
             'database_connection' => 'doctrine.dbal.default_connection',
             'doctrine.orm.entity_manager' => 'doctrine.orm.default_entity_manager',
         ];
@@ -116,11 +130,6 @@ class App_KernelDevDebugContainer extends Container
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\dependency-injection\\ParameterBag\\ContainerBagInterface.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\dependency-injection\\ParameterBag\\ContainerBag.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\HttpKernel.php';
-            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\Controller\\ControllerResolverInterface.php';
-            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\Controller\\TraceableControllerResolver.php';
-            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\Controller\\ControllerResolver.php';
-            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\Controller\\ContainerControllerResolver.php';
-            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\Controller\\ControllerResolver.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\Controller\\ArgumentResolverInterface.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\Controller\\TraceableArgumentResolver.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\Controller\\ArgumentResolver.php';
@@ -151,6 +160,13 @@ class App_KernelDevDebugContainer extends Container
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\service-contracts\\ServiceProviderInterface.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\service-contracts\\ServiceLocatorTrait.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\dependency-injection\\ServiceLocator.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormRegistryInterface.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormRegistry.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormExtensionInterface.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\DependencyInjection\\DependencyInjectionExtension.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\ResolvedFormTypeFactoryInterface.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\DataCollector\\Proxy\\ResolvedTypeFactoryDataCollectorProxy.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\ResolvedFormTypeFactory.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\mailer\\EventListener\\MessageLoggerListener.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\validator\\Validation.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\validator\\ConstraintValidatorFactoryInterface.php';
@@ -198,6 +214,7 @@ class App_KernelDevDebugContainer extends Container
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\doctrine-bridge\\DataCollector\\DoctrineDataCollector.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle\\DataCollector\\DoctrineDataCollector.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\mailer\\DataCollector\\MessageDataCollector.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\DataCollector\\EasyAdminDataCollector.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\DataCollector\\ConfigDataCollector.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\EventListener\\ProfilerListener.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\DataCollector\\RequestDataCollector.php';
@@ -210,6 +227,11 @@ class App_KernelDevDebugContainer extends Container
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\EventListener\\DebugHandlersListener.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\Debug\\FileLinkFormatter.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\stopwatch\\Stopwatch.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\Controller\\ControllerResolverInterface.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\Controller\\TraceableControllerResolver.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\Controller\\ControllerResolver.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\Controller\\ContainerControllerResolver.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\Controller\\ControllerResolver.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\monolog-bridge\\Processor\\DebugProcessor.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\routing\\RequestContext.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\EventListener\\RouterListener.php';
@@ -225,8 +247,6 @@ class App_KernelDevDebugContainer extends Container
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\property-info\\PropertyInfoExtractor.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\web-link\\EventListener\\AddLinkHeaderListener.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\twig\\twig\\src\\Environment.php';
-            include_once \dirname(__DIR__, 4).'\\vendor\\twig\\twig\\src\\Loader\\LoaderInterface.php';
-            include_once \dirname(__DIR__, 4).'\\vendor\\twig\\twig\\src\\Loader\\FilesystemLoader.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\twig\\twig\\src\\Extension\\ExtensionInterface.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\twig\\twig\\src\\Extension\\AbstractExtension.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge\\Extension\\CsrfExtension.php';
@@ -262,11 +282,14 @@ class App_KernelDevDebugContainer extends Container
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\var-dumper\\Dumper\\CliDumper.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\var-dumper\\Dumper\\HtmlDumper.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle\\Twig\\DoctrineExtension.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Twig\\EasyAdminTwigExtension.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge\\AppVariable.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\twig\\twig\\src\\RuntimeLoader\\RuntimeLoaderInterface.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\twig\\twig\\src\\RuntimeLoader\\ContainerRuntimeLoader.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\twig\\extra-bundle\\src\\MissingExtensionSuggestor.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bundle\\DependencyInjection\\Configurator\\EnvironmentConfigurator.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\twig\\twig\\src\\Loader\\LoaderInterface.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\twig\\twig\\src\\Loader\\FilesystemLoader.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\twig\\twig\\src\\Profiler\\Profile.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\web-profiler-bundle\\Csp\\ContentSecurityPolicyHandler.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\web-profiler-bundle\\Csp\\NonceGenerator.php';
@@ -372,6 +395,21 @@ class App_KernelDevDebugContainer extends Container
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\security-http\\Firewall.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\security-bundle\\EventListener\\FirewallListener.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\security-bundle\\Debug\\TraceableFirewallListener.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Configuration\\ConfigManager.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Configuration\\ConfigPassInterface.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Configuration\\NormalizerConfigPass.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Configuration\\DesignConfigPass.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Configuration\\MenuConfigPass.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Configuration\\ActionConfigPass.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Configuration\\MetadataConfigPass.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Configuration\\PropertyConfigPass.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Configuration\\ViewConfigPass.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Configuration\\TemplateConfigPass.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Configuration\\DefaultConfigPass.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Router\\EasyAdminRouter.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Security\\AuthorizationChecker.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\EventListener\\ControllerListener.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\FilterRegistry.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-client-contracts\\HttpClientInterface.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-client\\TraceableHttpClient.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-client\\HttpClient.php';
@@ -383,6 +421,8 @@ class App_KernelDevDebugContainer extends Container
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\routing\\Matcher\\RequestMatcherInterface.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\routing\\Router.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\Routing\\Router.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\property-access\\PropertyAccessorInterface.php';
+            include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\property-access\\PropertyAccessor.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\validator\\Mapping\\Factory\\MetadataFactoryInterface.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\validator\\Validator\\ValidatorInterface.php';
             include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\validator\\Validator\\TraceableValidator.php';
@@ -498,6 +538,66 @@ class App_KernelDevDebugContainer extends Container
     }
 
     /**
+     * Gets the public 'EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController' shared autowired service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController
+     */
+    protected function getEasyAdminControllerService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\Controller\\AbstractController.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Controller\\AdminControllerTrait.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Controller\\EasyAdminController.php';
+
+        $this->services['EasyCorp\\Bundle\\EasyAdminBundle\\Controller\\EasyAdminController'] = $instance = new \EasyCorp\Bundle\EasyAdminBundle\Controller\EasyAdminController();
+
+        $instance->setContainer((new \Symfony\Component\DependencyInjection\Argument\ServiceLocator($this->getService, [
+            'doctrine' => ['services', 'doctrine', 'getDoctrineService', false],
+            'easyadmin.autocomplete' => ['services', 'easyadmin.autocomplete', 'getEasyadmin_AutocompleteService', false],
+            'easyadmin.config.manager' => ['services', 'easyadmin.config.manager', 'getEasyadmin_Config_ManagerService', false],
+            'easyadmin.filter.registry' => ['services', 'easyadmin.filter.registry', 'getEasyadmin_Filter_RegistryService', false],
+            'easyadmin.paginator' => ['services', 'easyadmin.paginator', 'getEasyadmin_PaginatorService', false],
+            'easyadmin.property_accessor' => ['services', 'easyadmin.property_accessor', 'getEasyadmin_PropertyAccessorService', false],
+            'easyadmin.query_builder' => ['services', 'easyadmin.query_builder', 'getEasyadmin_QueryBuilderService', false],
+            'easyadmin.security.authorization_checker' => ['services', 'easyadmin.security.authorization_checker', 'getEasyadmin_Security_AuthorizationCheckerService', false],
+            'event_dispatcher' => ['services', 'event_dispatcher', 'getEventDispatcherService', false],
+            'form.factory' => ['services', 'form.factory', 'getForm_FactoryService', false],
+            'http_kernel' => ['services', 'http_kernel', 'getHttpKernelService', false],
+            'parameter_bag' => ['privates', 'parameter_bag', 'getParameterBagService', false],
+            'request_stack' => ['services', 'request_stack', 'getRequestStackService', false],
+            'router' => ['services', 'router', 'getRouterService', false],
+            'security.authorization_checker' => ['services', 'security.authorization_checker', 'getSecurity_AuthorizationCheckerService', false],
+            'security.csrf.token_manager' => ['services', 'security.csrf.token_manager', 'getSecurity_Csrf_TokenManagerService', false],
+            'security.token_storage' => ['services', 'security.token_storage', 'getSecurity_TokenStorageService', false],
+            'serializer' => ['services', 'serializer', 'getSerializerService', false],
+            'session' => ['services', 'session', 'getSessionService', false],
+            'twig' => ['services', 'twig', 'getTwigService', false],
+        ], [
+            'doctrine' => '?',
+            'easyadmin.autocomplete' => '?',
+            'easyadmin.config.manager' => '?',
+            'easyadmin.filter.registry' => '?',
+            'easyadmin.paginator' => '?',
+            'easyadmin.property_accessor' => '?',
+            'easyadmin.query_builder' => '?',
+            'easyadmin.security.authorization_checker' => '?',
+            'event_dispatcher' => '?',
+            'form.factory' => '?',
+            'http_kernel' => '?',
+            'parameter_bag' => '?',
+            'request_stack' => '?',
+            'router' => '?',
+            'security.authorization_checker' => '?',
+            'security.csrf.token_manager' => '?',
+            'security.token_storage' => '?',
+            'serializer' => '?',
+            'session' => '?',
+            'twig' => '?',
+        ]))->withContext('EasyCorp\\Bundle\\EasyAdminBundle\\Controller\\EasyAdminController', $this));
+
+        return $instance;
+    }
+
+    /**
      * Gets the public 'Symfony\Bundle\FrameworkBundle\Controller\RedirectController' shared service.
      *
      * @return \Symfony\Bundle\FrameworkBundle\Controller\RedirectController
@@ -587,7 +687,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\CacheClearer\\CacheClearerInterface.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\CacheClearer\\Psr6CacheClearer.php';
 
-        return $this->services['cache.global_clearer'] = new \Symfony\Component\HttpKernel\CacheClearer\Psr6CacheClearer(['cache.app' => ($this->services['cache.app'] ?? $this->getCache_AppService()), 'cache.system' => ($this->services['cache.system'] ?? $this->getCache_SystemService()), 'cache.validator' => ($this->privates['cache.validator'] ?? $this->getCache_ValidatorService()), 'cache.serializer' => ($this->privates['cache.serializer'] ?? $this->getCache_SerializerService()), 'cache.annotations' => ($this->privates['cache.annotations'] ?? $this->getCache_AnnotationsService()), 'cache.property_info' => ($this->privates['cache.property_info'] ?? $this->getCache_PropertyInfoService()), 'cache.doctrine.orm.default.metadata' => ($this->services['cache.doctrine.orm.default.metadata'] ?? $this->getCache_Doctrine_Orm_Default_MetadataService()), 'cache.doctrine.orm.default.result' => ($this->services['cache.doctrine.orm.default.result'] ?? $this->getCache_Doctrine_Orm_Default_ResultService()), 'cache.doctrine.orm.default.query' => ($this->services['cache.doctrine.orm.default.query'] ?? $this->getCache_Doctrine_Orm_Default_QueryService()), 'cache.security_expression_language' => ($this->privates['cache.security_expression_language'] ?? $this->getCache_SecurityExpressionLanguageService())]);
+        return $this->services['cache.global_clearer'] = new \Symfony\Component\HttpKernel\CacheClearer\Psr6CacheClearer(['cache.app' => ($this->services['cache.app'] ?? $this->getCache_AppService()), 'cache.system' => ($this->services['cache.system'] ?? $this->getCache_SystemService()), 'cache.validator' => ($this->privates['cache.validator'] ?? $this->getCache_ValidatorService()), 'cache.serializer' => ($this->privates['cache.serializer'] ?? $this->getCache_SerializerService()), 'cache.annotations' => ($this->privates['cache.annotations'] ?? $this->getCache_AnnotationsService()), 'cache.property_info' => ($this->privates['cache.property_info'] ?? $this->getCache_PropertyInfoService()), 'cache.doctrine.orm.default.metadata' => ($this->services['cache.doctrine.orm.default.metadata'] ?? $this->getCache_Doctrine_Orm_Default_MetadataService()), 'cache.doctrine.orm.default.result' => ($this->services['cache.doctrine.orm.default.result'] ?? $this->getCache_Doctrine_Orm_Default_ResultService()), 'cache.doctrine.orm.default.query' => ($this->services['cache.doctrine.orm.default.query'] ?? $this->getCache_Doctrine_Orm_Default_QueryService()), 'cache.security_expression_language' => ($this->privates['cache.security_expression_language'] ?? $this->getCache_SecurityExpressionLanguageService()), 'cache.easyadmin' => ($this->privates['cache.easyadmin'] ?? $this->getCache_EasyadminService())]);
     }
 
     /**
@@ -610,7 +710,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\CacheClearer\\CacheClearerInterface.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\CacheClearer\\Psr6CacheClearer.php';
 
-        return $this->services['cache.system_clearer'] = new \Symfony\Component\HttpKernel\CacheClearer\Psr6CacheClearer(['cache.system' => ($this->services['cache.system'] ?? $this->getCache_SystemService()), 'cache.validator' => ($this->privates['cache.validator'] ?? $this->getCache_ValidatorService()), 'cache.serializer' => ($this->privates['cache.serializer'] ?? $this->getCache_SerializerService()), 'cache.annotations' => ($this->privates['cache.annotations'] ?? $this->getCache_AnnotationsService()), 'cache.property_info' => ($this->privates['cache.property_info'] ?? $this->getCache_PropertyInfoService()), 'cache.security_expression_language' => ($this->privates['cache.security_expression_language'] ?? $this->getCache_SecurityExpressionLanguageService())]);
+        return $this->services['cache.system_clearer'] = new \Symfony\Component\HttpKernel\CacheClearer\Psr6CacheClearer(['cache.system' => ($this->services['cache.system'] ?? $this->getCache_SystemService()), 'cache.validator' => ($this->privates['cache.validator'] ?? $this->getCache_ValidatorService()), 'cache.serializer' => ($this->privates['cache.serializer'] ?? $this->getCache_SerializerService()), 'cache.annotations' => ($this->privates['cache.annotations'] ?? $this->getCache_AnnotationsService()), 'cache.property_info' => ($this->privates['cache.property_info'] ?? $this->getCache_PropertyInfoService()), 'cache.security_expression_language' => ($this->privates['cache.security_expression_language'] ?? $this->getCache_SecurityExpressionLanguageService()), 'cache.easyadmin' => ($this->privates['cache.easyadmin'] ?? $this->getCache_EasyadminService())]);
     }
 
     /**
@@ -716,6 +816,7 @@ class App_KernelDevDebugContainer extends Container
             'doctrine_migrations.status_command' => ['privates', 'doctrine_migrations.status_command', 'getDoctrineMigrations_StatusCommandService', false],
             'doctrine_migrations.up_to_date_command' => ['privates', 'doctrine_migrations.up_to_date_command', 'getDoctrineMigrations_UpToDateCommandService', false],
             'doctrine_migrations.version_command' => ['privates', 'doctrine_migrations.version_command', 'getDoctrineMigrations_VersionCommandService', false],
+            'easyadmin.command.make_admin_migration' => ['services', 'easyadmin.command.make_admin_migration', 'getEasyadmin_Command_MakeAdminMigrationService', false],
             'maker.auto_command.make_auth' => ['privates', 'maker.auto_command.make_auth', 'getMaker_AutoCommand_MakeAuthService', false],
             'maker.auto_command.make_command' => ['privates', 'maker.auto_command.make_command', 'getMaker_AutoCommand_MakeCommandService', false],
             'maker.auto_command.make_controller' => ['privates', 'maker.auto_command.make_controller', 'getMaker_AutoCommand_MakeControllerService', false],
@@ -796,6 +897,7 @@ class App_KernelDevDebugContainer extends Container
             'doctrine_migrations.status_command' => 'Doctrine\\Bundle\\MigrationsBundle\\Command\\MigrationsStatusDoctrineCommand',
             'doctrine_migrations.up_to_date_command' => 'Doctrine\\Bundle\\MigrationsBundle\\Command\\MigrationsUpToDateDoctrineCommand',
             'doctrine_migrations.version_command' => 'Doctrine\\Bundle\\MigrationsBundle\\Command\\MigrationsVersionDoctrineCommand',
+            'easyadmin.command.make_admin_migration' => 'EasyCorp\\Bundle\\EasyAdminBundle\\Command\\MakeAdminMigrationCommand',
             'maker.auto_command.make_auth' => 'Symfony\\Bundle\\MakerBundle\\Command\\MakerCommand',
             'maker.auto_command.make_command' => 'Symfony\\Bundle\\MakerBundle\\Command\\MakerCommand',
             'maker.auto_command.make_controller' => 'Symfony\\Bundle\\MakerBundle\\Command\\MakerCommand',
@@ -819,7 +921,7 @@ class App_KernelDevDebugContainer extends Container
             'twig.command.debug' => 'Symfony\\Bridge\\Twig\\Command\\DebugCommand',
             'twig.command.lint' => 'Symfony\\Bundle\\TwigBundle\\Command\\LintCommand',
             'var_dumper.command.server_dump' => 'Symfony\\Component\\VarDumper\\Command\\ServerDumpCommand',
-        ]), ['about' => 'console.command.about', 'assets:install' => 'console.command.assets_install', 'cache:clear' => 'console.command.cache_clear', 'cache:pool:clear' => 'console.command.cache_pool_clear', 'cache:pool:prune' => 'console.command.cache_pool_prune', 'cache:pool:delete' => 'console.command.cache_pool_delete', 'cache:pool:list' => 'console.command.cache_pool_list', 'cache:warmup' => 'console.command.cache_warmup', 'debug:config' => 'console.command.config_debug', 'config:dump-reference' => 'console.command.config_dump_reference', 'debug:container' => 'console.command.container_debug', 'lint:container' => 'console.command.container_lint', 'debug:autowiring' => 'console.command.debug_autowiring', 'debug:event-dispatcher' => 'console.command.event_dispatcher_debug', 'debug:router' => 'console.command.router_debug', 'router:match' => 'console.command.router_match', 'debug:translation' => 'console.command.translation_debug', 'translation:update' => 'console.command.translation_update', 'lint:xliff' => 'console.command.xliff_lint', 'lint:yaml' => 'console.command.yaml_lint', 'debug:form' => 'console.command.form_debug', 'secrets:set' => 'console.command.secrets_set', 'secrets:remove' => 'console.command.secrets_remove', 'secrets:generate-keys' => 'console.command.secrets_generate_key', 'secrets:list' => 'console.command.secrets_list', 'secrets:decrypt-to-local' => 'console.command.secrets_decrypt_to_local', 'secrets:encrypt-from-local' => 'console.command.secrets_encrypt_from_local', 'debug:twig' => 'twig.command.debug', 'lint:twig' => 'twig.command.lint', 'server:dump' => 'var_dumper.command.server_dump', 'server:log' => 'monolog.command.server_log', 'doctrine:database:create' => 'doctrine.database_create_command', 'doctrine:database:drop' => 'doctrine.database_drop_command', 'doctrine:database:import' => 'doctrine.database_import_command', 'doctrine:query:sql' => 'doctrine.query_sql_command', 'doctrine:cache:clear-metadata' => 'doctrine.cache_clear_metadata_command', 'doctrine:cache:clear-query' => 'doctrine.cache_clear_query_cache_command', 'doctrine:cache:clear-result' => 'doctrine.cache_clear_result_command', 'doctrine:cache:clear-collection-region' => 'doctrine.cache_collection_region_command', 'doctrine:mapping:convert' => 'doctrine.mapping_convert_command', 'doctrine:schema:create' => 'doctrine.schema_create_command', 'doctrine:schema:drop' => 'doctrine.schema_drop_command', 'doctrine:ensure-production-settings' => 'doctrine.ensure_production_settings_command', 'doctrine:cache:clear-entity-region' => 'doctrine.clear_entity_region_command', 'doctrine:mapping:info' => 'doctrine.mapping_info_command', 'doctrine:cache:clear-query-region' => 'doctrine.clear_query_region_command', 'doctrine:query:dql' => 'doctrine.query_dql_command', 'doctrine:schema:update' => 'doctrine.schema_update_command', 'doctrine:schema:validate' => 'doctrine.schema_validate_command', 'doctrine:mapping:import' => 'doctrine.mapping_import_command', 'doctrine:migrations:diff' => 'doctrine_migrations.diff_command', 'doctrine:migrations:dump-schema' => 'doctrine_migrations.dump_schema_command', 'doctrine:migrations:execute' => 'doctrine_migrations.execute_command', 'doctrine:migrations:generate' => 'doctrine_migrations.generate_command', 'doctrine:migrations:latest' => 'doctrine_migrations.latest_command', 'doctrine:migrations:migrate' => 'doctrine_migrations.migrate_command', 'doctrine:migrations:rollup' => 'doctrine_migrations.rollup_command', 'doctrine:migrations:status' => 'doctrine_migrations.status_command', 'doctrine:migrations:up-to-date' => 'doctrine_migrations.up_to_date_command', 'doctrine:migrations:version' => 'doctrine_migrations.version_command', 'security:encode-password' => 'security.command.user_password_encoder', 'make:auth' => 'maker.auto_command.make_auth', 'make:command' => 'maker.auto_command.make_command', 'make:controller' => 'maker.auto_command.make_controller', 'make:crud' => 'maker.auto_command.make_crud', 'make:entity' => 'maker.auto_command.make_entity', 'make:fixtures' => 'maker.auto_command.make_fixtures', 'make:form' => 'maker.auto_command.make_form', 'make:functional-test' => 'maker.auto_command.make_functional_test', 'make:registration-form' => 'maker.auto_command.make_registration_form', 'make:serializer:encoder' => 'maker.auto_command.make_serializer_encoder', 'make:serializer:normalizer' => 'maker.auto_command.make_serializer_normalizer', 'make:subscriber' => 'maker.auto_command.make_subscriber', 'make:twig-extension' => 'maker.auto_command.make_twig_extension', 'make:unit-test' => 'maker.auto_command.make_unit_test', 'make:validator' => 'maker.auto_command.make_validator', 'make:voter' => 'maker.auto_command.make_voter', 'make:user' => 'maker.auto_command.make_user', 'make:migration' => 'maker.auto_command.make_migration']);
+        ]), ['about' => 'console.command.about', 'assets:install' => 'console.command.assets_install', 'cache:clear' => 'console.command.cache_clear', 'cache:pool:clear' => 'console.command.cache_pool_clear', 'cache:pool:prune' => 'console.command.cache_pool_prune', 'cache:pool:delete' => 'console.command.cache_pool_delete', 'cache:pool:list' => 'console.command.cache_pool_list', 'cache:warmup' => 'console.command.cache_warmup', 'debug:config' => 'console.command.config_debug', 'config:dump-reference' => 'console.command.config_dump_reference', 'debug:container' => 'console.command.container_debug', 'lint:container' => 'console.command.container_lint', 'debug:autowiring' => 'console.command.debug_autowiring', 'debug:event-dispatcher' => 'console.command.event_dispatcher_debug', 'debug:router' => 'console.command.router_debug', 'router:match' => 'console.command.router_match', 'debug:translation' => 'console.command.translation_debug', 'translation:update' => 'console.command.translation_update', 'lint:xliff' => 'console.command.xliff_lint', 'lint:yaml' => 'console.command.yaml_lint', 'debug:form' => 'console.command.form_debug', 'secrets:set' => 'console.command.secrets_set', 'secrets:remove' => 'console.command.secrets_remove', 'secrets:generate-keys' => 'console.command.secrets_generate_key', 'secrets:list' => 'console.command.secrets_list', 'secrets:decrypt-to-local' => 'console.command.secrets_decrypt_to_local', 'secrets:encrypt-from-local' => 'console.command.secrets_encrypt_from_local', 'debug:twig' => 'twig.command.debug', 'lint:twig' => 'twig.command.lint', 'server:dump' => 'var_dumper.command.server_dump', 'server:log' => 'monolog.command.server_log', 'doctrine:database:create' => 'doctrine.database_create_command', 'doctrine:database:drop' => 'doctrine.database_drop_command', 'doctrine:database:import' => 'doctrine.database_import_command', 'doctrine:query:sql' => 'doctrine.query_sql_command', 'doctrine:cache:clear-metadata' => 'doctrine.cache_clear_metadata_command', 'doctrine:cache:clear-query' => 'doctrine.cache_clear_query_cache_command', 'doctrine:cache:clear-result' => 'doctrine.cache_clear_result_command', 'doctrine:cache:clear-collection-region' => 'doctrine.cache_collection_region_command', 'doctrine:mapping:convert' => 'doctrine.mapping_convert_command', 'doctrine:schema:create' => 'doctrine.schema_create_command', 'doctrine:schema:drop' => 'doctrine.schema_drop_command', 'doctrine:ensure-production-settings' => 'doctrine.ensure_production_settings_command', 'doctrine:cache:clear-entity-region' => 'doctrine.clear_entity_region_command', 'doctrine:mapping:info' => 'doctrine.mapping_info_command', 'doctrine:cache:clear-query-region' => 'doctrine.clear_query_region_command', 'doctrine:query:dql' => 'doctrine.query_dql_command', 'doctrine:schema:update' => 'doctrine.schema_update_command', 'doctrine:schema:validate' => 'doctrine.schema_validate_command', 'doctrine:mapping:import' => 'doctrine.mapping_import_command', 'doctrine:migrations:diff' => 'doctrine_migrations.diff_command', 'doctrine:migrations:dump-schema' => 'doctrine_migrations.dump_schema_command', 'doctrine:migrations:execute' => 'doctrine_migrations.execute_command', 'doctrine:migrations:generate' => 'doctrine_migrations.generate_command', 'doctrine:migrations:latest' => 'doctrine_migrations.latest_command', 'doctrine:migrations:migrate' => 'doctrine_migrations.migrate_command', 'doctrine:migrations:rollup' => 'doctrine_migrations.rollup_command', 'doctrine:migrations:status' => 'doctrine_migrations.status_command', 'doctrine:migrations:up-to-date' => 'doctrine_migrations.up_to_date_command', 'doctrine:migrations:version' => 'doctrine_migrations.version_command', 'security:encode-password' => 'security.command.user_password_encoder', 'make:admin:migration' => 'easyadmin.command.make_admin_migration', 'make:auth' => 'maker.auto_command.make_auth', 'make:command' => 'maker.auto_command.make_command', 'make:controller' => 'maker.auto_command.make_controller', 'make:crud' => 'maker.auto_command.make_crud', 'make:entity' => 'maker.auto_command.make_entity', 'make:fixtures' => 'maker.auto_command.make_fixtures', 'make:form' => 'maker.auto_command.make_form', 'make:functional-test' => 'maker.auto_command.make_functional_test', 'make:registration-form' => 'maker.auto_command.make_registration_form', 'make:serializer:encoder' => 'maker.auto_command.make_serializer_encoder', 'make:serializer:normalizer' => 'maker.auto_command.make_serializer_normalizer', 'make:subscriber' => 'maker.auto_command.make_subscriber', 'make:twig-extension' => 'maker.auto_command.make_twig_extension', 'make:unit-test' => 'maker.auto_command.make_unit_test', 'make:validator' => 'maker.auto_command.make_validator', 'make:voter' => 'maker.auto_command.make_voter', 'make:user' => 'maker.auto_command.make_user', 'make:migration' => 'maker.auto_command.make_migration']);
     }
 
     /**
@@ -963,6 +1065,163 @@ class App_KernelDevDebugContainer extends Container
     }
 
     /**
+     * Gets the public 'easyadmin.autocomplete' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Search\Autocomplete
+     */
+    protected function getEasyadmin_AutocompleteService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Search\\Autocomplete.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Search\\Finder.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Search\\Paginator.php';
+
+        return $this->services['easyadmin.autocomplete'] = new \EasyCorp\Bundle\EasyAdminBundle\Search\Autocomplete(($this->services['easyadmin.config.manager'] ?? $this->getEasyadmin_Config_ManagerService()), new \EasyCorp\Bundle\EasyAdminBundle\Search\Finder(($this->services['easyadmin.query_builder'] ?? $this->getEasyadmin_QueryBuilderService()), ($this->services['easyadmin.paginator'] ?? ($this->services['easyadmin.paginator'] = new \EasyCorp\Bundle\EasyAdminBundle\Search\Paginator()))), ($this->services['easyadmin.property_accessor'] ?? $this->getEasyadmin_PropertyAccessorService()));
+    }
+
+    /**
+     * Gets the public 'easyadmin.command.make_admin_migration' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminMigrationCommand
+     */
+    protected function getEasyadmin_Command_MakeAdminMigrationService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\console\\Command\\Command.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Command\\MakeAdminMigrationCommand.php';
+
+        $this->services['easyadmin.command.make_admin_migration'] = $instance = new \EasyCorp\Bundle\EasyAdminBundle\Command\MakeAdminMigrationCommand(($this->services['easyadmin.config.manager'] ?? $this->getEasyadmin_Config_ManagerService()), \dirname(__DIR__, 4));
+
+        $instance->setName('make:admin:migration');
+
+        return $instance;
+    }
+
+    /**
+     * Gets the public 'easyadmin.config.manager' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Configuration\ConfigManager
+     */
+    protected function getEasyadmin_Config_ManagerService()
+    {
+        $this->services['easyadmin.config.manager'] = $instance = new \EasyCorp\Bundle\EasyAdminBundle\Configuration\ConfigManager($this->parameters['easyadmin.config'], true, ($this->services['easyadmin.property_accessor'] ?? $this->getEasyadmin_PropertyAccessorService()), ($this->privates['cache.easyadmin'] ?? $this->getCache_EasyadminService()));
+
+        $a = ($this->services['easyadmin.filter.registry'] ?? $this->getEasyadmin_Filter_RegistryService());
+
+        $instance->addConfigPass(new \EasyCorp\Bundle\EasyAdminBundle\Configuration\NormalizerConfigPass($this, $a));
+        $instance->addConfigPass(new \EasyCorp\Bundle\EasyAdminBundle\Configuration\DesignConfigPass('en'));
+        $instance->addConfigPass(new \EasyCorp\Bundle\EasyAdminBundle\Configuration\MenuConfigPass());
+        $instance->addConfigPass(new \EasyCorp\Bundle\EasyAdminBundle\Configuration\ActionConfigPass());
+        $instance->addConfigPass(new \EasyCorp\Bundle\EasyAdminBundle\Configuration\MetadataConfigPass(($this->services['doctrine'] ?? $this->getDoctrineService())));
+        $instance->addConfigPass(new \EasyCorp\Bundle\EasyAdminBundle\Configuration\PropertyConfigPass(($this->privates['form.registry'] ?? $this->getForm_RegistryService()), $a));
+        $instance->addConfigPass(new \EasyCorp\Bundle\EasyAdminBundle\Configuration\ViewConfigPass());
+        $instance->addConfigPass(new \EasyCorp\Bundle\EasyAdminBundle\Configuration\TemplateConfigPass(($this->privates['twig.loader.native_filesystem'] ?? $this->getTwig_Loader_NativeFilesystemService())));
+        $instance->addConfigPass(new \EasyCorp\Bundle\EasyAdminBundle\Configuration\DefaultConfigPass());
+
+        return $instance;
+    }
+
+    /**
+     * Gets the public 'easyadmin.filter.registry' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\FilterRegistry
+     */
+    protected function getEasyadmin_Filter_RegistryService()
+    {
+        return $this->services['easyadmin.filter.registry'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\FilterRegistry(['array' => 'easyadmin.filter.type.array', 'boolean' => 'easyadmin.filter.type.boolean', 'comparison' => 'easyadmin.filter.type.comparison', 'date' => 'easyadmin.filter.type.date', 'dateinterval' => 'easyadmin.filter.type.dateinterval', 'datetime' => 'easyadmin.filter.type.datetime', 'decimal' => 'easyadmin.filter.type.decimal', 'choice' => 'easyadmin.filter.type.choice', 'entity' => 'easyadmin.filter.type.entity', 'float' => 'easyadmin.filter.type.float', 'integer' => 'easyadmin.filter.type.integer', 'text' => 'easyadmin.filter.type.text', 'textarea' => 'easyadmin.filter.type.textarea', 'time' => 'easyadmin.filter.type.time'], new RewindableGenerator(function () {
+            yield 0 => ($this->privates['easyadmin.filter.type_guesser.doctrine'] ?? $this->getEasyadmin_Filter_TypeGuesser_DoctrineService());
+        }, 1));
+    }
+
+    /**
+     * Gets the public 'easyadmin.form.guesser.missing_doctrine_orm_type_guesser' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Guesser\MissingDoctrineOrmTypeGuesser
+     */
+    protected function getEasyadmin_Form_Guesser_MissingDoctrineOrmTypeGuesserService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeGuesserInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\doctrine-bridge\\Form\\DoctrineOrmTypeGuesser.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Guesser\\MissingDoctrineOrmTypeGuesser.php';
+
+        return $this->services['easyadmin.form.guesser.missing_doctrine_orm_type_guesser'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Guesser\MissingDoctrineOrmTypeGuesser(($this->services['doctrine'] ?? $this->getDoctrineService()));
+    }
+
+    /**
+     * Gets the public 'easyadmin.listener.controller' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\EventListener\ControllerListener
+     */
+    protected function getEasyadmin_Listener_ControllerService()
+    {
+        return $this->services['easyadmin.listener.controller'] = new \EasyCorp\Bundle\EasyAdminBundle\EventListener\ControllerListener(($this->services['easyadmin.config.manager'] ?? $this->getEasyadmin_Config_ManagerService()), ($this->privates['debug.controller_resolver'] ?? $this->getDebug_ControllerResolverService()));
+    }
+
+    /**
+     * Gets the public 'easyadmin.listener.request_post_initialize' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\EventListener\RequestPostInitializeListener
+     */
+    protected function getEasyadmin_Listener_RequestPostInitializeService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\EventListener\\RequestPostInitializeListener.php';
+
+        return $this->services['easyadmin.listener.request_post_initialize'] = new \EasyCorp\Bundle\EasyAdminBundle\EventListener\RequestPostInitializeListener(($this->services['doctrine'] ?? $this->getDoctrineService()), ($this->services['request_stack'] ?? ($this->services['request_stack'] = new \Symfony\Component\HttpFoundation\RequestStack())));
+    }
+
+    /**
+     * Gets the public 'easyadmin.paginator' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Search\Paginator
+     */
+    protected function getEasyadmin_PaginatorService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Search\\Paginator.php';
+
+        return $this->services['easyadmin.paginator'] = new \EasyCorp\Bundle\EasyAdminBundle\Search\Paginator();
+    }
+
+    /**
+     * Gets the public 'easyadmin.property_accessor' shared service.
+     *
+     * @return \Symfony\Component\PropertyAccess\PropertyAccessor
+     */
+    protected function getEasyadmin_PropertyAccessorService()
+    {
+        return $this->services['easyadmin.property_accessor'] = new \Symfony\Component\PropertyAccess\PropertyAccessor(false, false, new \Symfony\Component\Cache\Adapter\ArrayAdapter(0, false), true);
+    }
+
+    /**
+     * Gets the public 'easyadmin.query_builder' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Search\QueryBuilder
+     */
+    protected function getEasyadmin_QueryBuilderService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Search\\QueryBuilder.php';
+
+        return $this->services['easyadmin.query_builder'] = new \EasyCorp\Bundle\EasyAdminBundle\Search\QueryBuilder(($this->services['doctrine'] ?? $this->getDoctrineService()));
+    }
+
+    /**
+     * Gets the public 'easyadmin.router' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Router\EasyAdminRouter
+     */
+    protected function getEasyadmin_RouterService()
+    {
+        return $this->services['easyadmin.router'] = new \EasyCorp\Bundle\EasyAdminBundle\Router\EasyAdminRouter(($this->services['easyadmin.config.manager'] ?? $this->getEasyadmin_Config_ManagerService()), ($this->services['router'] ?? $this->getRouterService()), ($this->services['easyadmin.property_accessor'] ?? $this->getEasyadmin_PropertyAccessorService()), ($this->services['request_stack'] ?? ($this->services['request_stack'] = new \Symfony\Component\HttpFoundation\RequestStack())));
+    }
+
+    /**
+     * Gets the public 'easyadmin.security.authorization_checker' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker
+     */
+    protected function getEasyadmin_Security_AuthorizationCheckerService()
+    {
+        return $this->services['easyadmin.security.authorization_checker'] = new \EasyCorp\Bundle\EasyAdminBundle\Security\AuthorizationChecker(($this->services['security.authorization_checker'] ?? $this->getSecurity_AuthorizationCheckerService()));
+    }
+
+    /**
      * Gets the public 'error_controller' shared service.
      *
      * @return \Symfony\Component\HttpKernel\Controller\ErrorController
@@ -997,6 +1256,12 @@ class App_KernelDevDebugContainer extends Container
         $instance->addListener('kernel.controller', [0 => function () {
             return ($this->privates['data_collector.router'] ?? ($this->privates['data_collector.router'] = new \Symfony\Bundle\FrameworkBundle\DataCollector\RouterDataCollector()));
         }, 1 => 'onKernelController'], 0);
+        $instance->addListener('kernel.controller', [0 => function () {
+            return ($this->services['easyadmin.listener.controller'] ?? $this->getEasyadmin_Listener_ControllerService());
+        }, 1 => 'onKernelController'], 0);
+        $instance->addListener('easy_admin.post_initialize', [0 => function () {
+            return ($this->services['easyadmin.listener.request_post_initialize'] ?? $this->getEasyadmin_Listener_RequestPostInitializeService());
+        }, 1 => 'initializeRequest'], 0);
         $instance->addListener('kernel.response', [0 => function () {
             return ($this->privates['response_listener'] ?? ($this->privates['response_listener'] = new \Symfony\Component\HttpKernel\EventListener\ResponseListener('UTF-8')));
         }, 1 => 'onKernelResponse'], 0);
@@ -1200,9 +1465,7 @@ class App_KernelDevDebugContainer extends Container
      */
     protected function getHttpKernelService()
     {
-        $a = ($this->privates['debug.stopwatch'] ?? ($this->privates['debug.stopwatch'] = new \Symfony\Component\Stopwatch\Stopwatch(true)));
-
-        return $this->services['http_kernel'] = new \Symfony\Component\HttpKernel\HttpKernel(($this->services['event_dispatcher'] ?? $this->getEventDispatcherService()), new \Symfony\Component\HttpKernel\Controller\TraceableControllerResolver(new \Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver($this, ($this->privates['monolog.logger.request'] ?? $this->getMonolog_Logger_RequestService())), $a), ($this->services['request_stack'] ?? ($this->services['request_stack'] = new \Symfony\Component\HttpFoundation\RequestStack())), new \Symfony\Component\HttpKernel\Controller\TraceableArgumentResolver(new \Symfony\Component\HttpKernel\Controller\ArgumentResolver(($this->privates['argument_metadata_factory'] ?? ($this->privates['argument_metadata_factory'] = new \Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory())), new RewindableGenerator(function () {
+        return $this->services['http_kernel'] = new \Symfony\Component\HttpKernel\HttpKernel(($this->services['event_dispatcher'] ?? $this->getEventDispatcherService()), ($this->privates['debug.controller_resolver'] ?? $this->getDebug_ControllerResolverService()), ($this->services['request_stack'] ?? ($this->services['request_stack'] = new \Symfony\Component\HttpFoundation\RequestStack())), new \Symfony\Component\HttpKernel\Controller\TraceableArgumentResolver(new \Symfony\Component\HttpKernel\Controller\ArgumentResolver(($this->privates['argument_metadata_factory'] ?? ($this->privates['argument_metadata_factory'] = new \Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory())), new RewindableGenerator(function () {
             yield 0 => ($this->privates['debug.argument_resolver.request_attribute'] ?? $this->getDebug_ArgumentResolver_RequestAttributeService());
             yield 1 => ($this->privates['debug.argument_resolver.request'] ?? $this->getDebug_ArgumentResolver_RequestService());
             yield 2 => ($this->privates['debug.argument_resolver.session'] ?? $this->getDebug_ArgumentResolver_SessionService());
@@ -1211,7 +1474,7 @@ class App_KernelDevDebugContainer extends Container
             yield 5 => ($this->privates['debug.argument_resolver.default'] ?? $this->getDebug_ArgumentResolver_DefaultService());
             yield 6 => ($this->privates['debug.argument_resolver.variadic'] ?? $this->getDebug_ArgumentResolver_VariadicService());
             yield 7 => ($this->privates['debug.argument_resolver.not_tagged_controller'] ?? $this->getDebug_ArgumentResolver_NotTaggedControllerService());
-        }, 8)), $a));
+        }, 8)), ($this->privates['debug.stopwatch'] ?? ($this->privates['debug.stopwatch'] = new \Symfony\Component\Stopwatch\Stopwatch(true)))));
     }
 
     /**
@@ -1242,6 +1505,7 @@ class App_KernelDevDebugContainer extends Container
         $d->addInstance('cache.doctrine.orm.default.result', ($this->services['cache.doctrine.orm.default.result'] ?? $this->getCache_Doctrine_Orm_Default_ResultService()));
         $d->addInstance('cache.doctrine.orm.default.query', ($this->services['cache.doctrine.orm.default.query'] ?? $this->getCache_Doctrine_Orm_Default_QueryService()));
         $d->addInstance('cache.security_expression_language', ($this->privates['cache.security_expression_language'] ?? $this->getCache_SecurityExpressionLanguageService()));
+        $d->addInstance('cache.easyadmin', ($this->privates['cache.easyadmin'] ?? $this->getCache_EasyadminService()));
         $e = new \Symfony\Component\HttpClient\DataCollector\HttpClientDataCollector();
         $e->registerClient('http_client', ($this->privates['.debug.http_client'] ?? $this->get_Debug_HttpClientService()));
         $f = new \Doctrine\Bundle\DoctrineBundle\DataCollector\DoctrineDataCollector(($this->services['doctrine'] ?? $this->getDoctrineService()));
@@ -1269,6 +1533,7 @@ class App_KernelDevDebugContainer extends Container
         $instance->add($f);
         $instance->add(($this->services['data_collector.dump'] ?? $this->getDataCollector_DumpService()));
         $instance->add(new \Symfony\Component\Mailer\DataCollector\MessageDataCollector(($this->privates['mailer.logger_message_listener'] ?? ($this->privates['mailer.logger_message_listener'] = new \Symfony\Component\Mailer\EventListener\MessageLoggerListener()))));
+        $instance->add(new \EasyCorp\Bundle\EasyAdminBundle\DataCollector\EasyAdminDataCollector(($this->services['easyadmin.config.manager'] ?? $this->getEasyadmin_Config_ManagerService())));
         $instance->add($g);
 
         return $instance;
@@ -1475,7 +1740,7 @@ class App_KernelDevDebugContainer extends Container
 
         $b = new \Symfony\Component\Serializer\NameConverter\MetadataAwareNameConverter($a);
 
-        return $this->services['serializer'] = new \Symfony\Component\Serializer\Serializer([0 => new \Symfony\Component\Serializer\Normalizer\ProblemNormalizer(true), 1 => new \Symfony\Component\Serializer\Normalizer\JsonSerializableNormalizer(), 2 => new \Symfony\Component\Serializer\Normalizer\DateTimeNormalizer(), 3 => new \Symfony\Component\Serializer\Normalizer\ConstraintViolationListNormalizer([], $b), 4 => new \Symfony\Component\Serializer\Normalizer\DateTimeZoneNormalizer(), 5 => new \Symfony\Component\Serializer\Normalizer\DateIntervalNormalizer(), 6 => new \Symfony\Component\Serializer\Normalizer\DataUriNormalizer(($this->privates['mime_types'] ?? $this->getMimeTypesService())), 7 => new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), 8 => new \Symfony\Component\Serializer\Normalizer\ObjectNormalizer($a, $b, ($this->privates['property_accessor'] ?? $this->getPropertyAccessorService()), ($this->privates['property_info'] ?? $this->getPropertyInfoService()), new \Symfony\Component\Serializer\Mapping\ClassDiscriminatorFromClassMetadata($a), NULL, [])], [0 => new \Symfony\Component\Serializer\Encoder\XmlEncoder(), 1 => new \Symfony\Component\Serializer\Encoder\JsonEncoder(), 2 => new \Symfony\Component\Serializer\Encoder\YamlEncoder(), 3 => new \Symfony\Component\Serializer\Encoder\CsvEncoder()]);
+        return $this->services['serializer'] = new \Symfony\Component\Serializer\Serializer([0 => new \Symfony\Component\Serializer\Normalizer\ProblemNormalizer(true), 1 => new \Symfony\Component\Serializer\Normalizer\JsonSerializableNormalizer(), 2 => new \Symfony\Component\Serializer\Normalizer\DateTimeNormalizer(), 3 => new \Symfony\Component\Serializer\Normalizer\ConstraintViolationListNormalizer([], $b), 4 => new \Symfony\Component\Serializer\Normalizer\DateTimeZoneNormalizer(), 5 => new \Symfony\Component\Serializer\Normalizer\DateIntervalNormalizer(), 6 => new \Symfony\Component\Serializer\Normalizer\DataUriNormalizer(($this->privates['mime_types'] ?? $this->getMimeTypesService())), 7 => new \Symfony\Component\Serializer\Normalizer\ArrayDenormalizer(), 8 => new \Symfony\Component\Serializer\Normalizer\ObjectNormalizer($a, $b, ($this->services['easyadmin.property_accessor'] ?? $this->getEasyadmin_PropertyAccessorService()), ($this->privates['property_info'] ?? $this->getPropertyInfoService()), new \Symfony\Component\Serializer\Mapping\ClassDiscriminatorFromClassMetadata($a), NULL, [])], [0 => new \Symfony\Component\Serializer\Encoder\XmlEncoder(), 1 => new \Symfony\Component\Serializer\Encoder\JsonEncoder(), 2 => new \Symfony\Component\Serializer\Encoder\YamlEncoder(), 3 => new \Symfony\Component\Serializer\Encoder\CsvEncoder()]);
     }
 
     /**
@@ -1539,9 +1804,12 @@ class App_KernelDevDebugContainer extends Container
             if (isset($this->privates['cache.security_expression_language'])) {
                 yield 'cache.security_expression_language' => ($this->privates['cache.security_expression_language'] ?? null);
             }
+            if (isset($this->privates['cache.easyadmin'])) {
+                yield 'cache.easyadmin' => ($this->privates['cache.easyadmin'] ?? null);
+            }
         }, function () {
-            return 0 + (int) (isset($this->services['cache.app'])) + (int) (isset($this->services['cache.system'])) + (int) (isset($this->privates['cache.validator'])) + (int) (isset($this->privates['cache.serializer'])) + (int) (isset($this->privates['cache.annotations'])) + (int) (isset($this->privates['cache.property_info'])) + (int) (isset($this->privates['form.choice_list_factory.cached'])) + (int) (isset($this->services['profiler'])) + (int) (isset($this->services['validator'])) + (int) (isset($this->privates['debug.stopwatch'])) + (int) (isset($this->services['event_dispatcher'])) + (int) (isset($this->privates['monolog.handler.main'])) + (int) (isset($this->privates['monolog.handler.console'])) + (int) (isset($this->services['doctrine'])) + (int) (isset($this->privates['form.type.entity'])) + (int) (isset($this->services['security.token_storage'])) + (int) (isset($this->privates['cache.security_expression_language']));
-        }), ['cache.app' => [0 => 'reset'], 'cache.system' => [0 => 'reset'], 'cache.validator' => [0 => 'reset'], 'cache.serializer' => [0 => 'reset'], 'cache.annotations' => [0 => 'reset'], 'cache.property_info' => [0 => 'reset'], 'form.choice_list_factory.cached' => [0 => 'reset'], 'profiler' => [0 => 'reset'], 'debug.validator' => [0 => 'reset'], 'debug.stopwatch' => [0 => 'reset'], 'debug.event_dispatcher' => [0 => 'reset'], 'monolog.handler.main' => [0 => 'reset'], 'monolog.handler.console' => [0 => 'reset'], 'doctrine' => [0 => 'reset'], 'form.type.entity' => [0 => 'reset'], 'security.token_storage' => [0 => 'disableUsageTracking', 1 => 'setToken'], 'cache.security_expression_language' => [0 => 'reset']]);
+            return 0 + (int) (isset($this->services['cache.app'])) + (int) (isset($this->services['cache.system'])) + (int) (isset($this->privates['cache.validator'])) + (int) (isset($this->privates['cache.serializer'])) + (int) (isset($this->privates['cache.annotations'])) + (int) (isset($this->privates['cache.property_info'])) + (int) (isset($this->privates['form.choice_list_factory.cached'])) + (int) (isset($this->services['profiler'])) + (int) (isset($this->services['validator'])) + (int) (isset($this->privates['debug.stopwatch'])) + (int) (isset($this->services['event_dispatcher'])) + (int) (isset($this->privates['monolog.handler.main'])) + (int) (isset($this->privates['monolog.handler.console'])) + (int) (isset($this->services['doctrine'])) + (int) (isset($this->privates['form.type.entity'])) + (int) (isset($this->services['security.token_storage'])) + (int) (isset($this->privates['cache.security_expression_language'])) + (int) (isset($this->privates['cache.easyadmin']));
+        }), ['cache.app' => [0 => 'reset'], 'cache.system' => [0 => 'reset'], 'cache.validator' => [0 => 'reset'], 'cache.serializer' => [0 => 'reset'], 'cache.annotations' => [0 => 'reset'], 'cache.property_info' => [0 => 'reset'], 'form.choice_list_factory.cached' => [0 => 'reset'], 'profiler' => [0 => 'reset'], 'debug.validator' => [0 => 'reset'], 'debug.stopwatch' => [0 => 'reset'], 'debug.event_dispatcher' => [0 => 'reset'], 'monolog.handler.main' => [0 => 'reset'], 'monolog.handler.console' => [0 => 'reset'], 'doctrine' => [0 => 'reset'], 'form.type.entity' => [0 => 'reset'], 'security.token_storage' => [0 => 'disableUsageTracking', 1 => 'setToken'], 'cache.security_expression_language' => [0 => 'reset'], 'cache.easyadmin' => [0 => 'reset']]);
     }
 
     /**
@@ -1579,59 +1847,46 @@ class App_KernelDevDebugContainer extends Container
      */
     protected function getTwigService()
     {
-        $a = new \Twig\Loader\FilesystemLoader([], \dirname(__DIR__, 4));
-        $a->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle/Resources/views'), 'Framework');
-        $a->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle/Resources/views'), '!Framework');
-        $a->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\web-profiler-bundle/Resources/views'), 'WebProfiler');
-        $a->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\web-profiler-bundle/Resources/views'), '!WebProfiler');
-        $a->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\debug-bundle/Resources/views'), 'Debug');
-        $a->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\debug-bundle/Resources/views'), '!Debug');
-        $a->addPath((\dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle/Resources/views'), 'Doctrine');
-        $a->addPath((\dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle/Resources/views'), '!Doctrine');
-        $a->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\security-bundle/Resources/views'), 'Security');
-        $a->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\security-bundle/Resources/views'), '!Security');
-        $a->addPath((\dirname(__DIR__, 4).'/templates'));
-        $a->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge/Resources/views/Email'), 'email');
-        $a->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge/Resources/views/Email'), '!email');
-        $a->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge/Resources/views/Form'));
+        $this->services['twig'] = $instance = new \Twig\Environment(($this->privates['twig.loader.native_filesystem'] ?? $this->getTwig_Loader_NativeFilesystemService()), ['autoescape' => 'name', 'cache' => ($this->targetDir.''.'/twig'), 'charset' => 'UTF-8', 'debug' => true, 'strict_variables' => true]);
 
-        $this->services['twig'] = $instance = new \Twig\Environment($a, ['autoescape' => 'name', 'cache' => ($this->targetDir.''.'/twig'), 'charset' => 'UTF-8', 'debug' => true, 'strict_variables' => true]);
-
-        $b = ($this->privates['debug.stopwatch'] ?? ($this->privates['debug.stopwatch'] = new \Symfony\Component\Stopwatch\Stopwatch(true)));
+        $a = ($this->privates['debug.stopwatch'] ?? ($this->privates['debug.stopwatch'] = new \Symfony\Component\Stopwatch\Stopwatch(true)));
+        $b = ($this->services['translator'] ?? $this->getTranslatorService());
         $c = ($this->services['request_stack'] ?? ($this->services['request_stack'] = new \Symfony\Component\HttpFoundation\RequestStack()));
         $d = ($this->privates['debug.file_link_formatter'] ?? $this->getDebug_FileLinkFormatterService());
-        $e = new \Symfony\Component\VarDumper\Dumper\HtmlDumper(NULL, 'UTF-8', 1);
-        $e->setDisplayOptions(['maxStringLength' => 4096, 'fileLinkFormat' => $d]);
-        $f = new \Symfony\Bridge\Twig\AppVariable();
-        $f->setEnvironment('dev');
-        $f->setDebug(true);
+        $e = ($this->privates['security.logout_url_generator'] ?? $this->getSecurity_LogoutUrlGeneratorService());
+        $f = new \Symfony\Component\VarDumper\Dumper\HtmlDumper(NULL, 'UTF-8', 1);
+        $f->setDisplayOptions(['maxStringLength' => 4096, 'fileLinkFormat' => $d]);
+        $g = new \Symfony\Bridge\Twig\AppVariable();
+        $g->setEnvironment('dev');
+        $g->setDebug(true);
         if ($this->has('security.token_storage')) {
-            $f->setTokenStorage(($this->services['security.token_storage'] ?? $this->getSecurity_TokenStorageService()));
+            $g->setTokenStorage(($this->services['security.token_storage'] ?? $this->getSecurity_TokenStorageService()));
         }
         if ($this->has('request_stack')) {
-            $f->setRequestStack($c);
+            $g->setRequestStack($c);
         }
-        $g = new \Twig\Extra\TwigExtraBundle\MissingExtensionSuggestor();
+        $h = new \Twig\Extra\TwigExtraBundle\MissingExtensionSuggestor();
 
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\CsrfExtension());
-        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\ProfilerExtension(($this->privates['twig.profile'] ?? ($this->privates['twig.profile'] = new \Twig\Profiler\Profile())), $b));
-        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\TranslationExtension(($this->services['translator'] ?? $this->getTranslatorService())));
+        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\ProfilerExtension(($this->privates['twig.profile'] ?? ($this->privates['twig.profile'] = new \Twig\Profiler\Profile())), $a));
+        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\TranslationExtension($b));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\AssetExtension(new \Symfony\Component\Asset\Packages(new \Symfony\Component\Asset\PathPackage('', new \Symfony\Component\Asset\VersionStrategy\EmptyVersionStrategy(), new \Symfony\Component\Asset\Context\RequestStackContext($c, '', false)), [])));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\CodeExtension($d, \dirname(__DIR__, 4), 'UTF-8'));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\RoutingExtension(($this->services['router'] ?? $this->getRouterService())));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\YamlExtension());
-        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\StopwatchExtension($b, true));
+        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\StopwatchExtension($a, true));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\ExpressionExtension());
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\HttpKernelExtension());
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\HttpFoundationExtension(new \Symfony\Component\HttpFoundation\UrlHelper($c, ($this->privates['router.request_context'] ?? $this->getRouter_RequestContextService()))));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\WebLinkExtension($c));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\FormExtension([0 => $this, 1 => 'twig.form.renderer']));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\DumpExtension(($this->services['var_dumper.cloner'] ?? $this->getVarDumper_ClonerService()), ($this->privates['var_dumper.html_dumper'] ?? $this->getVarDumper_HtmlDumperService())));
-        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\LogoutUrlExtension(($this->privates['security.logout_url_generator'] ?? $this->getSecurity_LogoutUrlGeneratorService())));
+        $instance->addExtension(new \Symfony\Bridge\Twig\Extension\LogoutUrlExtension($e));
         $instance->addExtension(new \Symfony\Bridge\Twig\Extension\SecurityExtension(($this->services['security.authorization_checker'] ?? $this->getSecurity_AuthorizationCheckerService())));
-        $instance->addExtension(new \Symfony\Bundle\WebProfilerBundle\Twig\WebProfilerExtension($e));
+        $instance->addExtension(new \Symfony\Bundle\WebProfilerBundle\Twig\WebProfilerExtension($f));
         $instance->addExtension(new \Doctrine\Bundle\DoctrineBundle\Twig\DoctrineExtension());
-        $instance->addGlobal('app', $f);
+        $instance->addExtension(new \EasyCorp\Bundle\EasyAdminBundle\Twig\EasyAdminTwigExtension(($this->services['easyadmin.config.manager'] ?? $this->getEasyadmin_Config_ManagerService()), ($this->services['easyadmin.property_accessor'] ?? $this->getEasyadmin_PropertyAccessorService()), ($this->services['easyadmin.router'] ?? $this->getEasyadmin_RouterService()), true, $e, $b, ($this->services['easyadmin.security.authorization_checker'] ?? $this->getEasyadmin_Security_AuthorizationCheckerService())));
+        $instance->addGlobal('app', $g);
         $instance->addRuntimeLoader(new \Twig\RuntimeLoader\ContainerRuntimeLoader(new \Symfony\Component\DependencyInjection\Argument\ServiceLocator($this->getService, [
             'Symfony\\Bridge\\Twig\\Extension\\CsrfRuntime' => ['privates', 'twig.runtime.security_csrf', 'getTwig_Runtime_SecurityCsrfService', false],
             'Symfony\\Bridge\\Twig\\Extension\\HttpKernelRuntime' => ['privates', 'twig.runtime.httpkernel', 'getTwig_Runtime_HttpkernelService', false],
@@ -1641,8 +1896,8 @@ class App_KernelDevDebugContainer extends Container
             'Symfony\\Bridge\\Twig\\Extension\\HttpKernelRuntime' => '?',
             'Symfony\\Component\\Form\\FormRenderer' => '?',
         ])));
-        $instance->registerUndefinedFilterCallback([0 => $g, 1 => 'suggestFilter']);
-        $instance->registerUndefinedFunctionCallback([0 => $g, 1 => 'suggestFunction']);
+        $instance->registerUndefinedFilterCallback([0 => $h, 1 => 'suggestFilter']);
+        $instance->registerUndefinedFunctionCallback([0 => $h, 1 => 'suggestFunction']);
         (new \Symfony\Bundle\TwigBundle\DependencyInjection\Configurator\EnvironmentConfigurator('F j, Y H:i', '%d days', NULL, 0, '.', ','))->configure($instance);
 
         return $instance;
@@ -2177,6 +2432,16 @@ class App_KernelDevDebugContainer extends Container
     }
 
     /**
+     * Gets the private 'cache.easyadmin' shared service.
+     *
+     * @return \Symfony\Component\Cache\Adapter\TraceableAdapter
+     */
+    protected function getCache_EasyadminService()
+    {
+        return $this->privates['cache.easyadmin'] = new \Symfony\Component\Cache\Adapter\TraceableAdapter(\Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('rwk3sbGWPq', 0, $this->getParameter('container.build_id'), ($this->targetDir.''.'/pools'), ($this->privates['monolog.logger.cache'] ?? $this->getMonolog_Logger_CacheService())));
+    }
+
+    /**
      * Gets the private 'cache.property_info' shared service.
      *
      * @return \Symfony\Component\Cache\Adapter\TraceableAdapter
@@ -2326,7 +2591,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\console\\Command\\Command.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\Command\\CachePoolListCommand.php';
 
-        $this->privates['console.command.cache_pool_list'] = $instance = new \Symfony\Bundle\FrameworkBundle\Command\CachePoolListCommand([0 => 'cache.app', 1 => 'cache.system', 2 => 'cache.validator', 3 => 'cache.serializer', 4 => 'cache.annotations', 5 => 'cache.property_info', 6 => 'cache.doctrine.orm.default.metadata', 7 => 'cache.doctrine.orm.default.result', 8 => 'cache.doctrine.orm.default.query', 9 => 'cache.security_expression_language']);
+        $this->privates['console.command.cache_pool_list'] = $instance = new \Symfony\Bundle\FrameworkBundle\Command\CachePoolListCommand([0 => 'cache.app', 1 => 'cache.system', 2 => 'cache.validator', 3 => 'cache.serializer', 4 => 'cache.annotations', 5 => 'cache.property_info', 6 => 'cache.doctrine.orm.default.metadata', 7 => 'cache.doctrine.orm.default.result', 8 => 'cache.doctrine.orm.default.query', 9 => 'cache.security_expression_language', 10 => 'cache.easyadmin']);
 
         $instance->setName('cache:pool:list');
 
@@ -2354,7 +2619,8 @@ class App_KernelDevDebugContainer extends Container
             yield 'cache.doctrine.orm.default.result' => ($this->services['cache.doctrine.orm.default.result'] ?? $this->getCache_Doctrine_Orm_Default_ResultService());
             yield 'cache.doctrine.orm.default.query' => ($this->services['cache.doctrine.orm.default.query'] ?? $this->getCache_Doctrine_Orm_Default_QueryService());
             yield 'cache.security_expression_language' => ($this->privates['cache.security_expression_language'] ?? $this->getCache_SecurityExpressionLanguageService());
-        }, 10));
+            yield 'cache.easyadmin' => ($this->privates['cache.easyadmin'] ?? $this->getCache_EasyadminService());
+        }, 11));
 
         $instance->setName('cache:pool:prune');
 
@@ -2495,7 +2761,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\console\\Command\\Command.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Command\\DebugCommand.php';
 
-        $this->privates['console.command.form_debug'] = $instance = new \Symfony\Component\Form\Command\DebugCommand(($this->privates['form.registry'] ?? $this->getForm_RegistryService()), [0 => 'Symfony\\Component\\Form\\Extension\\Core\\Type', 1 => 'App\\Form', 2 => 'Symfony\\Bridge\\Doctrine\\Form\\Type'], [0 => 'App\\Form\\AvisType', 1 => 'App\\Form\\CoursType', 2 => 'App\\Form\\MatiereType', 3 => 'App\\Form\\ProfesseurType', 4 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType', 5 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType', 6 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType', 7 => 'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType'], [0 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TransformationFailureExtension', 1 => 'Symfony\\Component\\Form\\Extension\\HttpFoundation\\Type\\FormTypeHttpFoundationExtension', 2 => 'Symfony\\Component\\Form\\Extension\\Validator\\Type\\FormTypeValidatorExtension', 3 => 'Symfony\\Component\\Form\\Extension\\Validator\\Type\\RepeatedTypeValidatorExtension', 4 => 'Symfony\\Component\\Form\\Extension\\Validator\\Type\\SubmitTypeValidatorExtension', 5 => 'Symfony\\Component\\Form\\Extension\\Validator\\Type\\UploadValidatorExtension', 6 => 'Symfony\\Component\\Form\\Extension\\Csrf\\Type\\FormTypeCsrfExtension', 7 => 'Symfony\\Component\\Form\\Extension\\DataCollector\\Type\\DataCollectorTypeExtension'], [0 => 'Symfony\\Component\\Form\\Extension\\Validator\\ValidatorTypeGuesser', 1 => 'Symfony\\Bridge\\Doctrine\\Form\\DoctrineOrmTypeGuesser'], ($this->privates['debug.file_link_formatter'] ?? $this->getDebug_FileLinkFormatterService()));
+        $this->privates['console.command.form_debug'] = $instance = new \Symfony\Component\Form\Command\DebugCommand(($this->privates['form.registry'] ?? $this->getForm_RegistryService()), [0 => 'Symfony\\Component\\Form\\Extension\\Core\\Type', 1 => 'App\\Form', 2 => 'Symfony\\Bridge\\Doctrine\\Form\\Type', 3 => 'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type'], [0 => 'App\\Form\\AvisType', 1 => 'App\\Form\\CoursType', 2 => 'App\\Form\\MatiereType', 3 => 'App\\Form\\ProfesseurType', 4 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FormType', 5 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType', 6 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType', 7 => 'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType', 8 => 'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminFormType', 9 => 'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\FileUploadType', 10 => 'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminFiltersFormType', 11 => 'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminAutocompleteType', 12 => 'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminBatchFormType', 13 => 'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminDividerType', 14 => 'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminSectionType', 15 => 'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminGroupType'], [0 => 'Symfony\\Component\\Form\\Extension\\Core\\Type\\TransformationFailureExtension', 1 => 'Symfony\\Component\\Form\\Extension\\HttpFoundation\\Type\\FormTypeHttpFoundationExtension', 2 => 'Symfony\\Component\\Form\\Extension\\Validator\\Type\\FormTypeValidatorExtension', 3 => 'Symfony\\Component\\Form\\Extension\\Validator\\Type\\RepeatedTypeValidatorExtension', 4 => 'Symfony\\Component\\Form\\Extension\\Validator\\Type\\SubmitTypeValidatorExtension', 5 => 'Symfony\\Component\\Form\\Extension\\Validator\\Type\\UploadValidatorExtension', 6 => 'Symfony\\Component\\Form\\Extension\\Csrf\\Type\\FormTypeCsrfExtension', 7 => 'Symfony\\Component\\Form\\Extension\\DataCollector\\Type\\DataCollectorTypeExtension', 8 => 'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Extension\\EasyAdminExtension'], [0 => 'Symfony\\Component\\Form\\Extension\\Validator\\ValidatorTypeGuesser', 1 => 'Symfony\\Bridge\\Doctrine\\Form\\DoctrineOrmTypeGuesser', 2 => 'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Guesser\\MissingDoctrineOrmTypeGuesser'], ($this->privates['debug.file_link_formatter'] ?? $this->getDebug_FileLinkFormatterService()));
 
         $instance->setName('debug:form');
 
@@ -2672,7 +2938,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\console\\Command\\Command.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\Command\\TranslationDebugCommand.php';
 
-        $this->privates['console.command.translation_debug'] = $instance = new \Symfony\Bundle\FrameworkBundle\Command\TranslationDebugCommand(($this->services['translator'] ?? $this->getTranslatorService()), ($this->privates['translation.reader'] ?? $this->getTranslation_ReaderService()), ($this->privates['translation.extractor'] ?? $this->getTranslation_ExtractorService()), (\dirname(__DIR__, 4).'/translations'), (\dirname(__DIR__, 4).'/templates'), [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations')], [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge/Resources/views/Email'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge/Resources/views/Form'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\Command\\TranslationDebugCommand.php'), 3 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Core\\Type\\FileType.php'), 4 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Core\\Type\\TransformationFailureExtension.php'), 5 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Validator\\Type\\UploadValidatorExtension.php'), 6 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Csrf\\Type\\FormTypeCsrfExtension.php'), 7 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator\\ValidatorBuilder.php'), 8 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\CacheWarmer\\TranslationsCacheWarmer.php'), 9 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\translation\\DataCollector\\TranslationDataCollector.php'), 10 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge\\Extension\\TranslationExtension.php')]);
+        $this->privates['console.command.translation_debug'] = $instance = new \Symfony\Bundle\FrameworkBundle\Command\TranslationDebugCommand(($this->services['translator'] ?? $this->getTranslatorService()), ($this->privates['translation.reader'] ?? $this->getTranslation_ReaderService()), ($this->privates['translation.extractor'] ?? $this->getTranslation_ExtractorService()), (\dirname(__DIR__, 4).'/translations'), (\dirname(__DIR__, 4).'/templates'), [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations')], [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge/Resources/views/Email'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge/Resources/views/Form'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\Command\\TranslationDebugCommand.php'), 3 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Core\\Type\\FileType.php'), 4 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Core\\Type\\TransformationFailureExtension.php'), 5 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Validator\\Type\\UploadValidatorExtension.php'), 6 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Csrf\\Type\\FormTypeCsrfExtension.php'), 7 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator\\ValidatorBuilder.php'), 8 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\CacheWarmer\\TranslationsCacheWarmer.php'), 9 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\translation\\DataCollector\\TranslationDataCollector.php'), 10 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge\\Extension\\TranslationExtension.php'), 11 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Twig\\EasyAdminTwigExtension.php')]);
 
         $instance->setName('debug:translation');
 
@@ -2716,7 +2982,7 @@ class App_KernelDevDebugContainer extends Container
         $a->addDumper('json', new \Symfony\Component\Translation\Dumper\JsonFileDumper());
         $a->addDumper('res', new \Symfony\Component\Translation\Dumper\IcuResFileDumper());
 
-        $this->privates['console.command.translation_update'] = $instance = new \Symfony\Bundle\FrameworkBundle\Command\TranslationUpdateCommand($a, ($this->privates['translation.reader'] ?? $this->getTranslation_ReaderService()), ($this->privates['translation.extractor'] ?? $this->getTranslation_ExtractorService()), 'en', (\dirname(__DIR__, 4).'/translations'), (\dirname(__DIR__, 4).'/templates'), [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations')], [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge/Resources/views/Email'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge/Resources/views/Form'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\Command\\TranslationDebugCommand.php'), 3 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Core\\Type\\FileType.php'), 4 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Core\\Type\\TransformationFailureExtension.php'), 5 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Validator\\Type\\UploadValidatorExtension.php'), 6 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Csrf\\Type\\FormTypeCsrfExtension.php'), 7 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator\\ValidatorBuilder.php'), 8 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\CacheWarmer\\TranslationsCacheWarmer.php'), 9 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\translation\\DataCollector\\TranslationDataCollector.php'), 10 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge\\Extension\\TranslationExtension.php')]);
+        $this->privates['console.command.translation_update'] = $instance = new \Symfony\Bundle\FrameworkBundle\Command\TranslationUpdateCommand($a, ($this->privates['translation.reader'] ?? $this->getTranslation_ReaderService()), ($this->privates['translation.extractor'] ?? $this->getTranslation_ExtractorService()), 'en', (\dirname(__DIR__, 4).'/translations'), (\dirname(__DIR__, 4).'/templates'), [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations')], [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge/Resources/views/Email'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge/Resources/views/Form'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\Command\\TranslationDebugCommand.php'), 3 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Core\\Type\\FileType.php'), 4 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Core\\Type\\TransformationFailureExtension.php'), 5 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Validator\\Type\\UploadValidatorExtension.php'), 6 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Csrf\\Type\\FormTypeCsrfExtension.php'), 7 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator\\ValidatorBuilder.php'), 8 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle\\CacheWarmer\\TranslationsCacheWarmer.php'), 9 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\translation\\DataCollector\\TranslationDataCollector.php'), 10 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge\\Extension\\TranslationExtension.php'), 11 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Twig\\EasyAdminTwigExtension.php')]);
 
         $instance->setName('translation:update');
 
@@ -2897,6 +3163,16 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\http-kernel\\Controller\\ArgumentResolver\\VariadicValueResolver.php';
 
         return $this->privates['debug.argument_resolver.variadic'] = new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\TraceableValueResolver(new \Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver(), ($this->privates['debug.stopwatch'] ?? ($this->privates['debug.stopwatch'] = new \Symfony\Component\Stopwatch\Stopwatch(true))));
+    }
+
+    /**
+     * Gets the private 'debug.controller_resolver' shared service.
+     *
+     * @return \Symfony\Component\HttpKernel\Controller\TraceableControllerResolver
+     */
+    protected function getDebug_ControllerResolverService()
+    {
+        return $this->privates['debug.controller_resolver'] = new \Symfony\Component\HttpKernel\Controller\TraceableControllerResolver(new \Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver($this, ($this->privates['monolog.logger.request'] ?? $this->getMonolog_Logger_RequestService())), ($this->privates['debug.stopwatch'] ?? ($this->privates['debug.stopwatch'] = new \Symfony\Component\Stopwatch\Stopwatch(true))));
     }
 
     /**
@@ -3639,6 +3915,413 @@ class App_KernelDevDebugContainer extends Container
     }
 
     /**
+     * Gets the private 'easyadmin.filter.type.array' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\ArrayFilterType
+     */
+    protected function getEasyadmin_Filter_Type_ArrayService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterTypeTrait.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\ArrayFilterType.php';
+
+        return $this->privates['easyadmin.filter.type.array'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\ArrayFilterType();
+    }
+
+    /**
+     * Gets the private 'easyadmin.filter.type.boolean' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\BooleanFilterType
+     */
+    protected function getEasyadmin_Filter_Type_BooleanService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterTypeTrait.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\BooleanFilterType.php';
+
+        return $this->privates['easyadmin.filter.type.boolean'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\BooleanFilterType();
+    }
+
+    /**
+     * Gets the private 'easyadmin.filter.type.choice' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\ChoiceFilterType
+     */
+    protected function getEasyadmin_Filter_Type_ChoiceService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterTypeTrait.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\ChoiceFilterType.php';
+
+        return $this->privates['easyadmin.filter.type.choice'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\ChoiceFilterType();
+    }
+
+    /**
+     * Gets the private 'easyadmin.filter.type.comparison' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\ComparisonFilterType
+     */
+    protected function getEasyadmin_Filter_Type_ComparisonService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterTypeTrait.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\ComparisonFilterType.php';
+
+        return $this->privates['easyadmin.filter.type.comparison'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\ComparisonFilterType();
+    }
+
+    /**
+     * Gets the private 'easyadmin.filter.type.date' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\DateTimeFilterType
+     */
+    protected function getEasyadmin_Filter_Type_DateService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterTypeTrait.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\DateTimeFilterType.php';
+
+        return $this->privates['easyadmin.filter.type.date'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\DateTimeFilterType('Symfony\\Component\\Form\\Extension\\Core\\Type\\DateType');
+    }
+
+    /**
+     * Gets the private 'easyadmin.filter.type.dateinterval' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\ComparisonFilterType
+     */
+    protected function getEasyadmin_Filter_Type_DateintervalService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterTypeTrait.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\ComparisonFilterType.php';
+
+        return $this->privates['easyadmin.filter.type.dateinterval'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\ComparisonFilterType('Symfony\\Component\\Form\\Extension\\Core\\Type\\DateIntervalType', [], '', ['type' => 'datetime']);
+    }
+
+    /**
+     * Gets the private 'easyadmin.filter.type.datetime' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\DateTimeFilterType
+     */
+    protected function getEasyadmin_Filter_Type_DatetimeService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterTypeTrait.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\DateTimeFilterType.php';
+
+        return $this->privates['easyadmin.filter.type.datetime'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\DateTimeFilterType();
+    }
+
+    /**
+     * Gets the private 'easyadmin.filter.type.decimal' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\NumericFilterType
+     */
+    protected function getEasyadmin_Filter_Type_DecimalService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterTypeTrait.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\NumericFilterType.php';
+
+        return $this->privates['easyadmin.filter.type.decimal'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\NumericFilterType('Symfony\\Component\\Form\\Extension\\Core\\Type\\NumberType', ['input' => 'string']);
+    }
+
+    /**
+     * Gets the private 'easyadmin.filter.type.entity' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\EntityFilterType
+     */
+    protected function getEasyadmin_Filter_Type_EntityService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterTypeTrait.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\EntityFilterType.php';
+
+        return $this->privates['easyadmin.filter.type.entity'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\EntityFilterType();
+    }
+
+    /**
+     * Gets the private 'easyadmin.filter.type.float' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\NumericFilterType
+     */
+    protected function getEasyadmin_Filter_Type_FloatService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterTypeTrait.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\NumericFilterType.php';
+
+        return $this->privates['easyadmin.filter.type.float'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\NumericFilterType();
+    }
+
+    /**
+     * Gets the private 'easyadmin.filter.type.integer' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\NumericFilterType
+     */
+    protected function getEasyadmin_Filter_Type_IntegerService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterTypeTrait.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\NumericFilterType.php';
+
+        return $this->privates['easyadmin.filter.type.integer'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\NumericFilterType('Symfony\\Component\\Form\\Extension\\Core\\Type\\IntegerType');
+    }
+
+    /**
+     * Gets the private 'easyadmin.filter.type.text' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\TextFilterType
+     */
+    protected function getEasyadmin_Filter_Type_TextService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\TextFilterType.php';
+
+        return $this->privates['easyadmin.filter.type.text'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\TextFilterType();
+    }
+
+    /**
+     * Gets the private 'easyadmin.filter.type.textarea' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\TextFilterType
+     */
+    protected function getEasyadmin_Filter_Type_TextareaService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\TextFilterType.php';
+
+        return $this->privates['easyadmin.filter.type.textarea'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\TextFilterType('Symfony\\Component\\Form\\Extension\\Core\\Type\\TextareaType');
+    }
+
+    /**
+     * Gets the private 'easyadmin.filter.type.time' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\DateTimeFilterType
+     */
+    protected function getEasyadmin_Filter_Type_TimeService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\FilterTypeTrait.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\DateTimeFilterType.php';
+
+        return $this->privates['easyadmin.filter.type.time'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\DateTimeFilterType('Symfony\\Component\\Form\\Extension\\Core\\Type\\TimeType');
+    }
+
+    /**
+     * Gets the private 'easyadmin.filter.type_guesser.doctrine' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Guesser\DoctrineOrmFilterTypeGuesser
+     */
+    protected function getEasyadmin_Filter_TypeGuesser_DoctrineService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeGuesserInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\doctrine-bridge\\Form\\DoctrineOrmTypeGuesser.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Guesser\\DoctrineOrmFilterTypeGuesser.php';
+
+        return $this->privates['easyadmin.filter.type_guesser.doctrine'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Guesser\DoctrineOrmFilterTypeGuesser(($this->services['doctrine'] ?? $this->getDoctrineService()));
+    }
+
+    /**
+     * Gets the private 'easyadmin.form.type' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminFormType
+     */
+    protected function getEasyadmin_Form_TypeService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\EasyAdminFormType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\TypeConfiguratorInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\CodeEditorTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\TextareaTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\AutocompleteTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\CollectionTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\CheckboxTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\Configurator\\ChoiceFilterTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\EntityTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\IvoryCKEditorTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\FOSCKEditorTypeConfigurator.php';
+
+        return $this->privates['easyadmin.form.type'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminFormType(($this->services['easyadmin.config.manager'] ?? $this->getEasyadmin_Config_ManagerService()), [9 => ($this->privates['easyadmin.form.type.configurator.code_editor'] ?? ($this->privates['easyadmin.form.type.configurator.code_editor'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\CodeEditorTypeConfigurator())), 8 => ($this->privates['easyadmin.form.type.configurator.textarea'] ?? ($this->privates['easyadmin.form.type.configurator.textarea'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\TextareaTypeConfigurator())), 7 => ($this->privates['easyadmin.form.type.configurator.autocomplete'] ?? ($this->privates['easyadmin.form.type.configurator.autocomplete'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\AutocompleteTypeConfigurator())), 6 => ($this->privates['easyadmin.form.type.configurator.collection'] ?? ($this->privates['easyadmin.form.type.configurator.collection'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\CollectionTypeConfigurator())), 5 => ($this->privates['easyadmin.form.type.configurator.checkbox'] ?? ($this->privates['easyadmin.form.type.configurator.checkbox'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\CheckboxTypeConfigurator())), 4 => ($this->privates['easyadmin.filter.type.configurator.choice'] ?? ($this->privates['easyadmin.filter.type.configurator.choice'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\Configurator\ChoiceFilterTypeConfigurator())), 3 => ($this->privates['easyadmin.form.type.configurator.type'] ?? $this->getEasyadmin_Form_Type_Configurator_TypeService()), 2 => ($this->privates['easyadmin.form.type.configurator.entity'] ?? ($this->privates['easyadmin.form.type.configurator.entity'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\EntityTypeConfigurator())), 1 => ($this->privates['easyadmin.form.type.configurator.ivory_ckeditor'] ?? ($this->privates['easyadmin.form.type.configurator.ivory_ckeditor'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\IvoryCKEditorTypeConfigurator())), 0 => ($this->privates['easyadmin.form.type.configurator.fos_ckeditor'] ?? ($this->privates['easyadmin.form.type.configurator.fos_ckeditor'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\FOSCKEditorTypeConfigurator()))], ($this->services['easyadmin.security.authorization_checker'] ?? $this->getEasyadmin_Security_AuthorizationCheckerService()));
+    }
+
+    /**
+     * Gets the private 'easyadmin.form.type.autocomplete' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType
+     */
+    protected function getEasyadmin_Form_Type_AutocompleteService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\DataMapperInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\EasyAdminAutocompleteType.php';
+
+        return $this->privates['easyadmin.form.type.autocomplete'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType(($this->services['easyadmin.config.manager'] ?? $this->getEasyadmin_Config_ManagerService()));
+    }
+
+    /**
+     * Gets the private 'easyadmin.form.type.batch' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminBatchFormType
+     */
+    protected function getEasyadmin_Form_Type_BatchService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\EasyAdminBatchFormType.php';
+
+        return $this->privates['easyadmin.form.type.batch'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminBatchFormType(($this->services['easyadmin.config.manager'] ?? $this->getEasyadmin_Config_ManagerService()));
+    }
+
+    /**
+     * Gets the private 'easyadmin.form.type.configurator.type' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\TypeConfigurator
+     */
+    protected function getEasyadmin_Form_Type_Configurator_TypeService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\TypeConfiguratorInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\TypeConfigurator.php';
+
+        return $this->privates['easyadmin.form.type.configurator.type'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\TypeConfigurator(($this->services['easyadmin.config.manager'] ?? $this->getEasyadmin_Config_ManagerService()));
+    }
+
+    /**
+     * Gets the private 'easyadmin.form.type.divider' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminDividerType
+     */
+    protected function getEasyadmin_Form_Type_DividerService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\EasyAdminDividerType.php';
+
+        return $this->privates['easyadmin.form.type.divider'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminDividerType();
+    }
+
+    /**
+     * Gets the private 'easyadmin.form.type.extension' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Extension\EasyAdminExtension
+     */
+    protected function getEasyadmin_Form_Type_ExtensionService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeExtensionInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractTypeExtension.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Extension\\EasyAdminExtension.php';
+
+        return $this->privates['easyadmin.form.type.extension'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Extension\EasyAdminExtension(($this->services['request_stack'] ?? ($this->services['request_stack'] = new \Symfony\Component\HttpFoundation\RequestStack())));
+    }
+
+    /**
+     * Gets the private 'easyadmin.form.type.fileupload' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType
+     */
+    protected function getEasyadmin_Form_Type_FileuploadService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\DataMapperInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\FileUploadType.php';
+
+        return $this->privates['easyadmin.form.type.fileupload'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\FileUploadType(\dirname(__DIR__, 4));
+    }
+
+    /**
+     * Gets the private 'easyadmin.form.type.filters' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminFiltersFormType
+     */
+    protected function getEasyadmin_Form_Type_FiltersService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\EasyAdminFiltersFormType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\TypeConfiguratorInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\CodeEditorTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\TextareaTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\AutocompleteTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\CollectionTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\CheckboxTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Filter\\Type\\Configurator\\ChoiceFilterTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\EntityTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\IvoryCKEditorTypeConfigurator.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\Configurator\\FOSCKEditorTypeConfigurator.php';
+
+        return $this->privates['easyadmin.form.type.filters'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminFiltersFormType(($this->services['easyadmin.config.manager'] ?? $this->getEasyadmin_Config_ManagerService()), [9 => ($this->privates['easyadmin.form.type.configurator.code_editor'] ?? ($this->privates['easyadmin.form.type.configurator.code_editor'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\CodeEditorTypeConfigurator())), 8 => ($this->privates['easyadmin.form.type.configurator.textarea'] ?? ($this->privates['easyadmin.form.type.configurator.textarea'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\TextareaTypeConfigurator())), 7 => ($this->privates['easyadmin.form.type.configurator.autocomplete'] ?? ($this->privates['easyadmin.form.type.configurator.autocomplete'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\AutocompleteTypeConfigurator())), 6 => ($this->privates['easyadmin.form.type.configurator.collection'] ?? ($this->privates['easyadmin.form.type.configurator.collection'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\CollectionTypeConfigurator())), 5 => ($this->privates['easyadmin.form.type.configurator.checkbox'] ?? ($this->privates['easyadmin.form.type.configurator.checkbox'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\CheckboxTypeConfigurator())), 4 => ($this->privates['easyadmin.filter.type.configurator.choice'] ?? ($this->privates['easyadmin.filter.type.configurator.choice'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Filter\Type\Configurator\ChoiceFilterTypeConfigurator())), 3 => ($this->privates['easyadmin.form.type.configurator.type'] ?? $this->getEasyadmin_Form_Type_Configurator_TypeService()), 2 => ($this->privates['easyadmin.form.type.configurator.entity'] ?? ($this->privates['easyadmin.form.type.configurator.entity'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\EntityTypeConfigurator())), 1 => ($this->privates['easyadmin.form.type.configurator.ivory_ckeditor'] ?? ($this->privates['easyadmin.form.type.configurator.ivory_ckeditor'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\IvoryCKEditorTypeConfigurator())), 0 => ($this->privates['easyadmin.form.type.configurator.fos_ckeditor'] ?? ($this->privates['easyadmin.form.type.configurator.fos_ckeditor'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\FOSCKEditorTypeConfigurator()))]);
+    }
+
+    /**
+     * Gets the private 'easyadmin.form.type.group' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminGroupType
+     */
+    protected function getEasyadmin_Form_Type_GroupService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\EasyAdminGroupType.php';
+
+        return $this->privates['easyadmin.form.type.group'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminGroupType();
+    }
+
+    /**
+     * Gets the private 'easyadmin.form.type.section' shared service.
+     *
+     * @return \EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminSectionType
+     */
+    protected function getEasyadmin_Form_Type_SectionService()
+    {
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormTypeInterface.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\AbstractType.php';
+        include_once \dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src\\Form\\Type\\EasyAdminSectionType.php';
+
+        return $this->privates['easyadmin.form.type.section'] = new \EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminSectionType();
+    }
+
+    /**
      * Gets the private 'error_handler.error_renderer.html' shared service.
      *
      * @return \Symfony\Component\ErrorHandler\ErrorRenderer\HtmlErrorRenderer
@@ -3675,7 +4358,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\ChoiceList\\Factory\\PropertyAccessDecorator.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\ChoiceList\\Factory\\DefaultChoiceListFactory.php';
 
-        return $this->privates['form.choice_list_factory.cached'] = new \Symfony\Component\Form\ChoiceList\Factory\CachingFactoryDecorator(new \Symfony\Component\Form\ChoiceList\Factory\PropertyAccessDecorator(new \Symfony\Component\Form\ChoiceList\Factory\DefaultChoiceListFactory(), ($this->privates['property_accessor'] ?? $this->getPropertyAccessorService())));
+        return $this->privates['form.choice_list_factory.cached'] = new \Symfony\Component\Form\ChoiceList\Factory\CachingFactoryDecorator(new \Symfony\Component\Form\ChoiceList\Factory\PropertyAccessDecorator(new \Symfony\Component\Form\ChoiceList\Factory\DefaultChoiceListFactory(), ($this->services['easyadmin.property_accessor'] ?? $this->getEasyadmin_PropertyAccessorService())));
     }
 
     /**
@@ -3685,19 +4368,51 @@ class App_KernelDevDebugContainer extends Container
      */
     protected function getForm_RegistryService()
     {
-        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormRegistryInterface.php';
-        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormRegistry.php';
-        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\FormExtensionInterface.php';
-        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\DependencyInjection\\DependencyInjectionExtension.php';
-        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\ResolvedFormTypeFactoryInterface.php';
-        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\DataCollector\\Proxy\\ResolvedTypeFactoryDataCollectorProxy.php';
-        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\ResolvedFormTypeFactory.php';
-
         return $this->privates['form.registry'] = new \Symfony\Component\Form\FormRegistry([0 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension(new \Symfony\Component\DependencyInjection\Argument\ServiceLocator($this->getService, [
+            'easyadmin.filter.type.array' => ['privates', 'easyadmin.filter.type.array', 'getEasyadmin_Filter_Type_ArrayService', false],
+            'easyadmin.filter.type.boolean' => ['privates', 'easyadmin.filter.type.boolean', 'getEasyadmin_Filter_Type_BooleanService', false],
+            'easyadmin.filter.type.choice' => ['privates', 'easyadmin.filter.type.choice', 'getEasyadmin_Filter_Type_ChoiceService', false],
+            'easyadmin.filter.type.comparison' => ['privates', 'easyadmin.filter.type.comparison', 'getEasyadmin_Filter_Type_ComparisonService', false],
+            'easyadmin.filter.type.date' => ['privates', 'easyadmin.filter.type.date', 'getEasyadmin_Filter_Type_DateService', false],
+            'easyadmin.filter.type.dateinterval' => ['privates', 'easyadmin.filter.type.dateinterval', 'getEasyadmin_Filter_Type_DateintervalService', false],
+            'easyadmin.filter.type.datetime' => ['privates', 'easyadmin.filter.type.datetime', 'getEasyadmin_Filter_Type_DatetimeService', false],
+            'easyadmin.filter.type.decimal' => ['privates', 'easyadmin.filter.type.decimal', 'getEasyadmin_Filter_Type_DecimalService', false],
+            'easyadmin.filter.type.entity' => ['privates', 'easyadmin.filter.type.entity', 'getEasyadmin_Filter_Type_EntityService', false],
+            'easyadmin.filter.type.float' => ['privates', 'easyadmin.filter.type.float', 'getEasyadmin_Filter_Type_FloatService', false],
+            'easyadmin.filter.type.integer' => ['privates', 'easyadmin.filter.type.integer', 'getEasyadmin_Filter_Type_IntegerService', false],
+            'easyadmin.filter.type.text' => ['privates', 'easyadmin.filter.type.text', 'getEasyadmin_Filter_Type_TextService', false],
+            'easyadmin.filter.type.textarea' => ['privates', 'easyadmin.filter.type.textarea', 'getEasyadmin_Filter_Type_TextareaService', false],
+            'easyadmin.filter.type.time' => ['privates', 'easyadmin.filter.type.time', 'getEasyadmin_Filter_Type_TimeService', false],
+        ], [
+            'easyadmin.filter.type.array' => '?',
+            'easyadmin.filter.type.boolean' => '?',
+            'easyadmin.filter.type.choice' => '?',
+            'easyadmin.filter.type.comparison' => '?',
+            'easyadmin.filter.type.date' => '?',
+            'easyadmin.filter.type.dateinterval' => '?',
+            'easyadmin.filter.type.datetime' => '?',
+            'easyadmin.filter.type.decimal' => '?',
+            'easyadmin.filter.type.entity' => '?',
+            'easyadmin.filter.type.float' => '?',
+            'easyadmin.filter.type.integer' => '?',
+            'easyadmin.filter.type.text' => '?',
+            'easyadmin.filter.type.textarea' => '?',
+            'easyadmin.filter.type.time' => '?',
+        ]), [], new RewindableGenerator(function () {
+            return new \EmptyIterator();
+        }, 0)), 1 => new \Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension(new \Symfony\Component\DependencyInjection\Argument\ServiceLocator($this->getService, [
             'App\\Form\\AvisType' => ['privates', 'App\\Form\\AvisType', 'getAvisTypeService', false],
             'App\\Form\\CoursType' => ['privates', 'App\\Form\\CoursType', 'getCoursTypeService', false],
             'App\\Form\\MatiereType' => ['privates', 'App\\Form\\MatiereType', 'getMatiereTypeService', false],
             'App\\Form\\ProfesseurType' => ['privates', 'App\\Form\\ProfesseurType', 'getProfesseurTypeService', false],
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminAutocompleteType' => ['privates', 'easyadmin.form.type.autocomplete', 'getEasyadmin_Form_Type_AutocompleteService', false],
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminBatchFormType' => ['privates', 'easyadmin.form.type.batch', 'getEasyadmin_Form_Type_BatchService', false],
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminDividerType' => ['privates', 'easyadmin.form.type.divider', 'getEasyadmin_Form_Type_DividerService', false],
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminFiltersFormType' => ['privates', 'easyadmin.form.type.filters', 'getEasyadmin_Form_Type_FiltersService', false],
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminFormType' => ['privates', 'easyadmin.form.type', 'getEasyadmin_Form_TypeService', false],
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminGroupType' => ['privates', 'easyadmin.form.type.group', 'getEasyadmin_Form_Type_GroupService', false],
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminSectionType' => ['privates', 'easyadmin.form.type.section', 'getEasyadmin_Form_Type_SectionService', false],
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\FileUploadType' => ['privates', 'easyadmin.form.type.fileupload', 'getEasyadmin_Form_Type_FileuploadService', false],
             'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType' => ['privates', 'form.type.entity', 'getForm_Type_EntityService', false],
             'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType' => ['privates', 'form.type.choice', 'getForm_Type_ChoiceService', false],
             'Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType' => ['services', 'form.type.file', 'getForm_Type_FileService', false],
@@ -3707,6 +4422,14 @@ class App_KernelDevDebugContainer extends Container
             'App\\Form\\CoursType' => '?',
             'App\\Form\\MatiereType' => '?',
             'App\\Form\\ProfesseurType' => '?',
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminAutocompleteType' => '?',
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminBatchFormType' => '?',
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminDividerType' => '?',
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminFiltersFormType' => '?',
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminFormType' => '?',
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminGroupType' => '?',
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\EasyAdminSectionType' => '?',
+            'EasyCorp\\Bundle\\EasyAdminBundle\\Form\\Type\\FileUploadType' => '?',
             'Symfony\\Bridge\\Doctrine\\Form\\Type\\EntityType' => '?',
             'Symfony\\Component\\Form\\Extension\\Core\\Type\\ChoiceType' => '?',
             'Symfony\\Component\\Form\\Extension\\Core\\Type\\FileType' => '?',
@@ -3718,14 +4441,16 @@ class App_KernelDevDebugContainer extends Container
             yield 3 => ($this->privates['form.type_extension.upload.validator'] ?? $this->getForm_TypeExtension_Upload_ValidatorService());
             yield 4 => ($this->privates['form.type_extension.csrf'] ?? $this->getForm_TypeExtension_CsrfService());
             yield 5 => ($this->privates['form.type_extension.form.data_collector'] ?? $this->getForm_TypeExtension_Form_DataCollectorService());
-        }, 6), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RepeatedType' => new RewindableGenerator(function () {
+            yield 6 => ($this->privates['easyadmin.form.type.extension'] ?? $this->getEasyadmin_Form_Type_ExtensionService());
+        }, 7), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\RepeatedType' => new RewindableGenerator(function () {
             yield 0 => ($this->privates['form.type_extension.repeated.validator'] ?? ($this->privates['form.type_extension.repeated.validator'] = new \Symfony\Component\Form\Extension\Validator\Type\RepeatedTypeValidatorExtension()));
         }, 1), 'Symfony\\Component\\Form\\Extension\\Core\\Type\\SubmitType' => new RewindableGenerator(function () {
             yield 0 => ($this->privates['form.type_extension.submit.validator'] ?? ($this->privates['form.type_extension.submit.validator'] = new \Symfony\Component\Form\Extension\Validator\Type\SubmitTypeValidatorExtension()));
         }, 1)], new RewindableGenerator(function () {
             yield 0 => ($this->privates['form.type_guesser.validator'] ?? $this->getForm_TypeGuesser_ValidatorService());
             yield 1 => ($this->privates['form.type_guesser.doctrine'] ?? $this->getForm_TypeGuesser_DoctrineService());
-        }, 2))], new \Symfony\Component\Form\Extension\DataCollector\Proxy\ResolvedTypeFactoryDataCollectorProxy(new \Symfony\Component\Form\ResolvedFormTypeFactory(), ($this->privates['data_collector.form'] ?? $this->getDataCollector_FormService())));
+            yield 2 => ($this->services['easyadmin.form.guesser.missing_doctrine_orm_type_guesser'] ?? $this->getEasyadmin_Form_Guesser_MissingDoctrineOrmTypeGuesserService());
+        }, 3))], new \Symfony\Component\Form\Extension\DataCollector\Proxy\ResolvedTypeFactoryDataCollectorProxy(new \Symfony\Component\Form\ResolvedFormTypeFactory(), ($this->privates['data_collector.form'] ?? $this->getDataCollector_FormService())));
     }
 
     /**
@@ -3781,7 +4506,7 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Core\\Type\\BaseType.php';
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\form\\Extension\\Core\\Type\\FormType.php';
 
-        return $this->privates['form.type.form'] = new \Symfony\Component\Form\Extension\Core\Type\FormType(($this->privates['property_accessor'] ?? $this->getPropertyAccessorService()));
+        return $this->privates['form.type.form'] = new \Symfony\Component\Form\Extension\Core\Type\FormType(($this->services['easyadmin.property_accessor'] ?? $this->getEasyadmin_PropertyAccessorService()));
     }
 
     /**
@@ -4536,19 +5261,6 @@ class App_KernelDevDebugContainer extends Container
     }
 
     /**
-     * Gets the private 'property_accessor' shared service.
-     *
-     * @return \Symfony\Component\PropertyAccess\PropertyAccessor
-     */
-    protected function getPropertyAccessorService()
-    {
-        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\property-access\\PropertyAccessorInterface.php';
-        include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\property-access\\PropertyAccessor.php';
-
-        return $this->privates['property_accessor'] = new \Symfony\Component\PropertyAccess\PropertyAccessor(false, false, new \Symfony\Component\Cache\Adapter\ArrayAdapter(0, false), true);
-    }
-
-    /**
      * Gets the private 'property_info' shared service.
      *
      * @return \Symfony\Component\PropertyInfo\PropertyInfoExtractor
@@ -5186,7 +5898,7 @@ class App_KernelDevDebugContainer extends Container
             'translation.loader.res' => '?',
             'translation.loader.xliff' => '?',
             'translation.loader.yml' => '?',
-        ]), new \Symfony\Component\Translation\Formatter\MessageFormatter(new \Symfony\Component\Translation\IdentityTranslator()), 'en', ['translation.loader.php' => [0 => 'php'], 'translation.loader.yml' => [0 => 'yaml', 1 => 'yml'], 'translation.loader.xliff' => [0 => 'xlf', 1 => 'xliff'], 'translation.loader.po' => [0 => 'po'], 'translation.loader.mo' => [0 => 'mo'], 'translation.loader.qt' => [0 => 'ts'], 'translation.loader.csv' => [0 => 'csv'], 'translation.loader.res' => [0 => 'res'], 'translation.loader.dat' => [0 => 'dat'], 'translation.loader.ini' => [0 => 'ini'], 'translation.loader.json' => [0 => 'json']], ['cache_dir' => ($this->targetDir.''.'/translations'), 'debug' => true, 'resource_files' => ['af' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.af.xlf')], 'ar' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.ar.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.ar.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.ar.xlf')], 'az' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.az.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.az.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.az.xlf')], 'be' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.be.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.be.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.be.xlf')], 'bg' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.bg.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.bg.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.bg.xlf')], 'ca' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.ca.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.ca.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.ca.xlf')], 'cs' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.cs.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.cs.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.cs.xlf')], 'cy' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.cy.xlf')], 'da' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.da.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.da.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.da.xlf')], 'de' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.de.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.de.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.de.xlf')], 'el' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.el.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.el.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.el.xlf')], 'en' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.en.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.en.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.en.xlf')], 'es' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.es.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.es.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.es.xlf')], 'et' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.et.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.et.xlf')], 'eu' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.eu.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.eu.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.eu.xlf')], 'fa' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.fa.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.fa.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.fa.xlf')], 'fi' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.fi.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.fi.xlf')], 'fr' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.fr.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.fr.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.fr.xlf')], 'gl' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.gl.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.gl.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.gl.xlf')], 'he' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.he.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.he.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.he.xlf')], 'hr' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.hr.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.hr.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.hr.xlf')], 'hu' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.hu.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.hu.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.hu.xlf')], 'hy' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.hy.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.hy.xlf')], 'id' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.id.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.id.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.id.xlf')], 'it' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.it.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.it.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.it.xlf')], 'ja' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.ja.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.ja.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.ja.xlf')], 'lb' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.lb.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.lb.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.lb.xlf')], 'lt' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.lt.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.lt.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.lt.xlf')], 'lv' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.lv.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.lv.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.lv.xlf')], 'mn' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.mn.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.mn.xlf')], 'nb' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.nb.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.nb.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.nb.xlf')], 'nl' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.nl.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.nl.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.nl.xlf')], 'nn' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.nn.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.nn.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.nn.xlf')], 'no' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.no.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.no.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.no.xlf')], 'pl' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.pl.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.pl.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.pl.xlf')], 'pt' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.pt.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.pt.xlf')], 'pt_BR' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.pt_BR.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.pt_BR.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.pt_BR.xlf')], 'ro' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.ro.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.ro.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.ro.xlf')], 'ru' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.ru.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.ru.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.ru.xlf')], 'sk' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.sk.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.sk.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.sk.xlf')], 'sl' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.sl.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.sl.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.sl.xlf')], 'sq' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.sq.xlf')], 'sr_Cyrl' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.sr_Cyrl.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.sr_Cyrl.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.sr_Cyrl.xlf')], 'sr_Latn' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.sr_Latn.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.sr_Latn.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.sr_Latn.xlf')], 'sv' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.sv.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.sv.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.sv.xlf')], 'th' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.th.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.th.xlf')], 'tl' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.tl.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.tl.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.tl.xlf')], 'tr' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.tr.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.tr.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.tr.xlf')], 'uk' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.uk.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.uk.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.uk.xlf')], 'vi' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.vi.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.vi.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.vi.xlf')], 'zh_CN' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.zh_CN.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.zh_CN.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.zh_CN.xlf')], 'zh_TW' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.zh_TW.xlf')], 'pt_PT' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.pt_PT.xlf')]], 'scanned_directories' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations'), 3 => (\dirname(__DIR__, 4).'/translations'), 4 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle/translations'), 5 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bundle/translations'), 6 => (\dirname(__DIR__, 4).'\\vendor\\twig\\extra-bundle\\src/translations'), 7 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\web-profiler-bundle/translations'), 8 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\monolog-bundle/translations'), 9 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\debug-bundle/translations'), 10 => (\dirname(__DIR__, 4).'\\vendor\\sensio\\framework-extra-bundle\\src/translations'), 11 => (\dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle/translations'), 12 => (\dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-migrations-bundle/translations'), 13 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-bundle/translations'), 14 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\maker-bundle\\src/translations')], 'cache_vary' => ['scanned_directories' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations'), 3 => 'translations', 4 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle/translations'), 5 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bundle/translations'), 6 => (\dirname(__DIR__, 4).'\\vendor\\twig\\extra-bundle\\src/translations'), 7 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\web-profiler-bundle/translations'), 8 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\monolog-bundle/translations'), 9 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\debug-bundle/translations'), 10 => (\dirname(__DIR__, 4).'\\vendor\\sensio\\framework-extra-bundle\\src/translations'), 11 => (\dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle/translations'), 12 => (\dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-migrations-bundle/translations'), 13 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-bundle/translations'), 14 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\maker-bundle\\src/translations')]]]);
+        ]), new \Symfony\Component\Translation\Formatter\MessageFormatter(new \Symfony\Component\Translation\IdentityTranslator()), 'en', ['translation.loader.php' => [0 => 'php'], 'translation.loader.yml' => [0 => 'yaml', 1 => 'yml'], 'translation.loader.xliff' => [0 => 'xlf', 1 => 'xliff'], 'translation.loader.po' => [0 => 'po'], 'translation.loader.mo' => [0 => 'mo'], 'translation.loader.qt' => [0 => 'ts'], 'translation.loader.csv' => [0 => 'csv'], 'translation.loader.res' => [0 => 'res'], 'translation.loader.dat' => [0 => 'dat'], 'translation.loader.ini' => [0 => 'ini'], 'translation.loader.json' => [0 => 'json']], ['cache_dir' => ($this->targetDir.''.'/translations'), 'debug' => true, 'resource_files' => ['af' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.af.xlf')], 'ar' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.ar.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.ar.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.ar.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.ar.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.ar.xlf')], 'az' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.az.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.az.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.az.xlf')], 'be' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.be.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.be.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.be.xlf')], 'bg' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.bg.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.bg.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.bg.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.bg.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.bg.xlf')], 'ca' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.ca.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.ca.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.ca.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.ca.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.ca.xlf')], 'cs' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.cs.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.cs.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.cs.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.cs.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.cs.xlf')], 'cy' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.cy.xlf')], 'da' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.da.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.da.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.da.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.da.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.da.xlf')], 'de' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.de.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.de.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.de.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.de.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.de.xlf')], 'el' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.el.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.el.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.el.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.el.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.el.xlf')], 'en' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.en.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.en.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.en.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.en.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.en.xlf')], 'es' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.es.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.es.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.es.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.es.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.es.xlf')], 'et' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.et.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.et.xlf')], 'eu' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.eu.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.eu.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.eu.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.eu.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.eu.xlf')], 'fa' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.fa.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.fa.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.fa.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.fa.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.fa.xlf')], 'fi' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.fi.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.fi.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.fi.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.fi.xlf')], 'fr' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.fr.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.fr.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.fr.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.fr.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.fr.xlf')], 'gl' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.gl.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.gl.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.gl.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.gl.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.gl.xlf')], 'he' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.he.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.he.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.he.xlf')], 'hr' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.hr.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.hr.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.hr.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.hr.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.hr.xlf')], 'hu' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.hu.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.hu.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.hu.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.hu.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.hu.xlf')], 'hy' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.hy.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.hy.xlf')], 'id' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.id.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.id.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.id.xlf')], 'it' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.it.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.it.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.it.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.it.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.it.xlf')], 'ja' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.ja.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.ja.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.ja.xlf')], 'lb' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.lb.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.lb.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.lb.xlf')], 'lt' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.lt.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.lt.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.lt.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.lt.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.lt.xlf')], 'lv' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.lv.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.lv.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.lv.xlf')], 'mn' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.mn.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.mn.xlf')], 'nb' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.nb.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.nb.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.nb.xlf')], 'nl' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.nl.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.nl.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.nl.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.nl.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.nl.xlf')], 'nn' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.nn.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.nn.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.nn.xlf')], 'no' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.no.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.no.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.no.xlf')], 'pl' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.pl.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.pl.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.pl.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.pl.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.pl.xlf')], 'pt' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.pt.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.pt.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.pt.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.pt.xlf')], 'pt_BR' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.pt_BR.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.pt_BR.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.pt_BR.xlf')], 'ro' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.ro.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.ro.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.ro.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.ro.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.ro.xlf')], 'ru' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.ru.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.ru.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.ru.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.ru.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.ru.xlf')], 'sk' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.sk.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.sk.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.sk.xlf')], 'sl' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.sl.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.sl.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.sl.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.sl.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.sl.xlf')], 'sq' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.sq.xlf')], 'sr_Cyrl' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.sr_Cyrl.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.sr_Cyrl.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.sr_Cyrl.xlf')], 'sr_Latn' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.sr_Latn.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.sr_Latn.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.sr_Latn.xlf')], 'sv' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.sv.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.sv.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.sv.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.sv.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.sv.xlf')], 'th' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.th.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.th.xlf')], 'tl' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.tl.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.tl.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.tl.xlf')], 'tr' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.tr.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.tr.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.tr.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.tr.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.tr.xlf')], 'uk' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.uk.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.uk.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.uk.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.uk.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.uk.xlf')], 'vi' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.vi.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.vi.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.vi.xlf')], 'zh_CN' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.zh_CN.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations\\validators.zh_CN.xlf'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.zh_CN.xlf'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.zh_CN.xlf'), 4 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.zh_CN.xlf')], 'zh_TW' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations\\validators.zh_TW.xlf')], 'pt_PT' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations\\security.pt_PT.xlf')], 'sr_RS' => [0 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\EasyAdminBundle.sr_RS.xlf'), 1 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations\\messages.sr_RS.xlf')]], 'scanned_directories' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations'), 4 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle/translations'), 5 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bundle/translations'), 6 => (\dirname(__DIR__, 4).'\\vendor\\twig\\extra-bundle\\src/translations'), 7 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\web-profiler-bundle/translations'), 8 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\monolog-bundle/translations'), 9 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\debug-bundle/translations'), 10 => (\dirname(__DIR__, 4).'\\vendor\\sensio\\framework-extra-bundle\\src/translations'), 11 => (\dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle/translations'), 12 => (\dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-migrations-bundle/translations'), 13 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-bundle/translations'), 14 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\maker-bundle\\src/translations'), 15 => (\dirname(__DIR__, 4).'/translations')], 'cache_vary' => ['scanned_directories' => [0 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\validator/Resources/translations'), 1 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\form/Resources/translations'), 2 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-core/Resources/translations'), 3 => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/translations'), 4 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle/translations'), 5 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bundle/translations'), 6 => (\dirname(__DIR__, 4).'\\vendor\\twig\\extra-bundle\\src/translations'), 7 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\web-profiler-bundle/translations'), 8 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\monolog-bundle/translations'), 9 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\debug-bundle/translations'), 10 => (\dirname(__DIR__, 4).'\\vendor\\sensio\\framework-extra-bundle\\src/translations'), 11 => (\dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle/translations'), 12 => (\dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-migrations-bundle/translations'), 13 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\security-bundle/translations'), 14 => (\dirname(__DIR__, 4).'\\vendor\\symfony\\maker-bundle\\src/translations'), 15 => 'translations']]]);
 
         $instance->setConfigCacheFactory(($this->privates['config_cache_factory'] ?? $this->getConfigCacheFactoryService()));
         $instance->setFallbackLocales([0 => 'en']);
@@ -5243,6 +5955,35 @@ class App_KernelDevDebugContainer extends Container
         include_once \dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge\\Form\\TwigRendererEngine.php';
 
         return $this->privates['twig.form.renderer'] = new \Symfony\Component\Form\FormRenderer(new \Symfony\Bridge\Twig\Form\TwigRendererEngine($this->parameters['twig.form.resources'], ($this->services['twig'] ?? $this->getTwigService())), ($this->services['security.csrf.token_manager'] ?? $this->getSecurity_Csrf_TokenManagerService()));
+    }
+
+    /**
+     * Gets the private 'twig.loader.native_filesystem' shared service.
+     *
+     * @return \Twig\Loader\FilesystemLoader
+     */
+    protected function getTwig_Loader_NativeFilesystemService()
+    {
+        $this->privates['twig.loader.native_filesystem'] = $instance = new \Twig\Loader\FilesystemLoader([], \dirname(__DIR__, 4));
+
+        $instance->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle/Resources/views'), 'Framework');
+        $instance->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\framework-bundle/Resources/views'), '!Framework');
+        $instance->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\web-profiler-bundle/Resources/views'), 'WebProfiler');
+        $instance->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\web-profiler-bundle/Resources/views'), '!WebProfiler');
+        $instance->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\debug-bundle/Resources/views'), 'Debug');
+        $instance->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\debug-bundle/Resources/views'), '!Debug');
+        $instance->addPath((\dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle/Resources/views'), 'Doctrine');
+        $instance->addPath((\dirname(__DIR__, 4).'\\vendor\\doctrine\\doctrine-bundle/Resources/views'), '!Doctrine');
+        $instance->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\security-bundle/Resources/views'), 'Security');
+        $instance->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\security-bundle/Resources/views'), '!Security');
+        $instance->addPath((\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/views'), 'EasyAdmin');
+        $instance->addPath((\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src/Resources/views'), '!EasyAdmin');
+        $instance->addPath((\dirname(__DIR__, 4).'/templates'));
+        $instance->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge/Resources/views/Email'), 'email');
+        $instance->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge/Resources/views/Email'), '!email');
+        $instance->addPath((\dirname(__DIR__, 4).'\\vendor\\symfony\\twig-bridge/Resources/views/Form'));
+
+        return $instance;
     }
 
     /**
@@ -5587,6 +6328,7 @@ class App_KernelDevDebugContainer extends Container
                 'DoctrineMigrationsBundle' => 'Doctrine\\Bundle\\MigrationsBundle\\DoctrineMigrationsBundle',
                 'SecurityBundle' => 'Symfony\\Bundle\\SecurityBundle\\SecurityBundle',
                 'MakerBundle' => 'Symfony\\Bundle\\MakerBundle\\MakerBundle',
+                'EasyAdminBundle' => 'EasyCorp\\Bundle\\EasyAdminBundle\\EasyAdminBundle',
             ],
             'kernel.bundles_metadata' => [
                 'FrameworkBundle' => [
@@ -5632,6 +6374,10 @@ class App_KernelDevDebugContainer extends Container
                 'MakerBundle' => [
                     'path' => (\dirname(__DIR__, 4).'\\vendor\\symfony\\maker-bundle\\src'),
                     'namespace' => 'Symfony\\Bundle\\MakerBundle',
+                ],
+                'EasyAdminBundle' => [
+                    'path' => (\dirname(__DIR__, 4).'\\vendor\\easycorp\\easyadmin-bundle\\src'),
+                    'namespace' => 'EasyCorp\\Bundle\\EasyAdminBundle',
                 ],
             ],
             'kernel.charset' => 'UTF-8',
@@ -5787,6 +6533,101 @@ class App_KernelDevDebugContainer extends Container
             'security.authentication.session_strategy.strategy' => 'migrate',
             'security.access.always_authenticate_before_granting' => false,
             'security.authentication.hide_user_not_found' => true,
+            'easyadmin.config' => [
+                'entities' => [
+                    'Professeur' => [
+                        'class' => 'App\\Entity\\Professeur',
+                        'name' => 'Professeur',
+                    ],
+                    'Matiere' => [
+                        'class' => 'App\\Entity\\Matiere',
+                        'name' => 'Matiere',
+                    ],
+                    'Avis' => [
+                        'class' => 'App\\Entity\\Avis',
+                        'name' => 'Avis',
+                    ],
+                    'Cours' => [
+                        'class' => 'App\\Entity\\Cours',
+                        'name' => 'Cours',
+                    ],
+                    'Salle' => [
+                        'class' => 'App\\Entity\\Salle',
+                        'name' => 'Salle',
+                    ],
+                ],
+                'site_name' => 'EasyAdmin',
+                'formats' => [
+                    'date' => 'Y-m-d',
+                    'time' => 'H:i:s',
+                    'datetime' => 'F j, Y H:i',
+                    'dateinterval' => '%y Year(s) %m Month(s) %d Day(s)',
+                ],
+                'disabled_actions' => [
+
+                ],
+                'translation_domain' => 'messages',
+                'user' => [
+                    'display_name' => true,
+                    'display_avatar' => true,
+                    'name_property_path' => '__toString',
+                    'avatar_property_path' => NULL,
+                ],
+                'design' => [
+                    'brand_color' => 'hsl(230, 55%, 60%)',
+                    'form_theme' => [
+                        0 => '@EasyAdmin/form/bootstrap_4.html.twig',
+                    ],
+                    'assets' => [
+                        'css' => [
+
+                        ],
+                        'js' => [
+
+                        ],
+                        'favicon' => [
+                            'path' => 'favicon.ico',
+                            'mime_type' => 'image/x-icon',
+                        ],
+                    ],
+                    'menu' => [
+
+                    ],
+                ],
+                'list' => [
+                    'actions' => [
+
+                    ],
+                    'collapse_actions' => false,
+                    'batch_actions' => [
+
+                    ],
+                    'max_results' => 15,
+                    'item_permission' => NULL,
+                ],
+                'search' => [
+
+                ],
+                'edit' => [
+                    'actions' => [
+
+                    ],
+                    'item_permission' => NULL,
+                ],
+                'new' => [
+                    'actions' => [
+
+                    ],
+                    'item_permission' => NULL,
+                ],
+                'show' => [
+                    'actions' => [
+
+                    ],
+                    'max_results' => 10,
+                    'item_permission' => NULL,
+                ],
+            ],
             'data_collector.templates' => [
                 'data_collector.request' => [
                     0 => 'request',
@@ -5859,6 +6700,10 @@ class App_KernelDevDebugContainer extends Container
                 'mailer.data_collector' => [
                     0 => 'mailer',
                     1 => '@WebProfiler/Collector/mailer.html.twig',
+                ],
+                'easyadmin.data_collector' => [
+                    0 => 'easyadmin',
+                    1 => '@EasyAdmin/data_collector/easyadmin.html.twig',
                 ],
                 'data_collector.config' => [
                     0 => 'config',

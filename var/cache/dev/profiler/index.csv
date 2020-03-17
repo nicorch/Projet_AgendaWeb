@@ -23,3 +23,12 @@ d39db5,::1,GET,http://localhost:8001/avis/,1584438008,,200
 537183,::1,GET,http://localhost:8001/admin,1584438366,,301
 930e31,::1,GET,http://localhost:8001/admin/,1584438367,4bb771,500
 4bb771,::1,GET,http://localhost:8001/admin/,1584438367,,500
+b9d9be,::1,GET,http://localhost:8001/admin/,1584438546,,302
+9893be,::1,GET,http://localhost:8001/admin/?action=list&entity=Professeur,1584438548,,200
+9581a1,::1,GET,http://localhost:8001/admin/?action=list&entity=Cours&menuIndex=3&submenuIndex=-1,1584438557,,200
+aa39de,::1,GET,http://localhost:8001/admin/?action=list&entity=Avis&menuIndex=2&submenuIndex=-1,1584438562,,200
+59611f,::1,GET,http://localhost:8001/admin/?action=list&entity=Cours&menuIndex=3&submenuIndex=-1,1584438567,,200
+d97840,::1,GET,http://localhost:8001/admin/?action=new&entity=Cours&menuIndex=3&page=1&referer=%252Fadmin%252F%253Fentity%253DCours%2526action%253Dlist%2526menuIndex%253D3%2526submenuIndex%253D-1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&sortDirection=DESC&sortField=id&submenuIndex=-1,1584438571,6054ed,500
+6054ed,::1,GET,http://localhost:8001/admin/?action=new&entity=Cours&menuIndex=3&page=1&referer=%252Fadmin%252F%253Fentity%253DCours%2526action%253Dlist%2526menuIndex%253D3%2526submenuIndex%253D-1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&sortDirection=DESC&sortField=id&submenuIndex=-1,1584438571,,500
+3ead41,::1,GET,http://localhost:8001/admin/?action=new&entity=Cours&menuIndex=3&page=1&referer=%252Fadmin%252F%253Fentity%253DCours%2526action%253Dlist%2526menuIndex%253D3%2526submenuIndex%253D-1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&sortDirection=DESC&sortField=id&submenuIndex=-1,1584439314,30b664,500
+30b664,::1,GET,http://localhost:8001/admin/?action=new&entity=Cours&menuIndex=3&page=1&referer=%252Fadmin%252F%253Fentity%253DCours%2526action%253Dlist%2526menuIndex%253D3%2526submenuIndex%253D-1%2526sortField%253Did%2526sortDirection%253DDESC%2526page%253D1&sortDirection=DESC&sortField=id&submenuIndex=-1,1584439314,,500
