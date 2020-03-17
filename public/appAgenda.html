@@ -1,27 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Document</title>
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <body>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script>
-            var app = new Vue({
-                el: '#app',
-                data: {
+    <title>Agenda des cours</title>
+</head>
 
-                },
-                methods: {
+<body>
 
-                }
-            });
-        </script>
-    </body>
+    <div id="app" class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="col s8">
+
+                </div>
+                <div class="col s2">
+                    
+                </div>
+                <div class="col s2">
+
+                </div>
+            </div>
+
+            <div class="col s12">
+                <table class="table" width=100%>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+
+        var app = new Vue({
+            el: '#app',
+            components: {
+            },
+            data: {
+                heure = 00,
+                minutes = 00,
+                trueMin = true
+            },
+            methods: {
+
+            }
+        });
+    </script>
+</body>
 
 </html>
