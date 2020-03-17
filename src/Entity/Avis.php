@@ -25,7 +25,7 @@ class Avis
 
     /**
      * @ORM\Column(type="integer")
-     * @Assert\Range(min=0, max=5)
+     * @Assert\Range(min=0, max=5, notInRangeMessage="La note doit être comprise entre {{ min }} et {{ max }}.")
      */
     private $note;
 
