@@ -49,6 +49,24 @@ class Cours
      */
     private $matiere;
 
+    public function toArray(){
+        return [
+            'id' => $this->getId(),
+            'dateHeureDebut' => $this->getDateHeureDebut(),
+            'dateHeureFin' => $this->getDateHeureFin(),
+            'type' => $this->getType(),
+            'professeur' => array_map(function ($professeur){
+                return $professeur->toArray();
+            }, $this->getProfesseur()->toArray()),
+            'matiere' => array_map(function ($matiere){
+                return $matiere->toArray();
+            }, $this->getMatiere()->toArray()),
+            'salle' => array_map(function ($salle){
+                return $salle->toArray();
+            }, $this->getSalle()->toArray()),
+        ];
+    }
+
     public function getId(): ?int
     {
         return $this->id;

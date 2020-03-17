@@ -44,6 +44,14 @@ class Matiere
         $this->cours = new ArrayCollection();
     }
 
+    public function toArray(){
+        return [
+            'id'  => $this->getId(),
+            'titre'  => $this->getTitre(),
+            'reference'  => $this->getReference()
+        ];
+    }
+    
     public function getId(): ?int
     {
         return $this->id;

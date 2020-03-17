@@ -37,6 +37,15 @@ class Avis
      */
     private $professeur;
 
+    public function toArray(){
+        return [
+            'id' => $this->getId(),
+            'note' => $this->getNote(),
+            'commentaire' => $this->getCommentaire(),
+            'emailEtudiant' => $this->getEmailEtudiant(),
+        ];
+    }
+    
     public function getId(): ?int
     {
         return $this->id;
