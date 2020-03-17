@@ -236,13 +236,38 @@
           <parameter key="class">App\Entity\Avis</parameter>
           <parameter key="name">Avis</parameter>
         </parameter>
-        <parameter key="Cours" type="collection">
-          <parameter key="class">App\Entity\Cours</parameter>
-          <parameter key="name">Cours</parameter>
-        </parameter>
         <parameter key="Salle" type="collection">
           <parameter key="class">App\Entity\Salle</parameter>
           <parameter key="name">Salle</parameter>
+        </parameter>
+        <parameter key="Cours" type="collection">
+          <parameter key="class">App\Entity\Cours</parameter>
+          <parameter key="list" type="collection">
+            <parameter>id</parameter>
+            <parameter type="collection">
+              <parameter key="property">dateHeureDebut</parameter>
+              <parameter key="label">Date heure debut</parameter>
+              <parameter key="type">datetime</parameter>
+            </parameter>
+            <parameter type="collection">
+              <parameter key="property">dateHeureFin</parameter>
+              <parameter key="label">Date heure fin</parameter>
+              <parameter key="type">datetime</parameter>
+            </parameter>
+            <parameter type="collection">
+              <parameter key="property">type</parameter>
+              <parameter key="label">Type</parameter>
+              <parameter key="type">choice</parameter>
+              <parameter key="type_options" type="collection">
+                <parameter key="choices" type="collection">
+                  <parameter key="TD">TD</parameter>
+                  <parameter key="TP">TP</parameter>
+                  <parameter key="Cours">Cours</parameter>
+                </parameter>
+              </parameter>
+            </parameter>
+          </parameter>
+          <parameter key="name">Cours</parameter>
         </parameter>
       </parameter>
       <parameter key="site_name">EasyAdmin</parameter>
