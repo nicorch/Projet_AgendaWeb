@@ -55,6 +55,24 @@ class Professeur
         $this->cours = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->prenom . ' ' .$this->nom;
+    }
+
+    public function toArray()
+    {
+        return[
+            'id' => $this->getId(),
+            'nom' => $this->getNom(),
+            'prenom' => $this->getPrenom(),
+            'email' => $this->getEmail(),
+            'matieres' => array_map(function ($matieres){
+                return $matieres->toArray();
+            }, $this->getMatieres()->toArray()),
+        ];
+    }
+
     public function getId(): ?int
     {
         return $this->id;
