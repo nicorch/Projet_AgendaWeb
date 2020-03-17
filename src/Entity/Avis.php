@@ -3,10 +3,16 @@
 namespace App\Entity;
 
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\AvisRepository")
+ * @UniqueEntity(
+ *      fields={"professeur","emailEtudiant"},
+ *      errorPath="emailEtudiant",
+ *      message="Cet etudiant à déjà noté ce professeur"
+ * )
  */
 class Avis
 {
