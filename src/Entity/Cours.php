@@ -49,7 +49,8 @@ class Cours
      */
     private $matiere;
 
-    public function toArray(){
+    public function toArray()
+    {
         return [
             'id' => $this->getId(),
             'dateHeureDebut' => $this->getDateHeureDebut(),

@@ -38,6 +38,11 @@ class Matiere
      */
     private $cours;
 
+    public function __toString()
+    {
+        return $this->titre . ' ' .$this->reference;
+    }
+
     public function __construct()
     {
         $this->professeurs = new ArrayCollection();
@@ -51,7 +56,7 @@ class Matiere
             'reference'  => $this->getReference()
         ];
     }
-    
+
     public function getId(): ?int
     {
         return $this->id;
