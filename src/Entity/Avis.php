@@ -37,7 +37,12 @@ class Avis
      */
     private $professeur;
 
-    public function toArray(){
+    public function __toString()
+    {
+        return $this->note . ' ' .$this->emailEtudiant;
+    }
+    public function toArray()
+    {
         return [
             'id' => $this->getId(),
             'note' => $this->getNote(),
@@ -45,7 +50,7 @@ class Avis
             'emailEtudiant' => $this->getEmailEtudiant(),
         ];
     }
-    
+
     public function getId(): ?int
     {
         return $this->id;
