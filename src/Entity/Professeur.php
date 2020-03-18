@@ -74,10 +74,7 @@ class Professeur
             'email' => $this->getEmail(),
             'matieres' => array_map(function ($matiere){
                 return $matiere->toArray();
-            }, $this->getMatiere()->toArray()),
-            'cours' => array_map(function ($cours){
-                return $cours->toArray();
-            }, $this->getCours()->toArray()),
+            }, $this->getMatieres()->toArray()),
         ];
     }
 
