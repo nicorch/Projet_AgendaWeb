@@ -19,22 +19,38 @@ class CoursRepository extends ServiceEntityRepository
         parent::__construct($registry, Cours::class);
     }
 
-    // /**
-    //  * @return Cours[] Returns an array of Cours objects
-    //  */
-    /*
-    public function findByExampleField($value)
+    /**
+     * @return Cours[] Returns an array of Cours objects
+     */
+    public function findByDate($date)
     {
+        $dateafter = new \DateTime($date->format('d-m-Y'));
+        $dateafter->modify('+1 day');
+        
         return $this->createQueryBuilder('c')
-            ->andWhere('c.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('c.id', 'ASC')
-            ->setMaxResults(10)
+            ->andWhere('c.dateHeureDebut >= :val')
+            ->andWhere('c.dateHeureFin < :dayafter')
+            ->setParameter('val', $date)
+            ->setParameter('dayafter', $dateafter)
+            ->orderBy('c.dateHeureDebut', 'ASC')
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+
+    // /**
+    //  * @return Cours[] Returns an array of Cours objects
+    //  */
+    // public function findBeforeDate($date)
+    // {
+    //     return $this->createQueryBuilder('c')
+    //         ->andWhere('c.dateHeureDebut >= :val')
+    //         ->setParameter('val', $date)
+    //         ->orderBy('c.dateHeureDebut', 'ASC')
+    //         ->getQuery()
+    //         ->getResult()
+    //     ;
+    // }
 
     /*
     public function findOneBySomeField($value): ?Cours

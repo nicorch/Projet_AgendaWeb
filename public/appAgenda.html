@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+<<<<<<< HEAD
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -259,13 +260,89 @@
             var app = new Vue({
                 el: '#app',
                 data: {
+=======
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+</head>
+>>>>>>> 3d381d6be5e2ff333abec1e73d952a513168f319
 
+<body>
+    <div class="row">
+        <button type="button" class="btn btn-info" v-on:click="getProfesseurs()">btn</button>
+    </div>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                apiBase: 'http://127.0.0.1:8000/api',
+                professeurs: [],
+                profNotes: [],
+                professeurSelectionne: null,
+                avis: [],
+                nouvelAvis: {},
+                mesAvis: [],
+            },
+            methods: {
+                getProfesseurs: function () {
+                    axios.get(this.apiBase + '/professeurs')
+                        .then(response => {
+                            this.professeurs = response.data;
+                            console.log(response.data);
+                            
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
                 },
-                methods: {
-
+                getProfesseursAvis: function (professeurId) {
+                    this.nouvelAvis = {
+                        note: 0,
+                        commentaire: "",
+                        emailEtudiant: "",
+                    }
+                    axios.get(this.apiBase + '/professeur/' + professeurId + '/avis')
+                        .then(response => {
+                            this.avis = response.data;
+                            this.professeurSelectionne = this.professeurs.find(professeur => professeur
+                                .id === professeurId)
+                        }).catch(error => {
+                            console.log(error);
+                        });
+                },
+                putProfesseurAvis: function () {
+                    axios.put(this.apiBase + '/professeur/' + this.professeurSelectionne.id + '/avis', this
+                            .nouvelAvis)
+                        .then(response => {
+                            this.avis.push(response.data)
+                            this.profNotes.push(this.professeurSelectionne)
+                            this.mesAvis.push(response.data)
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                },
+                deleteAvis: function (avis) {
+                    axios.delete(this.apiBase + '/avis/' + avis.id)
+                        .then(response => {
+                            this.getProfesseursAvis(this.professeurSelectionne.id)
+                            this.mesAvis.splice(this.mesAvis.indexOf(avis), 1)
+                            this.profNotes.splice(this.profNotes.indexOf(this.professeurSelectionne), 1)
+                        }).catch(error => {
+                            console.log(error);
+                        })
                 }
-            });
-        </script>
-    </body>
+            },
+            mounted() {
+                this.getProfesseurs();
+            }
+        });
+    </script>
+</body>
 
 </html>

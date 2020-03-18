@@ -40,7 +40,7 @@ class Matiere
 
     public function __toString()
     {
-        return $this->titre . ' ' .$this->reference;
+        return $this->titre . ' (' . $this->reference . ')';
     }
 
     public function __construct()

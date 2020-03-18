@@ -72,18 +72,12 @@ class Cours
     {
         return [
             'id' => $this->getId(),
-            'dateHeureDebut' => $this->getDateHeureDebut(),
-            'dateHeureFin' => $this->getDateHeureFin(),
-            'type' => $this->getType(),
-            'professeur' => array_map(function ($professeur){
-                return $professeur->toArray();
-            }, $this->getProfesseur()->toArray()),
-            'matiere' => array_map(function ($matiere){
-                return $matiere->toArray();
-            }, $this->getMatiere()->toArray()),
-            'salle' => array_map(function ($salle){
-                return $salle->toArray();
-            }, $this->getSalle()->toArray()),
+            'dateHeureDebut' => $this->getDateHeureDebut()->format('d-m-Y H:i'),
+            'dateHeureFin' => $this->getDateHeureFin()->format('d-m-Y H:i'),
+            'type' => $this->getType()->toArray(),
+            'professeur' => $this->getProfesseur()->toArray(),
+            'matiere' => $this->getMatiere()->toArray(),
+            'salle' => $this->getSalle()->toArray(),
         ];
     }
 
