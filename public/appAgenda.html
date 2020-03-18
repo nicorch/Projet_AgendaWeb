@@ -34,16 +34,14 @@
                         <div class="col-6" v-for="unCours in cours">
                             <div class="card">
                                 <div class="card-body">
-                                    <h5 class="card-title"></h5>
+                                    <h5 class="card-title">{{ unCours.type.nom }} {{ unCours.matiere.titre }} - {{ unCours.matiere.reference }}</h5>
                                     <p class="card-text">
                                         {{ unCours.dateHeureDebut }}<br>
                                         {{ unCours.dateHeureFin }}<br>
                                     </p>
                                     <p>
-                                        {{ unCours.type.nom }}
-                                        {{ unCours.professeur }}
-                                        {{ unCours.matiere }}
-                                        {{ unCours.salle }}
+                                        {{ unCours.salle.numero }}
+                                        {{ unCours.professeur.nom }} {{ unCours.professeur.prenom }}      
                                     </p>
                                 </div>
                                 <div class="card-footer text-muted">
@@ -87,7 +85,6 @@
                             .then(response => {
                                 this.professeurs = response.data;
                                 console.log(response.data);
-
                             })
                             .catch(error => {
                                 console.log(error);
@@ -130,12 +127,18 @@
                                 console.log(error);
                             })
                     },
+                    getDateFormat: function () {
+                        return this.dateDuJour.getDate()+"-"+(parseInt(this.dateDuJour.getMonth())+1)+"-"+this.dateDuJour.getFullYear();
+                    },
+                    setDateAuFormat: function () {
+                        this.date = this.getDateFormat();
+                    },
                     getCoursOfTheDay: function () {
                         axios.get(this.apiBase + '/cours/current')
                             .then(response => {
                                 this.cours = response.data;
                                 this.dateDuJour = new Date();
-                                this.date = this.dateDuJour.getDate()+"-"+(parseInt(this.dateDuJour.getMonth())+1)+"-"+this.dateDuJour.getFullYear();
+                                this.setDateAuFormat();
                                 console.log(response.data);
                             })
                             .catch(error => {
@@ -143,13 +146,11 @@
                             });
                     },
                     getCoursOfTheDayBefore: function(){
-                        this.dateDuJour.setDate(this.dateDuJour.getDate() - 1);
-                        console.log( this.dateDuJour.getDate()+"-"+(parseInt(this.dateDuJour.getMonth())+1)+"-"+this.dateDuJour.getFullYear());
-                        
-                        axios.get(this.apiBase + '/cours/before/' + this.dateDuJour.getDate()+"-"+(parseInt(this.dateDuJour.getMonth())+1)+"-"+this.dateDuJour.getFullYear())
+                        this.dateDuJour.setDate(this.dateDuJour.getDate() - 1);                        
+                        axios.get(this.apiBase + '/cours/before/' + this.getDateFormat())
                             .then(response => {
                                 this.cours = response.data;
-                                this.date = this.dateDuJour.getDate()+"-"+(parseInt(this.dateDuJour.getMonth())+1)+"-"+this.dateDuJour.getFullYear();
+                                this.setDateAuFormat();
                                 console.log(response.data);
                             })
                             .catch(error => {
@@ -158,10 +159,10 @@
                     },
                     getCoursOfTheDayAfter: function(){
                         this.dateDuJour.setDate(this.dateDuJour.getDate() + 1);
-                        axios.get(this.apiBase + '/cours/after/' + this.dateDuJour.getDate()+"-"+(parseInt(this.dateDuJour.getMonth())+1)+"-"+this.dateDuJour.getFullYear())
+                        axios.get(this.apiBase + '/cours/after/' + this.getDateFormat() )
                             .then(response => {
                                 this.cours = response.data;
-                                this.date = this.dateDuJour.getDate()+"-"+(parseInt(this.dateDuJour.getMonth())+1)+"-"+this.dateDuJour.getFullYear();
+                                this.setDateAuFormat();
                                 console.log(response.data);
                             })
                             .catch(error => {
