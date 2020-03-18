@@ -5,6 +5,7 @@ namespace App\Controller\Api;
 use App\Entity\Avis;
 use App\Form\AvisType;
 use App\Entity\Professeur;
+use App\Entity\Cours;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -100,6 +101,26 @@ class ProfesseurController extends AbstractController
         return $this->json(null, Response::HTTP_NO_CONTENT); // CODE 204
     }
     
+    /**
+     * @Route("/cours", name="api_cours", methods={"GET"})
+     */
+    public function getCours(EntityManagerInterface $em)
+    {
+        return $this->json(array_map(function ($cours) {
+            return $cours->toArray();
+        }, $em->getRepository(Cours::class)->findAll()));
+    }
+
+    /**
+     * @Route("/salle", name="api_salle", methods={"GET"})
+     */
+    public function getSalle(EntityManagerInterface $em)
+    {
+        return $this->json(array_map(function ($salle) {
+            return $salle->toArray();
+        }, $em->getRepository(Salle::class)->findAll()));
+    }
+
     private function getErrorMessages(\Symfony\Component\Form\Form $form) {
         $errors = [];
         foreach($form->getErrors() as $error){

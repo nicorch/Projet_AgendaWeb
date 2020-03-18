@@ -62,18 +62,27 @@ class Cours
     private $type;
 
     public function __construct() {
-        $this->dateHeureDebut = new \DateTime('now');
-        $date = new \DateTime('now');
+        $this->dateHeureDebut = new \DateTime('now + 1 hour');
+        $date = new \DateTime('now + 1 hour');
         $date->modify('+2 hours');
         $this->dateHeureFin = $date;
     }
 
     public function toArray()
     {
+        $dateDebut = $this->getDateHeureDebut();
+        if($dateDebut instanceof \DateTime){
+            $valueDateDebut = $dateDebut->format('Y-m-d H:i:s');
+        }
+        $dateFin = $this->getDateHeureFin();
+        if($dateFin instanceof \DateTime){
+            $valueDateFin = $dateFin->format('Y-m-d H:i:s');
+        }
+        
         return [
             'id' => $this->getId(),
-            'dateHeureDebut' => $this->getDateHeureDebut(),
-            'dateHeureFin' => $this->getDateHeureFin(),
+            'dateHeureDebut' => $valueDateDebut,
+            'dateHeureFin' => $valueDateFin,
             'type' => $this->getType(),
             'professeur' => array_map(function ($professeur){
                 return $professeur->toArray();
