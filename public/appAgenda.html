@@ -15,6 +15,9 @@
                         Agenda des cours
                     </h1>
                     <div class="row">
+                        <div class="col-12">
+                            DATE : {{ date }}
+                        </div>
                         <div class="col-2">
                             <button @click="getCoursOfTheDayBefore()"type="button" class="btn btn-primary">
 								Jour précédent
@@ -76,6 +79,7 @@
                     mesAvis: [],
                     cours: [],
                     date: null,
+                    dateDuJour: null,
                 },
                 methods: {
                     getProfesseurs: function () {
@@ -130,6 +134,8 @@
                         axios.get(this.apiBase + '/cours/current')
                             .then(response => {
                                 this.cours = response.data;
+                                this.dateDuJour = new Date();
+                                this.date = this.dateDuJour.getDate()+"-"+(parseInt(this.dateDuJour.getMonth())+1)+"-"+this.dateDuJour.getFullYear();
                                 console.log(response.data);
                             })
                             .catch(error => {
@@ -137,10 +143,13 @@
                             });
                     },
                     getCoursOfTheDayBefore: function(){
-                        date = new DateTime();
-                        axios.get(this.apiBase + '/cours/before/' + date)
+                        this.dateDuJour.setDate(this.dateDuJour.getDate() - 1);
+                        console.log( this.dateDuJour.getDate()+"-"+(parseInt(this.dateDuJour.getMonth())+1)+"-"+this.dateDuJour.getFullYear());
+                        
+                        axios.get(this.apiBase + '/cours/before/' + this.dateDuJour.getDate()+"-"+(parseInt(this.dateDuJour.getMonth())+1)+"-"+this.dateDuJour.getFullYear())
                             .then(response => {
                                 this.cours = response.data;
+                                this.date = this.dateDuJour.getDate()+"-"+(parseInt(this.dateDuJour.getMonth())+1)+"-"+this.dateDuJour.getFullYear();
                                 console.log(response.data);
                             })
                             .catch(error => {
@@ -148,10 +157,11 @@
                             });
                     },
                     getCoursOfTheDayAfter: function(){
-                        date = new DateTime();
-                        axios.get(this.apiBase + '/cours/after/' + date)
+                        this.dateDuJour.setDate(this.dateDuJour.getDate() + 1);
+                        axios.get(this.apiBase + '/cours/after/' + this.dateDuJour.getDate()+"-"+(parseInt(this.dateDuJour.getMonth())+1)+"-"+this.dateDuJour.getFullYear())
                             .then(response => {
                                 this.cours = response.data;
+                                this.date = this.dateDuJour.getDate()+"-"+(parseInt(this.dateDuJour.getMonth())+1)+"-"+this.dateDuJour.getFullYear();
                                 console.log(response.data);
                             })
                             .catch(error => {

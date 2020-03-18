@@ -29,12 +29,11 @@ class CoursController extends AbstractController
     public function getCoursOfTheDayBefore(EntityManagerInterface $em, $date)
     {
         $dateActuelle = new \DateTime($date);
-        $date_before = $dateActuelle->modify('-1 day');
-        var_dump('recu: '.$date);
-        var_dump('nouvelle: '.$date_before->format('d-m-Y'));
+        // var_dump('recu: '.$date);
+        // ('nouvelle: '.$date_before->format('d-m-Y'));
         return $this->json(array_map(function ($cours) {
             return $cours->toArray();
-        }, $em->getRepository(Cours::class)->findByDate($date_before))); // On indique le format pour ne pas prendre en compte l'heure actuelle mais bien la journée
+        }, $em->getRepository(Cours::class)->findByDate($dateActuelle))); // On indique le format pour ne pas prendre en compte l'heure actuelle mais bien la journée
     }
 
     /**
@@ -43,12 +42,11 @@ class CoursController extends AbstractController
     public function getCoursOfTheDayAfter(EntityManagerInterface $em, $date)
     {
         $dateActuelle = new \DateTime($date);
-        $date_after = $dateActuelle->modify('+1 day');
-        var_dump('recu: '.$date);
-        var_dump('nouvelle: '.$date_after->format('d-m-Y'));
+        // var_dump('recu: '.$date);
+        // var_dump('nouvelle: '.$date_after->format('d-m-Y'));
         return $this->json(array_map(function ($cours) {
             return $cours->toArray();
-        }, $em->getRepository(Cours::class)->findByDate($date_after))); // On indique le format pour ne pas prendre en compte l'heure actuelle mais bien la journée
+        }, $em->getRepository(Cours::class)->findByDate($dateActuelle))); // On indique le format pour ne pas prendre en compte l'heure actuelle mais bien la journée
     }
 
     /**
