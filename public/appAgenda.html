@@ -15,6 +15,18 @@
                         Agenda des cours
                     </h1>
                     <div class="row">
+                        <div class="col-2">
+                            <button @click="getCoursOfTheDayBefore()"type="button" class="btn btn-primary">
+								Jour précédent
+                            </button>
+                        </div>
+                        <div class="col-2">
+                            <button @click="getCoursOfTheDayAfter()" type="button" class="btn btn-primary">
+								Jour suivant
+                            </button>
+                        </div>
+                    </div>
+                    <div class="row">
                         <div class="col-6" v-for="unCours in cours">
                             <div class="card">
                                 <div class="card-body">
