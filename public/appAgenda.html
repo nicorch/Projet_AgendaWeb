@@ -1,13 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<<<<<<< HEAD
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
-        <title>Document</title>
+        <title>Agenda</title>
     </head>
 
     <body>
@@ -17,332 +14,114 @@
                     <h1 class="text-center" style="margin-bottom: 100px;">
                         Agenda des cours
                     </h1>
-                    <table class="table table-sm">
-                        <thead>
-                            <tr>
-                                <th>
-                                    #
-                                </th>
-                                <th>
-                                    Cours
-                                </th>
-                                <th>
+                    <div class="row">
+                        <div class="col-6" v-for="professeur in professeurs">
+                            <div class="card" :class="{'bg-secondary' : professeur === professeurSelectionne}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ test }}</h5>
+                                    <p class="card-text">
+    
+                                    </p>
+                                </div>
+                                <div class="card-footer text-muted">
                                     <div class="row">
-                                        <div class="col-md-4">
+                                        <div class="col-8">
+                                            
                                         </div>
-                                        <div class="col-md-4">
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="row">
-                                                <div class="col-md-6">  
-                                                    <button type="button" class="btn btn-success">
-                                                        Jour précédent
-                                                    </button>
-                                                </div>
-                                                <div class="col-md-6"> 
-                                                    <button type="button" class="btn btn-success">
-                                                        Jour suivant
-                                                    </button>
-                                                </div>
-                                            </div>
+                                        <div class="col-4">
+                                            <button class="btn btn-primary"
+                                                v-on:click="getAvisByProfesseurId(professeur.id)">Avis</button>
                                         </div>
                                     </div>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    1
-                                </td>
-                                <td>
-                                    <div class="card" v-for="unAvis in avis">
-                                        <div class="card-body">
-                                            <h5 class="card-title"></h5>
-                                            <p class="card-text"></p>
-                                        </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    2
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    3
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    4
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    5
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    6
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    7
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    8
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    9
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    10
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    11
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    12
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    13
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    14
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    15
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    16
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    17
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    18
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    19
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    20
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    21
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    22
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    23
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    24
-                                </td>
-                                <td>
-                                    1
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
-        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script>
             var app = new Vue({
                 el: '#app',
                 data: {
-=======
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <title>Document</title>
-</head>
->>>>>>> 3d381d6be5e2ff333abec1e73d952a513168f319
+                    apiBase: 'http://localhost:8000/api',
+                    professeurs: [],
+                    profNotes: [],
+                    professeurSelectionne: null,
+                    avis: [],
+                    nouvelAvis: {},
+                    mesAvis: [],
+                    cours: [],
+                    test:"test",
+                },
+                methods: {
+                    getProfesseurs: function () {
+                        axios.get(this.apiBase + '/professeurs')
+                            .then(response => {
+                                this.professeurs = response.data;
+                                console.log(response.data);
 
-<body>
-    <div class="row">
-        <button type="button" class="btn btn-info" v-on:click="getProfesseurs()">btn</button>
-    </div>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vue"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                apiBase: 'http://127.0.0.1:8000/api',
-                professeurs: [],
-                profNotes: [],
-                professeurSelectionne: null,
-                avis: [],
-                nouvelAvis: {},
-                mesAvis: [],
-            },
-            methods: {
-                getProfesseurs: function () {
-                    axios.get(this.apiBase + '/professeurs')
-                        .then(response => {
-                            this.professeurs = response.data;
-                            console.log(response.data);
-                            
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        });
-                },
-                getProfesseursAvis: function (professeurId) {
-                    this.nouvelAvis = {
-                        note: 0,
-                        commentaire: "",
-                        emailEtudiant: "",
-                    }
-                    axios.get(this.apiBase + '/professeur/' + professeurId + '/avis')
-                        .then(response => {
-                            this.avis = response.data;
-                            this.professeurSelectionne = this.professeurs.find(professeur => professeur
-                                .id === professeurId)
-                        }).catch(error => {
-                            console.log(error);
-                        });
-                },
-                putProfesseurAvis: function () {
-                    axios.put(this.apiBase + '/professeur/' + this.professeurSelectionne.id + '/avis', this
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            });
+                    },
+                    getProfesseursAvis: function (professeurId) {
+                        this.nouvelAvis = {
+                            note: 0,
+                            commentaire: "",
+                            emailEtudiant: "",
+                        }
+                        axios.get(this.apiBase + '/professeur/' + professeurId + '/avis')
+                            .then(response => {
+                                this.avis = response.data;
+                                this.professeurSelectionne = this.professeurs.find(professeur => professeur
+                                    .id === professeurId)
+                            }).catch(error => {
+                                console.log(error);
+                            });
+                    },
+                    putProfesseurAvis: function () {
+                        axios.put(this.apiBase + '/professeur/' + this.professeurSelectionne.id + '/avis', this
                             .nouvelAvis)
-                        .then(response => {
-                            this.avis.push(response.data)
-                            this.profNotes.push(this.professeurSelectionne)
-                            this.mesAvis.push(response.data)
-                        })
-                        .catch(error => {
-                            console.log(error);
-                        })
+                            .then(response => {
+                                this.avis.push(response.data)
+                                this.profNotes.push(this.professeurSelectionne)
+                                this.mesAvis.push(response.data)
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            })
+                    },
+                    deleteAvis: function (avis) {
+                        axios.delete(this.apiBase + '/avis/' + avis.id)
+                            .then(response => {
+                                this.getProfesseursAvis(this.professeurSelectionne.id)
+                                this.mesAvis.splice(this.mesAvis.indexOf(avis), 1)
+                                this.profNotes.splice(this.profNotes.indexOf(this.professeurSelectionne), 1)
+                            }).catch(error => {
+                                console.log(error);
+                            })
+                    },
+                    getCurrentCours: function () {
+                        axios.get(this.apiBase + '/cours/current')
+                            .then(response => {
+                                this.cours = response.data;
+                                console.log(response.data);
+                            })
+                            .catch(error => {
+                                console.log(error);
+                            });
+                    },
                 },
-                deleteAvis: function (avis) {
-                    axios.delete(this.apiBase + '/avis/' + avis.id)
-                        .then(response => {
-                            this.getProfesseursAvis(this.professeurSelectionne.id)
-                            this.mesAvis.splice(this.mesAvis.indexOf(avis), 1)
-                            this.profNotes.splice(this.profNotes.indexOf(this.professeurSelectionne), 1)
-                        }).catch(error => {
-                            console.log(error);
-                        })
+                mounted() {
+                    this.getProfesseurs();
+                    //this.getCurrentCours();
                 }
-            },
-            mounted() {
-                this.getProfesseurs();
-            }
-        });
-    </script>
-</body>
-
+            });
+        </script>
+    </body>
 </html>
