@@ -11,7 +11,7 @@
         <div id="app" class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center" style="margin-bottom: 100px;">
+                    <h1 class="text-center" style="margin-bottom: 50px;">
                         Agenda des cours
                     </h1>
                     <div class="row">
@@ -30,28 +30,34 @@
                         </div>
                     </div>
                     <br>
-                    <div class="row">
-                        <div class="col-6" v-for="unCours in cours">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ unCours.type.nom }} {{ unCours.matiere.titre }} - {{ unCours.matiere.reference }}</h5>
-                                    <p class="card-text">
-                                        {{ unCours.dateHeureDebut }}<br>
-                                        {{ unCours.dateHeureFin }}<br>
-                                    </p>
-                                    <p>
-                                        {{ unCours.salle.numero }}
-                                        {{ unCours.professeur.nom }} {{ unCours.professeur.prenom }}      
-                                    </p>
-                                </div>
-                                <div class="card-footer text-muted">
-                                    <div class="row">
-                                        <div class="col-8">
-                                            
-                                        </div>
-                                        <div class="col-4">
-                                            <button class="btn btn-primary"
-                                                v-on:click="getAvisByProfesseurId(professeur.id)">Avis</button>
+                    <div id="div1" style="height: 500px;position:relative;">
+                        <div id="div2" style="max-height:100%;overflow:auto;border:1px solid red;">
+                            <div id="div3" style="height:1500px;border:5px solid yellow;">
+                                <div class="row" v-for="unCours in cours">
+                                    <div class="col-4" >
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title"><strong>{{ unCours.type.nom }} {{ unCours.matiere.titre }} - {{ unCours.matiere.reference }}</strong></h5><br>
+                                                <p class="card-text">
+                                                    {{ unCours.dateHeureDebut }}<br>
+                                                    {{ unCours.dateHeureFin }}<br>
+                                                </p>
+                                                <p>
+                                                    Salle: {{ unCours.salle.numero }}
+                                                    Professeur: {{ unCours.professeur.nom }} {{ unCours.professeur.prenom }}      
+                                                </p>
+                                            </div>
+                                            <div class="card-footer text-muted">
+                                                <div class="row">
+                                                    <div class="col-8">
+                                                        
+                                                    </div>
+                                                    <div class="col-4">
+                                                        <button class="btn btn-primary"
+                                                            v-on:click="getAvisByProfesseurId(professeur.id)">Avis</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
