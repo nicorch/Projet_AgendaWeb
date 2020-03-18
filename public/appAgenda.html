@@ -26,6 +26,7 @@
                             </button>
                         </div>
                     </div>
+                    <br>
                     <div class="row">
                         <div class="col-6" v-for="unCours in cours">
                             <div class="card">
@@ -34,6 +35,12 @@
                                     <p class="card-text">
                                         {{ unCours.dateHeureDebut }}<br>
                                         {{ unCours.dateHeureFin }}<br>
+                                    </p>
+                                    <p>
+                                        {{ unCours.type.nom }}
+                                        {{ unCours.professeur }}
+                                        {{ unCours.matiere }}
+                                        {{ unCours.salle }}
                                     </p>
                                 </div>
                                 <div class="card-footer text-muted">
