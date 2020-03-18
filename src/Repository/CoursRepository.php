@@ -25,7 +25,7 @@ class CoursRepository extends ServiceEntityRepository
     public function findByDate($date)
     {
         return $this->createQueryBuilder('c')
-            ->andWhere('c.dateHeureDebut > :val')
+            ->andWhere('c.dateHeureDebut >= :val')
             ->setParameter('val', $date)
             ->orderBy('c.dateHeureDebut', 'ASC')
             ->getQuery()

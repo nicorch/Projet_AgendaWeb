@@ -43,6 +43,13 @@ class TypeCours
         return $this->getNom();
     }
 
+    public function toArray(){
+        return [
+            'id' => $this->getId(),
+            'nom' => $this->getNom(),
+        ];
+    }
+
     public function getId(): ?int
     {
         return $this->id;

@@ -20,7 +20,7 @@ class CoursController extends AbstractController
     {
         return $this->json(array_map(function ($cours) {
             return $cours->toArray();
-        }, $em->getRepository(Cours::class)->findByDate(new \DateTime(date('d-m-Y')))));
+        }, $em->getRepository(Cours::class)->findByDate(new \DateTime(date('d-m-Y'))))); // On indique le format pour ne pas prendre en compte l'heure actuelle mais bien la journée
     }
 
     /**
