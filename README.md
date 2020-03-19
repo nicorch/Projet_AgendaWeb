@@ -33,6 +33,14 @@ Ajout de:
 
 Nous avons également repris les requêtes faites avec "Note ton prof"
 
+### Interface Symfony
+- Gerer les CRUD des entités :
+    - Professeur
+    - Matière
+    - Cours
+    - Avis
+- Accèder à l'interface VueJS
+
 ### Interface VueJS
 - Affichage des cours:
     - Placement sur le cadrillage en fonction des heures du cours
@@ -42,6 +50,9 @@ Nous avons également repris les requêtes faites avec "Note ton prof"
 - Le bouton "Ajouter un cours" permet de créer un nouveau cours, en renseignant les champs
 - Le bouton "Ajouter une matière" permet de créer une nouvelle matière, en renseignant les champs
 - En cliquant sur "AppAgenda", on accède à l'index symfony, pour voir et modifier directement les données en base
+
+
+
 
 # Utilisation de l'application
 Afin d'utiliser l'application correctement, il faut au préalable:
