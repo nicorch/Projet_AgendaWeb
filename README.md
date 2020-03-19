@@ -27,12 +27,15 @@ Ajout de:
 - GET Liste des cours: /api/cours
 - GET Liste des salles: /api/salle
 
+Nous avons également repris les requêtes faites avec "Note ton prof"
+
 ### Interface VueJS
 - Affichage des cours:
     - Placement sur le cadrillage en fonction des heures du cours
     - Nom, type, salle et professeur
 - Navigation entre les jours précédents et suivants
 - Ajout de "Note ton prof" après le calendrier
+- Le bouton "Ajouter un cours" permet de créer un nouveau cours, en renseignant les champs
 
 # Utilisation de l'application
 Afin d'utiliser l'application correctement, il faut au préalable:
