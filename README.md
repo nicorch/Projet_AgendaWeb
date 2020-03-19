@@ -38,6 +38,7 @@ Nous avons également repris les requêtes faites avec "Note ton prof"
 - Ajout de "Note ton prof" après le calendrier
 - Le bouton "Ajouter un cours" permet de créer un nouveau cours, en renseignant les champs
 - Le bouton "Ajouter une matière" permet de créer une nouvelle matière, en renseignant les champs
+- En cliquant sur "AppAgenda", on accède à l'index symfony, pour voir et modifier directement les données en base
 
 # Utilisation de l'application
 Afin d'utiliser l'application correctement, il faut au préalable:
