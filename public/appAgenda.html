@@ -67,30 +67,18 @@ width: 100%;height: 100%;margin: 0px;            }
                 AppAgenda
             </a>
         </nav>
-        <div class="row text-center">
-            <div class="col-12">
-                <h2>
-                    <i class="material-icons large" style="display: block;font-size: 50px;">event</i>
-                    Agenda
-                </h2>
-            </div>
-            <div class="col-12">
-                <h2>
-                    {{ date }}
-                </h2>
-            </div>
-        </div>
+        <nav class="navbar navbar-light bg-light">
+            <h2>
+                {{ date }}
+            </h2>
+            <a href="http://127.0.0.1:8000/cours/new_forcalendar" id="btnAddCours"class="btn btn-info btn-lg" role="button">Ajouter un cours</a>
+        </nav>
         <br>
             
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="row affichage">
-                        <div class="col-12">
-                            <div class="col">
-                            <a href="http://127.0.0.1:8000/cours/new_forcalendar" id="btnAddCours"class="btn btn-info btn-lg" role="button">Ajouter un cours</a>
-                            </div>
-                        </div>
                         <div id="div_btnPrecedent" class="col-2 text-center">
                             <button id="btnPrecedent" type="button" class="btn btn-light"
                                 @click="getCoursOfTheDayBefore()">Précédent</button>
