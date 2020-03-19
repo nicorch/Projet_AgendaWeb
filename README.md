@@ -1,5 +1,6 @@
 # Projet_AgendaWeb
-
+Nicolas Roche
+Xan Olazcuaga Garibal
 ## Fonctionnalités implémentées :
 
 ### Interface Easy Admin
@@ -36,6 +37,7 @@ Nous avons également repris les requêtes faites avec "Note ton prof"
 - Navigation entre les jours précédents et suivants
 - Ajout de "Note ton prof" après le calendrier
 - Le bouton "Ajouter un cours" permet de créer un nouveau cours, en renseignant les champs
+- Le bouton "Ajouter une matière" permet de créer une nouvelle matière, en renseignant les champs
 
 # Utilisation de l'application
 Afin d'utiliser l'application correctement, il faut au préalable:
