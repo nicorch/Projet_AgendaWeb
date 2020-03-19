@@ -9,6 +9,7 @@ Validateurs de données:
     - Lors de la création d'un cours, la date renseignée doit être avant la date du jour
     - La date de fin du cours doit être avant la date de début du cours
     - Tous les champs doivent être renseignés
+    - Les cours ne seront affichés que si l'heure contient les minutes : 00 ou 30, la validation etant faite sur le formulaire, le formatage n'est pas visible sur Easy Admin (passer par le formulaire symfony)
 - Avis:
     - La note doit être comprise entre 0 et 5
     - Tous les champs doivent être renseignés
