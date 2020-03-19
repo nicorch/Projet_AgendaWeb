@@ -3,9 +3,12 @@
 {% block title %}Matiere index{% endblock %}
 
 {% block body %}
-    <h1>Matiere index</h1>
-
-    <table class="table">
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Matiere index</h4>
+            <p class="card-text">
+            <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -27,11 +30,15 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="5">Pas de données trouvée</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <a href="{{ path('matiere_new') }}">Create new</a>
+    <a href="{{ path('matiere_new') }}">Créer nouveau</a></p>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

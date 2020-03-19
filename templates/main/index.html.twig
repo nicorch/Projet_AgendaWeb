@@ -4,43 +4,33 @@
 
 {% block body %}
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Gerer</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('avis_index') }}">Avis</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('matiere_index') }}">Matière</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('cours_index') }}">Cours</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ path('professeur_index') }}">Professeurs</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="">Salle</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 <div class="container">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    <a href="{{ path('avis_index') }}" class="waves-effect waves-light btn">Avis</a>
-    <a href="{{ path('matiere_index') }}" class="waves-effect waves-light btn">Matière</a>
-    <a href="{{ path('cours_index') }}" class="waves-effect waves-light btn">Cours</a>
-    <a href="{{ path('professeur_index') }}" class="waves-effect waves-light btn">Professeurs</a>
-    <a href="{{ path('main') }}" class="waves-effect waves-light btn disabled">Salle</a>
-
+  <br>
+  <a href="{{ path('vuejs') }}" class="btn-primary btn">Aller au vueJs</a>
 </div>
-<br>
-    <table class="table" width=100%>
-        <thead>
-            <tr>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            {% set heure = 00 %}
-            {% set minutes = 00 %}
-            {% set trueMin = true %}
-        {% for i in 1..68 %}
-            <tr>
-                <td width=5% style="border-right: 1px solid black">{{ heure }}:{{ minutes }}</td>
-                <td></td>
-                {% set heure = 1 + heure %}
-                {% if trueMin %}
-                    {% set minutes = 30 %}
-                        {% set trueMin = false %}
-                    {% else %}
-                        {% set minutes = 00 %}
-                        {% set trueMin = true %}
-                {% endif %}
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
 {% endblock %}

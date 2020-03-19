@@ -3,11 +3,17 @@
 {% block title %}Edit Cours{% endblock %}
 
 {% block body %}
-    <h1>Edit Cours</h1>
-
-    {{ include('cours/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('cours_index') }}">back to list</a>
-
-    {{ include('cours/_delete_form.html.twig') }}
+    <div class="container">
+    <br>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Edit un Cours</h4>
+                <p class="card-text">
+                    {{ include('cours/_form.html.twig', {'button_label': 'Modifier'}) }}
+                    {{ include('cours/_delete_form.html.twig') }}
+                    <a href="{{ path('cours_index') }}">Retour à la liste</a>
+                </p>
+            </div>
+        </div>
+    </div>
 {% endblock %}

@@ -3,32 +3,47 @@
 {% block title %}Cours{% endblock %}
 
 {% block body %}
-    <h1>Cours</h1>
 
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ cour.id }}</td>
-            </tr>
-            <tr>
-                <th>DateHeureDebut</th>
-                <td>{{ cour.dateHeureDebut ? cour.dateHeureDebut|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>DateHeureFin</th>
-                <td>{{ cour.dateHeureFin ? cour.dateHeureFin|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>Type</th>
-                <td>{{ cour.type }}</td>
-            </tr>
-        </tbody>
-    </table>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title">Cours</h4>
+            <p class="card-text">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ cour.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>DateHeureDebut</th>
+                        <td>{{ cour.dateHeureDebut ? cour.dateHeureDebut|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>DateHeureFin</th>
+                        <td>{{ cour.dateHeureFin ? cour.dateHeureFin|date('Y-m-d H:i:s') : '' }}</td>
+                    </tr>
+                    <tr>
+                        <th>Type</th>
+                        <td>{{ cour.type }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <center>
+            <a class="btn btn-primary" href="{{ path('cours_edit', {'id': cour.id}) }}">Modifier </a> <br>
 
-    <a href="{{ path('cours_index') }}">back to list</a>
+            {{ include('cours/_delete_form.html.twig') }}<br>
 
-    <a href="{{ path('cours_edit', {'id': cour.id}) }}">edit</a>
+            <a href="{{ path('cours_index') }}">Retour à la liste</a>
 
-    {{ include('cours/_delete_form.html.twig') }}
+
+        </center>
+
+            </p>
+        </div>
+    </div>
+</div>
+
+    
+
 {% endblock %}

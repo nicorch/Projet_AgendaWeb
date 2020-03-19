@@ -3,11 +3,17 @@
 {% block title %}Edit Professeur{% endblock %}
 
 {% block body %}
-    <h1>Edit Professeur</h1>
-
-    {{ include('professeur/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('professeur_index') }}">back to list</a>
-
-    {{ include('professeur/_delete_form.html.twig') }}
+    <div class="container">
+    <br>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Edit un Professeur</h4>
+                <p class="card-text">
+                    {{ include('professeur/_form.html.twig', {'button_label': 'Modifier'}) }}<br>
+                    <center>{{ include('professeur/_delete_form.html.twig') }}</center>
+                    <a href="{{ path('professeur_index') }}">Retour à la liste</a>
+                </p>
+            </div>
+        </div>
+    </div>
 {% endblock %}
