@@ -31,3 +31,9 @@ Ajout de:
     - Placement sur le cadrillage en fonction des heures du cours
     - Nom, type, salle et professeur
 - Navigation entre les jours précédents et suivants
+
+# Utilisation de l'application
+Afin d'utiliser l'application correctement, il faut au préalable:
+- **Lancer l'application sur _127.0.0.1_**
+- Créer dans Easy Admin les types de cours (TD, TP, Cours)
+- Créer un jeu de donnée
