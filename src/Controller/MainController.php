@@ -10,6 +10,14 @@ class MainController extends AbstractController
     /**
      * @Route("/", name="main")
      */
+    public function redirectToVueJS()
+    {
+        return $this->redirect('http://127.0.0.1:8000/appAgenda.html', 201);
+    }
+
+    /**
+     * @Route("/index", name="main_index")
+     */
     public function index()
     {
         return $this->render('main/index.html.twig', [

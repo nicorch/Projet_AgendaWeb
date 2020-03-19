@@ -326,32 +326,9 @@ width: 100%;height: 100%;margin: 0px;            }
                             // 
                             // rowDebut = $('#calendar tbody').find()
                             console.log($('#calendar tr').find("[data-time='"+heure+':'+minutes+":00']").length);
-                            console.log($('#calendar tr'));
                             
-                            rowDebut = document.querySelector("[data-time='"+heure+':'+minutes+":00']")
-                            console.log('row');
-                            console.log(rowDebut);
-                            
+                            rowDebut = document.querySelector("[data-time='"+heure+':'+minutes+":00']")                            
                             if (rowDebut) {
-                                /*html = '<div class="row">\
-                                    <div class="col-2">\
-                                        <center>'+cour.type.nom+'</center>\
-                                    </div>\
-                                    <div class="col-2 row">\
-                                        <center>\
-                                        <div class="col-12">Salle :</div>\
-                                        <div class="col-12">'+cour.salle.numero+'</div>\
-                                        </center>\
-                                    </div>\
-                                    <div class="col-8 row">\
-                                        <div class="col-12">\
-                                           '+ cour.matiere.titre + '-' + cour.matiere.reference+'\
-                                        </div>\
-                                        <div class="col-12">\
-                                            Professeur : '+ cour.professeur.nom +'\
-                                        </div>\
-                                    </div>\
-                                </div>';*/
                                 html = '<div class="row">\
                                             <div class="col-12">\
                                                 <center><strong>'+cour.type.nom + ' ' + cour.matiere.titre + '-' + cour.matiere.reference+'</strong></center>\
@@ -363,38 +340,23 @@ width: 100%;height: 100%;margin: 0px;            }
                                                 </p>\
                                             </div>\
                                         </div>';
-                                // html = '<div class="card"><div class="card-body">'+
-                                //                 '<h5 class="card-title"><strong>'+cour.type.nom+' | '+
-                                //                         cour.matiere.titre +' - '+ cour.matiere.reference +'</strong></h5><br>'+
-                                //                 '<p class="card-text">' +
-                                //                     cour.dateHeureDebut +'<br>'+cour.dateHeureFin +'<br></p><p>'+
-                                //                     'Salle: '+ cour.salle.numero  +
-                                //                     'Professeur: '+cour.professeur.nom +' '+cour.professeur.prenom +
-                                //                     '</p></div><div class="card-footer text-muted"><div class="row"><div class="col-8"></div><div class="col-4">\
-                                //                         <button class="btn btn-primary"\
-                                //                             v-on:click="getAvisByProfesseurId(professeur.id)">Avis</button>\
-                                //                     </div>\
-                                //                 </div>\
-                                //             </div>\
-                                //         </div>';
                                 content = rowDebut.insertCell(1);
                                 rowDebut.deleteCell(2);
                                 content.style.backgroundColor = "red"
                                 content.classList.add('cours');
                                 $(content).attr('rowspan',rowspan);
-                                // Width Cours
+                                // Width other tr
                                 $('#calendar tr').each(function (index,element)  {
                                     if ($(element).find('td.cours').length == 0) {
                                         element.insertCell(1);                                        
                                     }
                                 })
-                                
                                 $(content).html(html);
                                 $(content).focus();
-                                console.log();
                             
                             }
                         });
+                        firsttr = $('#calendar tr .cours').scrollIntoView();
                     }
                 },
                 getCoursOfTheDay: function () {
