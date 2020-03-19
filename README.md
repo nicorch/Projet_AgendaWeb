@@ -51,14 +51,12 @@ Nous avons également repris les requêtes faites avec "Note ton prof"
 - Le bouton "Ajouter une matière" permet de créer une nouvelle matière, en renseignant les champs
 - En cliquant sur "AppAgenda", on accède à l'index symfony, pour voir et modifier directement les données en base
 
-
-
-
 # Utilisation de l'application
 Afin d'utiliser l'application correctement, il faut au préalable:
 - **Lancer l'application sur _127.0.0.1_**
 - Créer dans Easy Admin les types de cours (TD, TP, Cours)
-- Créer un jeu de donnée
+- Créer un jeu de donnée via /admin et/ou interface symfony
+- Se rendre dans le VueJs
 
 ## Bugs
-Lors du changement de jour, le calendrier ne se refresh pas et écrit à la suite les cours des autres jours
+Lors du changement de jour, le calendrier ne se reset pas et écrit à la suite les cours des autres jours
