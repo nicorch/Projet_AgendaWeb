@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-        <title>Agenda</title>
-        
-    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+    <title>Agenda</title>
+
+</head>
+<style>
+            #calendar .fc-time {
+                border-right: 1px solid black;
+            }
+
+            #calendar {
+                height: 100%
+            }
+
+            #calendar tr {
+                border-bottom: 1px solid grey;
+                height: 30px;
+            }
+
+            .fc-calendar {
+                max-height: 630px;
+                overflow-y: scroll;
+            }
+
+            #calendar .fc-content {
+                width: 100%;
+            }
+            </style>
 <body>
     <div id="app">
         <nav class="navbar navbar-light bg-light">
@@ -21,59 +45,339 @@
         <div class="row text-center">
             <div class="col-12">
                 <h2>
-                <i class="material-icons large" style="display: block;font-size: 50px;">event</i>
-                Agenda
+                    <i class="material-icons large" style="display: block;font-size: 50px;">event</i>
+                    Agenda
                 </h2>
             </div>
             <div class="col-12">
                 <h2>
-                {{ date }}
+                    {{ date }}
                 </h2>
             </div>
         </div>
-        <div  class="container-fluid">
+        <br>
+            
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <h1 class="text-center" style="margin-bottom: 50px;">
-                        Agenda des cours
-                    </h1>
+                    <div class="row" style="height: 70vh">
+                        <div id="div_btnPrecedent" class="col-2 text-center"
+                            style="border-right: 1px solid black;padding: 5px; ">
+                            <button id="btnPrecedent" type="button" class="btn btn-light"
+                                style="width: 100%;height: 100%;margin: 0px;">Précèdent</button>
+                        </div>
+                        <div class="col-8">
+                            <div>
+                                <div class="fc-calendar">
+                                    <table id="calendar" class="">
+                                        <tbody>
+                                            <tr data-time="00:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>24h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="00:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+
+                                            <tr data-time="01:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>1h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="01:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="02:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>2h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="02:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="03:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>3h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="03:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="04:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>4h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="04:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="05:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>5h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="05:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="06:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>6h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="06:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="07:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>7h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="07:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="08:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>8h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="08:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="09:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>9h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="09:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="10:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>10h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="10:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="11:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>11h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="11:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="12:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>12h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="12:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="13:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>13h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="13:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="14:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>14h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="14:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="15:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>15h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="15:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="16:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>16h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="16:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="17:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>17h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="17:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="18:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>18h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="18:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="19:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>19h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="19:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="20:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>20h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="20:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="21:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>21h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="21:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="22:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>22h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="22:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="23:00:00">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                    <span>23h</span></td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                            <tr data-time="23:30:00" class="fc-minor">
+                                                <td class="fc-axis fc-time" style="width: 46.5156px;">
+                                                </td>
+                                                <td class="fc-content"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="div_btnSuivant" class="col-2 text-center"
+                            style="border-left: 1px solid black;padding: 5px; ">
+                            <button id="btnSuivant" type="button" class="btn btn-light"
+                                style="width: 100%;height: 100%;margin: 0px;">Suivant</button>
+                        </div>
+                    </div>
+
+
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    
+                    
+                    
                     <div class="row">
+
                         <div class="col-12">
                             DATE : {{ date }}
                         </div>
                         <div class="col-2">
-                            <button @click="getCoursOfTheDayBefore()"type="button" class="btn btn-primary">
-								Jour précédent
+                            <button @click="getCoursOfTheDayBefore()" type="button" class="btn btn-primary">
+                                Jour précédent
                             </button>
                         </div>
                         <div class="col-2">
                             <button @click="getCoursOfTheDayAfter()" type="button" class="btn btn-primary">
-								Jour suivant
+                                Jour suivant
                             </button>
                         </div>
                     </div>
-                    <br>
+
+                    
                     <div id="div1" style="height: 500px;position:relative;">
                         <div id="div2" style="max-height:100%;overflow:auto;border:1px solid red;">
                             <div id="div3" style="height:1500px;border:5px solid yellow;">
                                 <div class="row" v-for="unCours in cours">
-                                    <div class="col-4" >
+                                    <div class="col-4">
                                         <div class="card">
                                             <div class="card-body">
-                                                <h5 class="card-title"><strong>{{ unCours.type.nom }} {{ unCours.matiere.titre }} - {{ unCours.matiere.reference }}</strong></h5><br>
+                                                <h5 class="card-title"><strong>{{ unCours.type.nom }}
+                                                        {{ unCours.matiere.titre }} -
+                                                        {{ unCours.matiere.reference }}</strong></h5><br>
                                                 <p class="card-text">
                                                     {{ unCours.dateHeureDebut }}<br>
                                                     {{ unCours.dateHeureFin }}<br>
                                                 </p>
                                                 <p>
                                                     Salle: {{ unCours.salle.numero }}
-                                                    Professeur: {{ unCours.professeur.nom }} {{ unCours.professeur.prenom }}      
+                                                    Professeur: {{ unCours.professeur.nom }}
+                                                    {{ unCours.professeur.prenom }}
                                                 </p>
                                             </div>
                                             <div class="card-footer text-muted">
                                                 <div class="row">
                                                     <div class="col-8">
-                                                        
+
                                                     </div>
                                                     <div class="col-4">
                                                         <button class="btn btn-primary"
@@ -92,119 +396,161 @@
         </div>
     </div>
 
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script type="text/javascript">
-            var app = new Vue({
-                el: '#app',
-                data: {
-                    apiBase: 'http://127.0.0.1:8000/api',
-                    professeurs: [],
-                    profNotes: [],
-                    professeurSelectionne: null,
-                    avis: [],
-                    nouvelAvis: {},
-                    mesAvis: [],
-                    cours: [],
-                    date: null,
-                    dateDuJour: null,
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript">
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                apiBase: 'http://127.0.0.1:8000/api',
+                professeurs: [],
+                profNotes: [],
+                professeurSelectionne: null,
+                avis: [],
+                nouvelAvis: {},
+                mesAvis: [],
+                cours: [],
+                date: null,
+                dateDuJour: null,
+                calendrier: document.getElementById("calendar"),
+            },
+            methods: {
+                getProfesseurs: function () {
+                    axios.get(this.apiBase + '/professeurs')
+                        .then(response => {
+                            this.professeurs = response.data;
+                            console.log(response.data);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
                 },
-                methods: {
-                    getProfesseurs: function () {
-                        axios.get(this.apiBase + '/professeurs')
-                            .then(response => {
-                                this.professeurs = response.data;
-                                console.log(response.data);
-                            })
-                            .catch(error => {
-                                console.log(error);
-                            });
-                    },
-                    getProfesseursAvis: function (professeurId) {
-                        this.nouvelAvis = {
-                            note: 0,
-                            commentaire: "",
-                            emailEtudiant: "",
-                        }
-                        axios.get(this.apiBase + '/professeur/' + professeurId + '/avis')
-                            .then(response => {
-                                this.avis = response.data;
-                                this.professeurSelectionne = this.professeurs.find(professeur => professeur
-                                    .id === professeurId)
-                            }).catch(error => {
-                                console.log(error);
-                            });
-                    },
-                    putProfesseurAvis: function () {
-                        axios.put(this.apiBase + '/professeur/' + this.professeurSelectionne.id + '/avis', this
+                getProfesseursAvis: function (professeurId) {
+                    this.nouvelAvis = {
+                        note: 0,
+                        commentaire: "",
+                        emailEtudiant: "",
+                    }
+                    axios.get(this.apiBase + '/professeur/' + professeurId + '/avis')
+                        .then(response => {
+                            this.avis = response.data;
+                            this.professeurSelectionne = this.professeurs.find(professeur => professeur
+                                .id === professeurId)
+                        }).catch(error => {
+                            console.log(error);
+                        });
+                },
+                putProfesseurAvis: function () {
+                    axios.put(this.apiBase + '/professeur/' + this.professeurSelectionne.id + '/avis', this
                             .nouvelAvis)
-                            .then(response => {
-                                this.avis.push(response.data)
-                                this.profNotes.push(this.professeurSelectionne)
-                                this.mesAvis.push(response.data)
-                            })
-                            .catch(error => {
-                                console.log(error);
-                            })
-                    },
-                    deleteAvis: function (avis) {
-                        axios.delete(this.apiBase + '/avis/' + avis.id)
-                            .then(response => {
-                                this.getProfesseursAvis(this.professeurSelectionne.id)
-                                this.mesAvis.splice(this.mesAvis.indexOf(avis), 1)
-                                this.profNotes.splice(this.profNotes.indexOf(this.professeurSelectionne), 1)
-                            }).catch(error => {
-                                console.log(error);
-                            })
-                    },
-                    getDateFormat: function () {
-                        return this.dateDuJour.getDate()+"-"+(parseInt(this.dateDuJour.getMonth())+1)+"-"+this.dateDuJour.getFullYear();
-                    },
-                    setDateAuFormat: function () {
-                        this.date = this.getDateFormat();
-                    },
-                    getCoursOfTheDay: function () {
-                        axios.get(this.apiBase + '/cours/current')
-                            .then(response => {
-                                this.cours = response.data;
-                                this.dateDuJour = new Date();
-                                this.setDateAuFormat();
-                                console.log(response.data);
-                            })
-                            .catch(error => {
-                                console.log(error);
-                            });
-                    },
-                    getCoursOfTheDayBefore: function(){
-                        this.dateDuJour.setDate(this.dateDuJour.getDate() - 1);                        
-                        axios.get(this.apiBase + '/cours/before/' + this.getDateFormat())
-                            .then(response => {
-                                this.cours = response.data;
-                                this.setDateAuFormat();
-                                console.log(response.data);
-                            })
-                            .catch(error => {
-                                console.log(error);
-                            });
-                    },
-                    getCoursOfTheDayAfter: function(){
-                        this.dateDuJour.setDate(this.dateDuJour.getDate() + 1);
-                        axios.get(this.apiBase + '/cours/after/' + this.getDateFormat() )
-                            .then(response => {
-                                this.cours = response.data;
-                                this.setDateAuFormat();
-                                console.log(response.data);
-                            })
-                            .catch(error => {
-                                console.log(error);
-                            });
+                        .then(response => {
+                            this.avis.push(response.data)
+                            this.profNotes.push(this.professeurSelectionne)
+                            this.mesAvis.push(response.data)
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                },
+                deleteAvis: function (avis) {
+                    axios.delete(this.apiBase + '/avis/' + avis.id)
+                        .then(response => {
+                            this.getProfesseursAvis(this.professeurSelectionne.id)
+                            this.mesAvis.splice(this.mesAvis.indexOf(avis), 1)
+                            this.profNotes.splice(this.profNotes.indexOf(this.professeurSelectionne), 1)
+                        }).catch(error => {
+                            console.log(error);
+                        })
+                },
+                getDateFormatISO: function (date) {
+                    time_array = date.split(" ");
+                    innerDayFull = time_array[0].split('-');
+                    innerDay = innerDayFull[0];
+                    innerMonth = innerDayFull[1];
+                    innerYear = innerDayFull[2];
+                    heure_array = time_array[1].split(":");
+                    
+                    minute = heure_array[1];
+                    heure = heure_array[0];
+
+                    return innerYear + '-'+ innerMonth + '-'+ innerDay + 'T' + heure + ':'+minute+':00Z';
+                },
+                getDateFormat: function () {
+                    return this.dateDuJour.getDate() + "-" + (parseInt(this.dateDuJour.getMonth()) + 1) +
+                        "-" + this.dateDuJour.getFullYear();
+                },
+                setDateAuFormat: function () {
+                    this.date = this.getDateFormat();
+                },
+                afficherCours: function () {
+                    if (this.cours.length > 0) {
+                        this.cours.forEach(cour => {
+                            console.log(cour);
+                            console.log(this.calendrier);
+                            innerDateDebut = cour.dateHeureDebut;
+                            heureFull = new Date(this.getDateFormatISO(cour.dateHeureDebut));
+                            heure = (parseInt(heureFull.getHours())-1);
+                            minutes = heureFull.getMinutes();
+
+                            // rowDebut = $('#calendar tbody').find()
+                            rowDebut = document.querySelector("[data-time='"+heure+':'+minutes+":00']")
+                            content = rowDebut.insertCell(1);
+                            content.style.backgroundColor = "red"
+                            $(content).attr('rowspan',"2");
+                            $(content).html('<h2> cours </h2>');
+                            console.log();
+                            
+                        });
                     }
                 },
-                mounted() {
-                    //this.getProfesseurs();
-                    this.getCoursOfTheDay();
+                getCoursOfTheDay: function () {
+                    axios.get(this.apiBase + '/cours/current')
+                        .then(response => {
+                            this.cours = response.data;
+                            this.dateDuJour = new Date();
+                            this.setDateAuFormat();
+                            this.afficherCours();
+                            console.log(response.data);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                },
+                getCoursOfTheDayBefore: function () {
+                    this.dateDuJour.setDate(this.dateDuJour.getDate() - 1);
+                    axios.get(this.apiBase + '/cours/before/' + this.getDateFormat())
+                        .then(response => {
+                            this.cours = response.data;
+                            this.setDateAuFormat();
+                            this.afficherCours();
+                            console.log(response.data);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
+                },
+                getCoursOfTheDayAfter: function () {
+                    this.dateDuJour.setDate(this.dateDuJour.getDate() + 1);
+                    axios.get(this.apiBase + '/cours/after/' + this.getDateFormat())
+                        .then(response => {
+                            this.cours = response.data;
+                            this.setDateAuFormat();
+                            this.afficherCours();
+                            console.log(response.data);
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        });
                 }
-            });
-        </script>
-    </body>
+            },
+            mounted() {
+                //this.getProfesseurs();
+                this.getCoursOfTheDay();
+            }
+        });
+    </script>
+</body>
+
 </html>
