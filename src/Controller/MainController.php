@@ -16,4 +16,13 @@ class MainController extends AbstractController
             'controller_name' => 'MainController',
         ]);
     }
+
+    /**
+     * @Route("/vue", name="vuejs")
+     */
+    public function vueJS()
+    {
+        return $this->redirect('http://127.0.0.1:8000/appAgenda.html', 201);
+    }
+
 }
