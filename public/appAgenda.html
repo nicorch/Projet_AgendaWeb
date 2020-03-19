@@ -525,7 +525,7 @@
                             // rowDebut = $('#calendar tbody').find()
                             rowDebut = document.querySelector("[data-time='"+heure+':'+minutes+":00']")
                             if (rowDebut) {
-                                html = '<div class="row">\
+                                /*html = '<div class="row">\
                                     <div class="col-2">\
                                         <center>'+cour.type.nom+'</center>\
                                     </div>\
@@ -543,7 +543,18 @@
                                             Professeur : '+ cour.professeur.nom +'\
                                         </div>\
                                     </div>\
-                                </div>';
+                                </div>';*/
+                                html = '<div class="row">\
+                                            <div class="col-12">\
+                                                <center><strong>'+cour.type.nom + ' ' + cour.matiere.titre + '-' + cour.matiere.reference+'</strong></center>\
+                                            </div>\
+                                            <div class="col-12">\
+                                                <p>\
+                                                    Salle: ' + cour.salle.numero +'<br>\
+                                                    Professeur: ' + cour.professeur.nom +' '+ cour.professeur.prenom +'\
+                                                </p>\
+                                            </div>\
+                                        </div>';
                                 // html = '<div class="card"><div class="card-body">'+
                                 //                 '<h5 class="card-title"><strong>'+cour.type.nom+' | '+
                                 //                         cour.matiere.titre +' - '+ cour.matiere.reference +'</strong></h5><br>'+
