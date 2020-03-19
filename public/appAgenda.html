@@ -107,15 +107,20 @@ width: 100%;height: 100%;margin: 0px;            }
                         </div>
                     </div>
 
-                    <br><br><br><br><br><br><br><br>  
                                         
-                    <div class="row">
-                        <div class="col-8">
-                            <center>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="row" style="margin-top: 120px;margin-left: 5px;margin-bottom: 10px;border-top: 1px solid black">
+        <div class="col-12">
+        <center>
                                 <h1>Note ton prof!</h1>
                             </center>
+                            </div>
+                        <div class="col-7">
                             <div class="row">
-                                <div class="col-6" v-for="professeur in professeurs">
+                                <div class="col-6" v-for="professeur in professeurs" style="margin-bottom: 5px">
                                     <div class="card" :class="{'bg-secondary' : professeur === professeurSelectionne}">
                                         <div class="card-body">
                                             <h5 class="card-title">{{ professeur.nom }} {{ professeur.prenom }}</h5>
@@ -178,9 +183,6 @@ width: 100%;height: 100%;margin: 0px;            }
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
@@ -276,21 +278,8 @@ width: 100%;height: 100%;margin: 0px;            }
                 afficherCours: function () {
                     if (this.cours.length > 0) {
                         
-                        // ICI FAUT RESET LE TABLEAU 
-                        // $('#calendar').html('');
-                        // console.log($('#calendar'));
-                        // $('#calendar').load('table.html #tbody')
-                        // this.calendrier = $('#calendar');
-                        console.log(this.calendrier);
-                        
+                        // ICI FAUT RESET LE TABLEAU - NON IMPLEMANTÉE                        
                         $('#calendar').css('width','100%')
-                        // $('#calendar tr').css('height','auto')
-                        // $('#calendar td').css('border-bottom','1px solid grey')
-                        // $('#calendar td').css('width','auto')
-                        // $('#calendar td').css('height','30px')
-                        // // $('#calendar .cours').css('')
-                        // $('#calendar .cours').css('width','auto')
-
 
                         this.cours.forEach(cour => {
                             // console.log(cour);
@@ -320,11 +309,7 @@ width: 100%;height: 100%;margin: 0px;            }
                             rowspan = 1;
                             if (ecartMinute == 30) rowspan += 1;
                             rowspan += ecartHeure;
-                            
-                            //
-                            // ICI IL FAUT RECUPERER LA ROW DU DEBUT DU COURT
-                            // 
-                            // rowDebut = $('#calendar tbody').find()
+
                             console.log($('#calendar tr').find("[data-time='"+heure+':'+minutes+":00']").length);
                             
                             rowDebut = document.querySelector("[data-time='"+heure+':'+minutes+":00']")                            
