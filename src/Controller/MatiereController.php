@@ -26,6 +26,28 @@ class MatiereController extends AbstractController
     }
 
     /**
+     * @Route("/new_forcalendar", name="matiere_new_forcalendar", methods={"GET","POST"})
+     */
+    public function new_forcalendar(Request $request): Response
+    {
+        $matiere = new Matiere();
+        $form = $this->createForm(MatiereType::class, $matiere);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($matiere);
+            $entityManager->flush();
+
+            return $this->redirect('http://127.0.0.1:8000/appAgenda.html', 201);
+        }
+
+        return $this->render('matiere/new_forcalendar.html.twig', [
+            'matiere' => $matiere,
+            'form' => $form->createView(),
+        ]);
+    }
+    /**
      * @Route("/new", name="matiere_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response

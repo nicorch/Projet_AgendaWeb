@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Nouveau Cours{% endblock %}
+{% block title %}Nouvelle matière{% endblock %}
 
 {% block body %}
     <div class="container">
     <br>
         <div class="card">
             <div class="card-body">
-                <h4 class="card-title">Ajouter un cours</h4>
+                <h4 class="card-title">Ajouter une matière</h4>
                 <p class="card-text">
-                    {{ include('cours/_form.html.twig') }}
+                    {{ include('matiere/_form.html.twig') }}
                 <center>
                     <br><a href="{{ path('vuejs') }}" class="btn btn-secondary">Annuler</a>
                 </center>
@@ -17,5 +17,4 @@
             </div>
         </div>
     </div>
-    
 {% endblock %}
