@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nouveau Cours{% endblock %}
+
+{% block body %}
+    <center>
+    <h3></h3></center>
+    <div class="container">
+    <br>
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Ajouter un cours</h4>
+                <p class="card-text">
+                    {{ include('cours/_form.html.twig') }}
+                <center>
+                    <br><a href="{{ path('vuejs') }}" class="btn btn-secondary">Annuler</a>
+                </center>
+                </p>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

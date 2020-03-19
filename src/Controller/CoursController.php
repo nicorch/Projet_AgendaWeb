@@ -26,6 +26,29 @@ class CoursController extends AbstractController
     }
 
     /**
+     * @Route("/new_forcalendar", name="cours_new_forcalendar", methods={"GET","POST"})
+     */
+    public function new_Courscalendar(Request $request): Response
+    {
+        $cour = new Cours();
+        $form = $this->createForm(CoursType::class, $cour);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($cour);
+            $entityManager->flush();
+
+            return $this->redirect('http://127.0.0.1:8000/appAgenda.html', 201);
+        }
+
+        return $this->render('cours/new_forcalendar.html.twig', [
+            'cour' => $cour,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
      * @Route("/new", name="cours_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
