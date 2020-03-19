@@ -20,14 +20,17 @@ class Cours
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\GreaterThan("now")
+     * @Assert\GreaterThan(
+     *  value = "now",
+     *  message = "Le début du cours doit être supérieur à {{ compared_value }}.")
      * @Assert\NotNull()
      */
     private $dateHeureDebut;
     
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\GreaterThan(propertyPath="dateHeureDebut")
+     * @Assert\GreaterThan(propertyPath="dateHeureDebut",
+     *  message = "La fin du cours doit être supérieur à {{ compared_value }}.")
      * @Assert\NotNull()
      */
     private $dateHeureFin;
