@@ -27,6 +27,8 @@ Ajout de:
 - GET Liste des cours: /api/cours
 - GET Liste des salles: /api/salle
 
+Nous avons également repris les requêtes faites avec "Note ton prof"
+
 ### Interface VueJS
 - Affichage des cours:
     - Placement sur le cadrillage en fonction des heures du cours
