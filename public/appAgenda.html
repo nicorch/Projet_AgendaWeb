@@ -12,53 +12,62 @@
 
 </head>
 <style>
-            #calendar .fc-time {
-                border-right: 1px solid black;
-            }
+    #calendar .fc-time {
+        border-right: 1px solid black;
+    }
 
-            #calendar {
-                height: 100%;
-            }
+    #calendar {
+        height: 100%;
+    }
 
-            #calendar tr {
-                /* border-bottom: 1px solid grey; */
-                height: auto;
-            }
-            #calendar td {
-                border-bottom: 1px solid grey;
-                width: auto;
-                height: 30px;
-                max-height: 50px;
-            }
+    #calendar tr {
+        /* border-bottom: 1px solid grey; */
+        height: auto;
+    }
 
-            .fc-calendar {
-                max-height: 630px;
-                overflow-y: scroll;
-            }
+    #calendar td {
+        border-bottom: 1px solid grey;
+        width: auto;
+        height: 30px;
+        max-height: 50px;
+    }
 
-            #calendar .cours {
-                width: auto;
-            }
+    .fc-calendar {
+        max-height: 600px;
+        overflow-y: scroll;
+    }
 
-            .affichage {
-                height: 70vh
-            }
+    #calendar .cours {
+        width: auto;
+    }
 
-            #div_btnPrecedent {
-                border-right: 1px solid black;padding: 5px;
-            }
-            
-            #btnPrecedent {
-                width: 100%;height: 100%;margin: 0px;
-            }
+    .affichage {
+        height: 70vh
+    }
 
-            #div_btnSuivant {
-border-left: 1px solid black;padding: 5px;            }
-            
-            #btnSuivant {
-width: 100%;height: 100%;margin: 0px;            }
+    #div_btnPrecedent {
+        border-right: 1px solid black;
+        padding: 5px;
+    }
 
-            </style>
+    #btnPrecedent {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+    }
+
+    #div_btnSuivant {
+        border-left: 1px solid black;
+        padding: 5px;
+    }
+
+    #btnSuivant {
+        width: 100%;
+        height: 100%;
+        margin: 0px;
+    }
+</style>
+
 <body>
     <div id="app">
         <nav class="navbar navbar-light bg-light">
@@ -69,24 +78,31 @@ width: 100%;height: 100%;margin: 0px;            }
         </nav>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand" href="#">{{ date }}</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
-                <li class="nav-item">
-<a href="http://127.0.0.1:8000/cours/new_forcalendar" id="btnAddCours"class="nav-link">Ajouter un cours</a>
-                        </li>
-                <li class="nav-item">
-<a href="http://127.0.0.1:8000/matiere/new_forcalendar" id="btnAddCours"class="nav-link">Ajouter une matiere</a>                </li>
-                
+                    <li class="nav-item">
+                        <a href="http://127.0.0.1:8000/cours/new_forcalendar" id="btnAddCours" class="nav-link">Ajouter
+                            un cours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="http://127.0.0.1:8000/matiere/new_forcalendar" id="btnAddCours"
+                            class="nav-link">Ajouter une matiere</a> </li>
+
                 </ul>
             </div>
-            </nav>
+        </nav>
         <br>
-            
+
         <div class="container-fluid">
             <div class="row">
+                <div class="col-12">
+                    <div id="erreur" class="p-3 mb-2 bg-warning text-dark" style="display:none">Erreur sur la remise à
+                        zéro du calendrier (fonction non implementée dans les temps)<br>Les jours se superposent donc.</div>
+                </div>
                 <div class="col-md-12">
                     <div class="row affichage">
                         <div id="div_btnPrecedent" class="col-2 text-center">
@@ -107,82 +123,84 @@ width: 100%;height: 100%;margin: 0px;            }
                         </div>
                     </div>
 
-                                        
-                    
+
+
                 </div>
             </div>
         </div>
         <div class="row" style="margin-top: 120px;margin-left: 5px;margin-bottom: 10px;border-top: 1px solid black">
-        <div class="col-12">
-        <center>
-                                <h1>Note ton prof!</h1>
-                            </center>
+            <div class="col-12">
+                <center>
+                    <h1>Note ton prof!</h1>
+                </center>
+            </div>
+            <div class="col-7">
+                <div class="row">
+                    <div class="col-6" v-for="professeur in professeurs" style="margin-bottom: 5px">
+                        <div class="card" :class="{'bg-secondary' : professeur === professeurSelectionne}">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ professeur.nom }} {{ professeur.prenom }}</h5>
+                                <p class="card-text">
+
+                                </p>
                             </div>
-                        <div class="col-7">
-                            <div class="row">
-                                <div class="col-6" v-for="professeur in professeurs" style="margin-bottom: 5px">
-                                    <div class="card" :class="{'bg-secondary' : professeur === professeurSelectionne}">
-                                        <div class="card-body">
-                                            <h5 class="card-title">{{ professeur.nom }} {{ professeur.prenom }}</h5>
-                                            <p class="card-text">
-            
-                                            </p>
-                                        </div>
-                                        <div class="card-footer text-muted">
-                                            <div class="row">
-                                                <div class="col-8">
-                                                    {{ professeur.email }}
-                                                </div>
-                                                <div class="col-4">
-                                                    <button class="btn btn-primary"
-                                                        v-on:click="getProfesseursAvis(professeur.id)">Avis</button>
-                                                </div>
-                                            </div>
-                                        </div>
+                            <div class="card-footer text-muted">
+                                <div class="row">
+                                    <div class="col-8">
+                                        {{ professeur.email }}
+                                    </div>
+                                    <div class="col-4">
+                                        <button class="btn btn-primary"
+                                            v-on:click="getProfesseursAvis(professeur.id)">Avis</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div v-if="professeurSelectionne != null" class="col-4">
-                            <h2>Avis de {{ professeurSelectionne.nom }} {{ professeurSelectionne.prenom}}</h2>
-                            <div v-if="profNotes.includes(professeurSelectionne)" class="alert alert-success">Votre avis a été enregistré</div>
-                            <div v-else class="card" >                    
-                                <div class="card-body">
-                                    <h5 class="card-title">Nouvel avis</h5>
-                                    <form v-on:submit.prevent="putProfesseurAvis()">
-                                        <div class="form-group">
-                                            <label >Note</label>
-                                            <select class="form-control" v-model="nouvelAvis.note">
-                                                <option>0</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-                                        </div>
-                                        <div class="form-group" >
-                                            <label>Commentaire</label>
-                                            <textarea required class="form-control" v-model="nouvelAvis.commentaire"></textarea>
-                                        </div>
-                                        <div class="form-group" >
-                                            <label>Email</label>
-                                            <input type="email" class="form-control" v-model="nouvelAvis.emailEtudiant">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="submit" value="Ajouter un avis" class="btn btn-primary">
-                                        </div>
-                                    </form>
-                                </div>
+                    </div>
+                </div>
+            </div>
+            <div v-if="professeurSelectionne != null" class="col-4">
+                <h2>Avis de {{ professeurSelectionne.nom }} {{ professeurSelectionne.prenom}}</h2>
+                <div v-if="profNotes.includes(professeurSelectionne)" class="alert alert-success">Votre avis a été
+                    enregistré</div>
+                <div v-else class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Nouvel avis</h5>
+                        <form v-on:submit.prevent="putProfesseurAvis()">
+                            <div class="form-group">
+                                <label>Note</label>
+                                <select class="form-control" v-model="nouvelAvis.note">
+                                    <option>0</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                </select>
                             </div>
-                            <div class="card" v-for="unAvis in avis">
-                                <div class="card-body">
-                                    <h5 class="card-title">Note : {{ unAvis.note}} / 5</h5>
-                                    <p class="card-text">{{ unAvis.commentaire }}</p>
-                                    <button @click="deleteAvis(unAvis)" v-if="mesAvis.includes(unAvis)" class="btn btn-danger">Supprimer</button>
-                                </div>
+                            <div class="form-group">
+                                <label>Commentaire</label>
+                                <textarea required class="form-control" v-model="nouvelAvis.commentaire"></textarea>
                             </div>
-                        </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" v-model="nouvelAvis.emailEtudiant">
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Ajouter un avis" class="btn btn-primary">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="card" v-for="unAvis in avis">
+                    <div class="card-body">
+                        <h5 class="card-title">Note : {{ unAvis.note}} / 5</h5>
+                        <p class="card-text">{{ unAvis.commentaire }}</p>
+                        <button @click="deleteAvis(unAvis)" v-if="mesAvis.includes(unAvis)"
+                            class="btn btn-danger">Supprimer</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -190,7 +208,6 @@ width: 100%;height: 100%;margin: 0px;            }
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script type="text/javascript">
-
         var app = new Vue({
             el: '#app',
             // calendar: '#calendar',
@@ -262,11 +279,12 @@ width: 100%;height: 100%;margin: 0px;            }
                     innerMonth = innerDayFull[1];
                     innerYear = innerDayFull[2];
                     heure_array = time_array[1].split(":");
-                    
-                    minute = heure_array[1];
-                    heure = heure_array[0];                    
 
-                    return innerYear + '-'+ innerMonth + '-'+ innerDay + 'T' + heure + ':'+minute+':00Z';
+                    minute = heure_array[1];
+                    heure = heure_array[0];
+
+                    return innerYear + '-' + innerMonth + '-' + innerDay + 'T' + heure + ':' + minute +
+                        ':00Z';
                 },
                 getDateFormat: function () {
                     return this.dateDuJour.getDate() + "-" + (parseInt(this.dateDuJour.getMonth()) + 1) +
@@ -277,51 +295,55 @@ width: 100%;height: 100%;margin: 0px;            }
                 },
                 afficherCours: function () {
                     if (this.cours.length > 0) {
-                        
+
                         // ICI FAUT RESET LE TABLEAU - NON IMPLEMANTÉE                        
-                        $('#calendar').css('width','100%')
+                        $('#calendar').css('width', '100%')
 
                         this.cours.forEach(cour => {
                             // console.log(cour);
                             // Date debut
                             heureFull = new Date(this.getDateFormatISO(cour.dateHeureDebut));
-                            heure = (parseInt(heureFull.getHours())-1);                        
+                            heure = (parseInt(heureFull.getHours()) - 1);
                             minutes = heureFull.getMinutes();
-                                // format minute
-                                if (minutes == 0) minutes = "00";
-                                else minutes = "30";
+                            // format minute
+                            if (minutes == 0) minutes = "00";
+                            else minutes = "30";
 
                             heureFinFull = new Date(this.getDateFormatISO(cour.dateHeureFin));
-                            heureFin = (parseInt(heureFinFull.getHours())-1);
+                            heureFin = (parseInt(heureFinFull.getHours()) - 1);
                             minutesFin = heureFinFull.getMinutes();
-                                // format minute
-                                if (minutesFin == 0) minutesFin = "00";
-                                else minutesFin = "30";
+                            // format minute
+                            if (minutesFin == 0) minutesFin = "00";
+                            else minutesFin = "30";
 
                             // Ecart de date
-                            ecartHeure = heureFin - (parseInt(heureFull.getHours())-1);
+                            ecartHeure = heureFin - (parseInt(heureFull.getHours()) - 1);
                             ecartMinute = parseInt(minutesFin) - parseInt(minutes)
-                                // format minute
-                                if (ecartMinute == 0) ecartMinute = "00";
-                                else ecartMinute = "30";
+                            // format minute
+                            if (ecartMinute == 0) ecartMinute = "00";
+                            else ecartMinute = "30";
 
                             // Set row span of cours
                             rowspan = 1;
                             if (ecartMinute == 30) rowspan += 1;
                             rowspan += ecartHeure;
 
-                            console.log($('#calendar tr').find("[data-time='"+heure+':'+minutes+":00']").length);
-                            
-                            rowDebut = document.querySelector("[data-time='"+heure+':'+minutes+":00']")                            
+                            console.log($('#calendar tr').find("[data-time='" + heure + ':' +
+                                minutes + ":00']").length);
+
+                            rowDebut = document.querySelector("[data-time='" + heure + ':' +
+                                minutes + ":00']")
                             if (rowDebut) {
                                 html = '<div class="row">\
                                             <div class="col-12">\
-                                                <center><strong>'+cour.type.nom + ' ' + cour.matiere.titre + '-' + cour.matiere.reference+'</strong></center>\
+                                                <center><strong>' + cour.type.nom + ' ' + cour.matiere.titre + '-' +
+                                    cour.matiere.reference + '</strong></center>\
                                             </div>\
                                             <div class="col-12">\
                                                 <p>\
-                                                    Salle: ' + cour.salle.numero +'<br>\
-                                                    Professeur: ' + cour.professeur.nom +' '+ cour.professeur.prenom +'\
+                                                    Salle: ' + cour.salle.numero + '<br>\
+                                                    Professeur: ' + cour.professeur.nom + ' ' + cour.professeur
+                                    .prenom + '\
                                                 </p>\
                                             </div>\
                                         </div>';
@@ -329,19 +351,18 @@ width: 100%;height: 100%;margin: 0px;            }
                                 rowDebut.deleteCell(2);
                                 content.style.backgroundColor = "red"
                                 content.classList.add('cours');
-                                $(content).attr('rowspan',rowspan);
+                                $(content).attr('rowspan', rowspan);
                                 // Width other tr
-                                $('#calendar tr').each(function (index,element)  {
+                                $('#calendar tr').each(function (index, element) {
                                     if ($(element).find('td.cours').length == 0) {
-                                        element.insertCell(1);                                        
+                                        element.insertCell(1);
                                     }
                                 })
                                 $(content).html(html);
                                 $(content).focus();
-                            
+
                             }
                         });
-                        firsttr = $('#calendar tr .cours').scrollIntoView();
                     }
                 },
                 getCoursOfTheDay: function () {
@@ -364,6 +385,8 @@ width: 100%;height: 100%;margin: 0px;            }
                             this.cours = response.data;
                             this.setDateAuFormat();
                             this.afficherCours();
+
+                            $('#erreur').show();
                             console.log(response.data);
                         })
                         .catch(error => {
@@ -375,7 +398,8 @@ width: 100%;height: 100%;margin: 0px;            }
                     axios.get(this.apiBase + '/cours/after/' + this.getDateFormat())
                         .then(response => {
                             this.cours = response.data;
-                            
+                            $('#erreur').show();
+
                             this.setDateAuFormat();
                             this.afficherCours();
                             console.log(response.data);
@@ -391,7 +415,7 @@ width: 100%;height: 100%;margin: 0px;            }
                 $('#calendar').html('');
                 $('#calendar').load('table.html #tbody')
                 console.log(this.coursHtmlArray);
-                
+
             }
         });
     </script>
