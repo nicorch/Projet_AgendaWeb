@@ -3,6 +3,9 @@ Nicolas Roche
 Xan Olazcuaga Garibal
 ## Fonctionnalités implémentées :
 
+Naviguer via le logo :
+![logoApp](https://i.ibb.co/Yh3L9j2/Capture-d-e-cran-2020-03-19-a-14-45-34.png)
+
 ### Interface Easy Admin
 Ajout de la gestion des cours et des salles
 Validateurs de données: 
