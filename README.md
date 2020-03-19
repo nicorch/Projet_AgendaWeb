@@ -24,10 +24,16 @@ Validateurs de données:
 ### API
 Ajout de:
 - GET Liste des cours: /api/cours
-- GET Liste des salles: /api/salle
+- GET Liste des salles: /api/salles
 
 ### Interface VueJS
 - Affichage des cours:
     - Placement sur le cadrillage en fonction des heures du cours
     - Nom, type, salle et professeur
 - Navigation entre les jours précédents et suivants
+
+# Utilisation de l'agenda
+Afin de pouvoir utiliser l'agenda, il faut préalablement:
+- **Lancer l'application en utilisant _127.0.0.1_** 
+- Créer les types de cours à partir d'Easy Admin (TP, TD, Cours)
+- Créer un jeu de données 
